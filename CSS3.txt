@@ -104,6 +104,15 @@
 
 	 align-content: same as align-items; 
 		This can be confusing, but align-content determines the spacing between lines, while align-items determines how the items as a 			whole are aligned within the container. When there is only one line, align-content has no effect.
+
+	align-self align-items feature for paricular item
+	flex-basis
+		The flex-basis property specifies the initial size of the item before CSS makes adjustments with flex-shrink or flex-grow.
+		The units used by the flex-basis property are the same as other size properties (px, em, %, etc.). The value auto sizes items  			based on the content.
+	flex-grow
+		flex-grow value of 1 and the other has a flex-grow value of 3, the one with the value of 3 will grow three times as much as 			the other.
+	flex-shrink 
+		vice versa of flex-grow with same concept.
 5) Overriding CSS
 	the class property will override body style if two classes are added and are overlapping properties then the one declared last in
 	<style> tag will given preference to apply the style property, the id will override on classes but if a class property has 
