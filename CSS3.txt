@@ -88,7 +88,6 @@
 
 	#pond {
 	  display: flex;
-	  align-items: flex-start;
 	}
 
 	flex-direction :  row | row-reverse | column | column-reverse
@@ -113,6 +112,8 @@
 		flex-grow value of 1 and the other has a flex-grow value of 3, the one with the value of 3 will grow three times as much as 			the other.
 	flex-shrink 
 		vice versa of flex-grow with same concept.
+	flex
+		flex: flex-grow-value flex-basis; shorthand of flex-grow and flex-basis combined
 5) Overriding CSS
 	the class property will override body style if two classes are added and are overlapping properties then the one declared last in
 	<style> tag will given preference to apply the style property, the id will override on classes but if a class property has 
