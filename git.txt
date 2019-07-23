@@ -4,7 +4,7 @@
     Distributed Version Control
 	These systems do not necessarily rely on a central server to store all the versions of a project’s files. Instead, every developer 		“clones” a copy of a repository and has the full history of the project on their own hard drive. This copy (or “clone”) has all of the 		metadata of the original.ex:- Git
 
-    Central Repository 	
+2)  Central Repository 	
 	Having a central repository is optional in distributed version control system.In both pulling and pushing you move changesets 	 	 (changes to files groups as coherent wholes), not single-file diffs.
 
 3) Advantages of DVCS over CVCS
@@ -251,6 +251,9 @@
 
 								
 							
+27) To check the email and name associated git account with a repo
 
+	-git config user.email
+	-git config user.name 
 				
 
