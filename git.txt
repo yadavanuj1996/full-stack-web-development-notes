@@ -1,26 +1,26 @@
-# Git ,Version Control & Git-Commands
-## 1) Centralized Version Control 	
+Git ,Version Control & Git-Commands
+1) Centralized Version Control 	
 	Centralized version control systems are based on the idea that there is a single “central” copy of your project 	somewhere (probably 		on a server), and programmers will “commit” their changes to this central copy.
 	“Committing” a change simply means recording the change in the central system. Other programmers can then see this 	    change. They can also pull down the change, and the version control tool will automatically update the contents of 		any files that were changed. Ex:-Subversion
 Distributed Version Control
 	These systems do not necessarily rely on a central server to store all the versions of a project’s files. Instead, 	   every developer “clones” a copy of a repository and has the full history of the project on their own 	     	     hard drive. This copy (or “clone”) has all of the metadata of the original.ex:- Git
 
-## 2)  Central Repository 	
+2)  Central Repository 	
 	Having a central repository is optional in distributed version control system.In both pulling and pushing you move 	   changesets (changes to files groups as coherent wholes), not single-file diffs.
 
-## 3) Advantages of DVCS over CVCS
+3) Advantages of DVCS over CVCS
 	Performing actions other than pushing and pulling changesets is extremely fast because the tool only needs to access 	     the hard drive, not a remote server.
 	Committing new changesets can be done locally without anyone else seeing them. Once you have a group of changesets 	   ready, you can push all of them at once.
 	Everything but pushing and pulling can be done without an internet connection. So you can work on a plane, and you 	   won’t be forced to commit several bugfixes as one big changeset.
 	Since each programmer has a full copy of the project repository, they can share changes with one or two other people 	     at a time if they want to get some feedback before showing the changes to everyone.
 
-## 4) Branching 
+4) Branching 
 	Branches in Git are incredibly lightweight as well. They are simply pointers to a specific commit
 	branch name should follow camel case convention
 	To merge two project branches we can use merge operation or rebasing.
 	Each branch provide us to work on our project without messing with our main production line code.
 
-## 5) Commands (Important)
+5) Commands (Important)
 	a) git checkout branch-name to move to other branch	
 	b) git commit   (to make commit)
 	c) git commit -m "commit message"  to commit with message
@@ -35,7 +35,7 @@ Distributed Version Control
 	them in front of master and msater will become their ancestor and the old series of commits will be left where they 	    were.
 
 	
-## 6) HEAD   
+6) HEAD   
 	HEAD is the symbolic name for the currently checked out commit -- it's essentially what commit you're working on top 	     of. 
 	git checkout commit-hash will take our HEAD to particular commit
 	relative refs 
@@ -59,11 +59,11 @@ Distributed Version Control
 	git reset --soft commit-hash
 	In other words, --soft is discarding last commit, --mix is discarding last commit and add, --hard is discarding last 	     commit,add and any changes you made on the codes which is the same with git checkout HEAD
 
-## 7) git cherry pick c4 c7
+7) git cherry pick c4 c7
 	when called after taking HEAD to master will copy and create new commits on master an move head to c7'
 	to check committ history use
 
-## 8) git log
+8) git log
 	git log - p commit to history with patch outputs
 	git log - - stat  show statistics of modified flies
 	git log  - - shortstat display only the changes lines insertion /deletion of got log - - stat
@@ -71,7 +71,7 @@ Distributed Version Control
 	git log - -pretty=oneline 
 	git log - -pretty=short/full
 
-## 9) Branch 
+9) Branch 
 	Branch is a way to request new working directory, staging area and project history it is a independent line of 		development  
 	Branch servers as abstraction to edit /stage /commit process 
 	git branch - d branch-name  
@@ -80,29 +80,29 @@ Distributed Version Control
 	git branch - m new-name-for-branch 
 	git branch - a     list all remote branches
 
-## 10) git remote add new-remote-repo https://bitbucket.com/user/repo.git
+10) git remote add new-remote-repo https://bitbucket.com/user/repo.git
 	 # Add remote repo to local repo config
 	 git push <new-remote-repo> crazy-experiment
 	 # pushes the crazy-experiment branch to new-remote-repo
 
-## 11) To delete remote repo 
+11) To delete remote repo 
 	git push origin - -delete remote-branch-name
 	Or git push origin :branchName
 	If you forget to add a file in recently made commit or added wronf message then stage the files using git add and 	  then make 
 	git commit --amend 
 	to make change in the last commit only without creating new commit
 
-## 12)  To make changes in previous commit or change staging area
+12)  To make changes in previous commit or change staging area
 	git commit - -amend 
 	git remote lists all the remote handles you have specified. 
 	git remote add new-remote-name https://github.com/paulboone/ticgit 
 	git remote -v
 
-## 13) git fetch 	
+13) git fetch 	
 	git fetch pb
 	Will fetch all the code and branches of pb remote made by (Paul Branson ) and we can inspect all the changes and 	 code of his branches (pb/master and pb/local-branch-names will be available for us ) 
 
-## 14) Remote 
+14) Remote 
 	When we clone a project a new remote automatically gets created named origin
 	git fetch <remote >
 	git fetch origin fetches all the changes that have been Made in server after your last fetch 
@@ -127,10 +127,10 @@ Distributed Version Control
 	git remote rm paul
     	will remove reference to a remote branch, used when you don't want a mirror or a contributor has stopped 		contributing
 
-## 15)  master branch is just like any another branch in git only difference is it gets created when we use git init 		command and most users does not choose to change it's name.
+15)  master branch is just like any another branch in git only difference is it gets created when we use git init 		command and most users does not choose to change it's name.
 
 	every commit is snapshot of files for a particular version, after we change our project for the first time let's say 	     we have added 3 new files so 5 things will be saved in the git 3 blobs that will contain the content of files 1 tree 	  that will contain names of the files and which blob is refernced by which file and 5th one is commit that will point 	       it to the tree.
-## 16) Merging
+16) Merging
 	Merging can be of two types using 
 	i) fast-forward
 	ii) Recursively merge
@@ -141,14 +141,14 @@ Distributed Version Control
 	If two diverged line of development represeneted by two different branches are merged and both have updated the same 	     file and same piece or lines of code then merge conflict will occur and conflict resolution markers will be written 	 in the file with HEAD section 	    conataing the branch in which we are merging code(i.e, generally master.)
 
 	After a hotfix is done delete the branch as it's purpose is completed.
-## 17)	git branch -v will list all the last commits in all the local branch.
-## 18) 	Remote tracking branches are local branches that mirror or track a remote branch and it's referenece cannot be 		changed by user.
-## 19) 	git config --global credential.helper cache.
+17)	git branch -v will list all the last commits in all the local branch.
+18) 	Remote tracking branches are local branches that mirror or track a remote branch and it's referenece cannot be 		changed by user.
+19) 	git config --global credential.helper cache.
 	use this command to avoid entering git credentials everytime you want to make a push on remote.
-## 20) 	When you are using the concept of tracking a remote branch in a local branch the 
+20) 	When you are using the concept of tracking a remote branch in a local branch the 
 	when we clone the remote repository the there are two reference created on out local system one is master and other 	    is origin/master
 	when we made any commit in  our local branch that is tracking remote the master branch reference is moved and let's 	    say there are some commits made on remote by other user we will use git fetch <remote-name> it will update our local 	 repository and origin/master reference will move and the two branches are diverged in this case master and 		origin/master, origin/master cannot be changed by you it will alway point to the position of remote's last commit.
-## 21) git checkout --track origin/serverfix
+21) git checkout --track origin/serverfix
 	Branch serverfix set up to track remote branch serverfix from origin.
 	Switched to a new branch 'serverfix'
 
@@ -165,7 +165,7 @@ Distributed Version Control
 	git checkout -b sf origin/serverfix
 	Branch sf set up to track remote branch serverfix from origin.
 	Switched to a new branch 'sf'
-## 22) 	More Commands
+22) 	More Commands
 	git checkout bugFix
 	git rebase master
 	git checkout master
@@ -180,7 +180,7 @@ Distributed Version Control
 	Do not rebase commits that exist outside your repository and people may have based work on them.
 	
 	In general the way to get the best of both worlds is to rebase local changes you’ve made but haven’t shared yet 	before you push them in order to clean up your story, but never rebase anything you’ve pushed somewhere.	
-## 23) Tagging
+23) Tagging
 	Like most VCSs, Git has the ability to tag specific points in a repository’s history as being important. Typically, 	    people use this functionality to mark release points (v1.0, v2.0 and so on). 
 	Listing Your Tags
 	Listing the existing tags in Git is straightforward. Just type git tag (with optional -l or --list):
@@ -191,7 +191,7 @@ Distributed Version Control
 	
 	git tag -a v1.4 -m "my version 1.4"
 	
-## 24) Commit Guidelines
+24) Commit Guidelines
 	a) submissions should not contain any whitespace errors. 
 	b) Make one commit per issue with useful message per commit.
 	
@@ -228,7 +228,7 @@ Distributed Version Control
 
 		- Use a hanging indent
 
-## 25) Stashing
+25) Stashing
 	When you are working on a branch and made some changes suddenly want to checkout to other branch for some urgent 	 work like hotfix of any issue but your present branch is not clean as there must be some modified files which are 	   not staged while some that are staged files but you do not want to commit so you can stash the files and commit it 	      later.
 		git stash push				to save a stash
 		git stash list 				to list all the present stashes available
@@ -236,7 +236,7 @@ Distributed Version Control
 		git stash apply 			for applying last stash
 		git stash drop	stash@{0}		for deleting a particular mentioned stash
 
-## 26) Issues
+26) Issues
 	Issues are a great way to keep track of tasks, enhancements, and bugs for your projects. They’re kind of like email—	    except they can be shared and discussed with the rest of your team. Most software projects have a bug tracker of  		some kind. GitHub’s tracker is called Issues, and has its own section in every repository.
 	-Milestones are groups of issues that correspond to a project, feature, or time period. People use them in many 	different ways in software development,ex:- 
 	  -Beta Launch 
