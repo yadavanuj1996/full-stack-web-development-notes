@@ -1,9 +1,9 @@
 Git ,Version Control & Git-Commands
 1) Centralized Version Control 	
-	Centralized version control systems are based on the idea that there is a single “central” copy of your project 	somewhere (probably 		on a server), and programmers will “commit” their changes to this central copy.
+	Centralized version control systems are based on the idea that there is a single “central” copy of your project 	somewhere (probably on a server), and programmers will “commit” their changes to this central copy.
 	“Committing” a change simply means recording the change in the central system. Other programmers can then see this 	    change. They can also pull down the change, and the version control tool will automatically update the contents of 		any files that were changed. Ex:-Subversion
 Distributed Version Control
-	These systems do not necessarily rely on a central server to store all the versions of a project’s files. Instead, 	   every developer “clones” a copy of a repository and has the full history of the project on their own 	     	     hard drive. This copy (or “clone”) has all of the metadata of the original.ex:- Git
+	These systems do not necessarily rely on a central server to store all the versions of a project’s files. Instead, every developer “clones” a copy of a repository and has the full history of the project on their own 	     	     hard drive. This copy (or “clone”) has all of the metadata of the original.ex:- Git
 
 2)  Central Repository 	
 	Having a central repository is optional in distributed version control system.In both pulling and pushing you move 	   changesets (changes to files groups as coherent wholes), not single-file diffs.
@@ -259,3 +259,10 @@ Distributed Version Control
 	-git config user.name 
 				
 
+28) git clone
+	git clone is basically a combination of:
+
+	git init (create the local repository)
+	git remote add origin url(add the URL to that repository)
+	git fetch origin master(fetch all branches from that URL to your local repository)
+	git checkout (create all the files of the main branch in your working tree)
