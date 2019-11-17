@@ -133,8 +133,8 @@ Advantages of Node.js
             const car = require('./car')
     ```
     exports.car = {
-    brand: 'Ford',
-    model: 'Fiesta'
+        brand: 'Ford',
+        model: 'Fiesta'
     }
     And in the other file, you'll use it by referencing a property of your import:
     const items = require('./items')
