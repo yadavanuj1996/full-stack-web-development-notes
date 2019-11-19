@@ -975,3 +975,161 @@
 
 
                               Testing Express applications
+
+1) 
+
+
+                                 Best Practices
+
+1) This chapter covers
+    ■ Benefits of simplicity in your code
+    ■ Structuring your app’s files
+    ■ Using the npm shrinkwrap command to lock down dependency versions for reliability
+      (and the benefits of doing so)
+    ■ Avoiding installing modules globally
+
+2) file structure (check attached 'express structure.png' image)
+
+    package.json should come as no surprise—it’s present in every Node project. This will have
+    all of the app’s dependencies as well as all of your npm scripts. You’ve seen different incarnations of this file throughout the book and it’s not different in a big app.
+    ■ app.js is the main application code—the entry point. This is where you call express()
+    to instantiate a new Express application. It is also where you put middleware
+    that’s common to all routes, like security or static file middleware. This file
+    doesn’t start the app, as you’ll see—it assigns the app to module.exports.
+    ■ bin is a folder that holds executable scripts relevant to your application. There’s often
+    just one (listed here), but sometimes more are required.
+    – bin/www is an executable Node script that requires your app (from
+    app.js) and starts it. Calling npm start should run this script.
+    ■ config is a folder that’ll hold any configuration for your app. It’s often full of JSON files
+    that specify things like default port numbers or localization strings.
+    ■ public is a folder that’s served by static file middleware. It’ll have any static files
+    inside—HTML pages, text files, images, videos, and so on. The static file middleware will also serve any of public’s subfolders. The HTML5 Boilerplate at
+    Figure 12.1 A common folder
+    structure for Express applications
+    Licensed to <miler.888@gmail.com> www.it-ebooks.info
+    Locking down dependency versions 221
+    https://html5boilerplate.com/, for example, presents a good selection of common static files you might add here.
+    ■ routes is a folder that holds numerous JavaScript files, each one exporting an Express
+    router. You might have a router for all URLs that start with /users and another
+    for all that start with /photos. Chapter 5 has all the details about routers and
+    routing—check out section 5.3 for examples of how this works.
+    ■ test is a folder that holds all of your test code. Chapter 9 has all the juicy details
+    about this.
+    ■ views is a folder that holds all of your views. Typically they’re written in EJS or Pug,
+    as shown in chapter 7, but there are many other templating languages you
+    can use. 
+
+3) The best way to see an app that has most of these conventions is by using the official
+    Express application generator. You can install this with 
+    `npm install -g expressgenerator
+    Once it’s installed, you can run express my-new-app and it’ll create a
+    folder called my-express-app with a skeleton app set up, as shown in figure 
+
+4)  Node has far and away the best dependency system . A coworker said, in
+    describing Node and npm: “They nailed it.”
+    npm uses semantic versioning (sometimes shortened to semver) for all of its packages. 
+    Versions are broken up into three numbers: major, minor, and patch. For example, version 
+    1.2.3 is major version 1, minor version 2, and patch version 3.
+    In the rules of semantic versioning, a major version upgrade can have a change
+    that is considered breaking. A breaking change is one where old code wouldn’t be
+    compatible with new code. For example, code that worked in Express major version
+    3 doesn’t necessarily work with major version 4. Minor version changes are, by
+    contrast, not breaking. They generally mean a new feature that doesn’t break existing
+    code. Patch versions are for, well, patches—they’re reserved for bug fixes and
+    performance enhancements. Patches shouldn’t break your code; they should generally
+    make things better.
+
+    MAJOR VERSION ZERO There’s one asterisk to this: basically anything goes if
+    the major version is 0. The whole package is considered to be unstable at
+    that point.
+
+5)  Short way to locking down dependency  versions.
+    Example of optimistic versioning
+        ```
+        // …
+        "dependencies": {
+        "express": "^5.0.0",
+        "ejs": "~2.3.2"
+        }
+    // …
+        ```
+
+
+    The ^ character indicates optimistic versioning is allowed. You’ll get all patch and minor
+    updates. The ~ character indicates a slightly less optimistic versioning. You’ll get only
+    patch updates.
+    If you’re editing your package.json, you can specify the dependency to an exact
+    version. The previous example would look like this next listing.
+
+    Example of omitting optimistic versioning
+        ```
+        // …
+        "dependencies": {
+        "express": "5.0.0",
+        "ejs": "2.3.2"
+        }
+        // …
+        ```
+    Removing the ^ and ~ characters from the version number indicates only that specific
+    version of the package should be downloaded and used. These edits are relatively easy
+    to do and can lock a package down to a specific version.
+    If you’re installing new packages, you can turn off npm’s optimistic versioning by
+    changing the --save flag to –save-exact. For example, npm install --save express
+    becomes npm install --save-exact express. This will install the latest version of
+    Express, just like always, but it won’t mark it optimistically in your package.json—it’ll
+    specify an exact version.
+
+6) Long, thourough and most foolproof way to locking down dependency  versions.
+     npm’s shrinkwrap command
+
+    The problem with the short and previous solution is that it doesn’t lock down 
+    subdependency versions. npm has a subcommand called shrinkwrap that solves this problem.
+    Let’s say you’ve run npm install and everything works just fine. You’re at a state
+    where you want to lock down your dependencies. At this point, run a single command
+    from somewhere in your project:
+        ```
+        npm shrinkwrap
+        ```
+    You can run this in any Node project that has a package.json file and dependencies. If
+    all goes well, there will be a single line of output: wrote npm-shrinkwrap.json. (If it
+    fails, it’s likely because you’re executing this from a non-project directory or are
+    missing a package.json file.)
+
+    The next time you issue npm install, it won’t look at the packages in package.json 
+    —it’ll look at the files in npm-shrinkwrap.json and install from there. Every
+    time npm install runs, it looks for the shrinkwrap file and tries to install from there.
+    If you don’t have one (as we haven’t for the rest of this book), it’ll look at 
+    package.json. As with package.json, you typically check npm-shrinkwrap.json into 
+    version control. This allows all developers on the project to keep the same package 
+    versions, which is the whole point of shrink-wrapping!
+
+7)  Upgrading and adding dependencies
+    
+    This is all good once you’ve locked in your dependencies, but you probably don’t
+    want to freeze all of your dependencies forever. You might want to get bug fixes or
+    patches or new features—you just want it to happen on your terms.
+    To update or add a dependency, you’ll need to run npm install with a package
+    name and a package version. For example, if you’re updating Express from 4.12.0 to
+    4.12.1, you’ll run npm install express@4.12.1. If you want to install a new package
+    (Helmet, for example), run npm install helmet. This will update the version or
+    add the package in your node_modules folder, and you can start testing. Once it all
+    looks good to you, you can run npm shrinkwrap again to lock in that dependency
+    version.
+    Sometimes, shrink-wrapping isn’t for you. You might want to get all of the latest
+    and greatest features and patches without having to update manually. Sometimes,
+    though, you want the security of having the same dependencies across all installations
+    of your project. 
+
+8)  Download all dependencies locally including the likes of grunt and mocha( used for
+    testing).
+
+    The other way to do this is by adding the command as an npm script. Once again, let’s
+    say that you want to run Mocha. The next listing shows how you’d specify that as an
+    npm script.
+    ``
+    // …
+    "scripts": {
+    "test": "mocha"
+    },
+    // …
+    ``
