@@ -989,7 +989,7 @@
     ■ Avoiding installing modules globally
 
 2) file structure (check attached 'express structure.png' image)
-
+    ```
     package.json should come as no surprise—it’s present in every Node project. This will have
     all of the app’s dependencies as well as all of your npm scripts. You’ve seen different incarnations of this file throughout the book and it’s not different in a big app.
     ■ app.js is the main application code—the entry point. This is where you call express()
@@ -1004,10 +1004,8 @@
     that specify things like default port numbers or localization strings.
     ■ public is a folder that’s served by static file middleware. It’ll have any static files
     inside—HTML pages, text files, images, videos, and so on. The static file middleware will also serve any of public’s subfolders. The HTML5 Boilerplate at
-    Figure 12.1 A common folder
-    structure for Express applications
-    Licensed to <miler.888@gmail.com> www.it-ebooks.info
-    Locking down dependency versions 221
+   ```
+   Locking down dependency versions 
     https://html5boilerplate.com/, for example, presents a good selection of common static files you might add here.
     ■ routes is a folder that holds numerous JavaScript files, each one exporting an Express
     router. You might have a router for all URLs that start with /users and another
