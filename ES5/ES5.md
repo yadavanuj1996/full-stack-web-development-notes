@@ -7,72 +7,106 @@ TODO : Improve the structuring
 1) Null vs Undefined
     null is an assigned value. It means nothing.
     undefined means a variable has been declared but not defined yet.
-    null is an object. undefined is of type undefined.
+    null is a primitive value in Javascript although typeof(null) returns object but it is a known bug of the language. 
+    undefined is of type undefined.
     null !== undefined but null == undefined.
 
-Statement does logical thing
-If else or condition statement or loop
-A statement is chained with ; while expression with , (comma)
+A Statement does logical thing  
+If else or condition statement or loop  
+A statement is chained with ; while expression with , (comma)  
 A statement is such that it can be placed where a value is required
+```
 myVar
 x+3
 Bar(2,3)
 statement 
 >console.log("a", "b");
 b
-Object literal vs block 
-{ foo: bar(3, 5) }
-The above line is both statement and expression 
+```
+
+Object literal vs block   
+
+`{ foo: bar(3, 5) }`  
+The above line is both statement and expression   
+```
 function test(printTwo) { printing: { console.log("One"); if (!printTwo) break printing; console.log("Two"); } console.log("Three"); }
 
 function () {   }   function expression 
 function foo() {  } named function expression 
+```
 
-Control flow statements
-That change the flow of program on certain conditions or  Control Flow is a fundamental concept in programming that allows you to dictate how your code runs under different conditions or until a certain condition is met.
-if else 
-switch 
-for 
-for in
-nested if else 
-while, do while, break, &&, ||
-for in   (for parsing objects ) 
+Control flow statements  
+	That change the flow of program on certain conditions or  Control Flow is a fundamental concept in 
+	programming that allows you to dictate how your code runs under different conditions or until a
+	certain condition is met.
+	```
+	
+	if else  
+	
+	switch  
+	
+	for  
+	
+	for in  
+	
+	nested if else   
+	
+	while, do while, break, &&, || 
+	
+	for in   (for parsing objects ) 
+	
+	```
+	
+-Code could be self explanatory. 
 
-Code could be self explanatory 
-2 types of comment 
--Documentation comments 
--- Clarification comments 
-Don't comment obvious things 
-Comment if you have wasted lot of time to create a better solution and realize why I won't work and I is most likely otherwise developer too view code will also try to improve that particular code without thinking of the loophole. 
+There are 2 types of comment  
+```
+a) Documentation comments 
+b) Clarification comments 
+```
+-Don't comment obvious things.   
 
-Strict mode makes several changes to normal JavaScript semantics:
+-Comment if you have wasted a lot of time to create a better solution and realize why the other solutions 
+ won't work and it is most appropriate way to solve the particular problem otherwise other developer checking 
+ the code will also try to improve that particular code without thinking of the loophole.  
 
-Eliminates some JavaScript silent errors by changing them to throw errors.
+Strict mode makes several changes to normal JavaScript semantics:   
 
-Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that's not strict mode.
+a) Eliminates some JavaScript silent errors by changing them to throw errors.  
 
-Prohibits some syntax likely to be defined in future versions of ECMAScript.
+b) Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode 
+   code can sometimes be made to run faster than identical code that's not strict mode.  
 
-'use strict'  in script
-'use strict'  in function
-Modules are auto strict 
+c) Prohibits some syntax likely to be changed in future versions of ECMAScript.  
 
-If a global variable is updated accidentally in some file it will throw error 
+'use strict'  in script  
+'use strict'  in function  
+ Modules are auto strict   
 
-strict mode makes assignments which would otherwise silently fail to throw an exception. For example, NaN is a non-writable global variable. In normal code assigning to NaN does nothing; the developer receives no failure feedback. In strict mode assigning to NaN throws an exception. 
+-If a global variable is updated accidentally in some file it will throw error  
+
+-strict mode makes assignments which would otherwise silently fail to throw an exception. For example, 
+NaN is a non-writable global variable. In normal code assigning to NaN does nothing; the developer
+receives no failure feedback. In strict mode assigning to NaN throws an exception. 
 
 JavaScript’s types:-
-The ECMAScript language types are
-Undefined,
-Null,
-Boolean
-String,
-Number,
-Object
-
+  The ECMAScript language types are:- 
+	``` 
+	
+	Undefined,  
+	Null,  
+	Boolean,  
+	String,  
+	Number,  
+	Object  
+	
+	```
+	
 Static versus dynamic
-Static        - >  compile time
-Dynamic  - >   runtime 
+	```
+	Static   - >  compile time
+	Dynamic  - >   runtime 
+	```
 
 JavaScript is dynamically typed, types of variables are generally not known at compile time
 
