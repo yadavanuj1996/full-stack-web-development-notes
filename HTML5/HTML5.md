@@ -1,20 +1,26 @@
 							HTML 5 (Front End)
 
 1) `<!Doctype html>`
-	is written so that the browser know the doctument has to be rendered according to the full standard mode decided by W3C for HTML ,CSS
-	there are three modes:- quirks, almost standard and full standard as in starting the standard was for netscape browser and msft 	browser internet explorer.
+	is written so that the browser know the document has to be rendered according to the full standard
+	mode decided by W3C for HTML .
+	In CSS there are three modes:- quirks, almost standard and full standard as in starting the
+	standard was for netscape browser and msft browser internet explorer.
 2)	Nowdays most of the browsers use full standard mode
-3)	The <head></head> section contains elements that will not be displayed on web browser it will contain elements like <title>, <meta> 		tags link for favicon and author name.
+3)	The `<head></head>` section contains elements that will not be displayed on web browser it will contain
+	elements like `<title>`, `<meta>` tags, link for favicon and author name.
 
-	<title> will define title for the page that will be displayed on tab of browser and on bookmarks.
-	<meta charset="utf-8"> will let our web page containg all sort of characters available including all makor languages of the world.
-	<meta name="author" content="Chris Mills">    AUTHOR NAME
-	<meta name="description" content="The MDN Web Docs Learning Area aims to provide complete beginners to the Web with all they need to 			know to get started with developing web sites and applications."> for defining description that will also play role in SEO.
+	`<title>` will define title for the page that will be displayed on tab of browser and on bookmarks.
+	`<meta charset="utf-8">` will let our web page allow the use of all sort of characters available including
+	all major languages of the world.  
+	`<meta name="author" content="Chris Mills">`    AUTHOR NAME  
+	
+	`<meta name="description" content="The MDN Web Docs Learning Area aims to provide complete beginners to the Web with all they need to know to get started with developing web sites and applications.">`   
+	for defining description that will also play important role in SEO of website.  
 
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">    for displaying favicon
-	<link rel="stylesheet" href="css/style.css">
-	<script src="jsfolder/comp.js">
-	<html lang="en-US"> for defining the standard language for our web page.
+	`<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">`    for displaying favicon  
+	`<link rel="stylesheet" href="css/style.css">`  
+	`<script src="jsfolder/comp.js">`  
+	`<html lang="en-US">` for defining the standard language for our web page.  
 4) 	Block Elements vs Inline Elements
 	Block Element	
 	a) Block elements are the ones which contain all the space of parent element(container) they usually break the line and start from new 		   line.
