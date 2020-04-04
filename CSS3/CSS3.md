@@ -169,39 +169,48 @@
 		flex: flex-grow-value flex-basis; shorthand of flex-grow and flex-basis combined
 		
 	```
-5) Overriding CSS
-	the class property will override body style if two classes are added and are overlapping properties then the one declared last in
-	<style> tag will given preference to apply the style property, the id will override on classes but if a class property has 
-	!important tied to it it will be given preference.
+5) Overriding CSS  
+	The class property will override body style if two classes are added and are overlapping properties   
+	then the one declared last in <style> tag will given preference to apply the style property, the  
+	id will override on classes but  if a class property has !important tied to it it will be given preference.  
 
-   em and rem are used for relative units in css
+  	em and rem are used for relative units in css  
 
-   Use variable in css
-	Declare var using --penguin-skin: gray;    	
-	background: var(--penguin-skin); to chage the background with color of penguin skin variable color
-	IE does not support css variables so use fallbacks while using the variable
+   Use variable in css  
+	Declare var using `--penguin-skin: gray;    `	
+	`background: var(--penguin-skin);` to chage the background with color of penguin skin variable color  
+	IE does not support css variables so use fallbacks while using the variable  
 	
-   By creating your variables in :root, they will be available throughout the whole web page.
+   By creating your variables in :root, they will be available throughout the whole web page.  
+   	```
 	:root {
     	    --penguin-belly: pink;
 	}
-	we can override the variables in nested classes or other classes and can override :root defined value
+	```
+	we can override the variables in nested classes or other classes and can override :root defined value  
 	
-   use position relative and then provide value to move the elment relative to other elements in html
+   Use position relative and then provide value to move the elment relative to other elements in html  
+   ```
 	h2 {
     		position: relative;
    		top: 25px;
   	}
+   ```
+     
+   The `position:fixed` keeps the block element fixed even when scrolling and top, bottom, left, right property
+   can be used with it to move the elements or change their layout position position of element with respect
+   to BROWSER, it also moves it out of general flow of html document, the `position :absolute` also moves
+   the element out of normal flow of html document and we can use same left, right, top and bottom to move the
+   position of element with respect to PARENT element.   
 
-   The position:fixed keeps the block element fixed even when scrolling and top, bottom, left, right property can be used with it to move
-   the elements or change their layout position position of element with respect to BROWSER, it also moves it out of general flow of html    	document, the position :absolute also moves the element out of normal flow of html document and we can use same left, right, top and      	bottom to move the position of element with respect to PARENT element.
+  ` margin: auto` will move the block element in center of page. we can also center an image with this while
+  along with this just use `display: block;`  
 
-   margin: auto will move the block element in center of page. we can also center an image with this while along with this just use 
-   display: block;
+   The color wheel is a useful tool to visualize how colors relate to each other - it's a circle where similar
+   hues are neighbors and different hues are farther apart. When two colors are opposite each other on the wheel,
+   they are called complementary colors.They have the characteristic that if they are combined, they "cancel" each
+   other out and create a gray color. However, when placed side-by- side, these colors appear more vibrant and
+   produce a strong visual contrast/
 
-   The color wheel is a useful tool to visualize how colors relate to each other - it's a circle where similar hues are neighbors
-   and different hues are farther apart. When two colors are opposite each other on the wheel, they are called complementary colors.
-   They have the characteristic that if they are combined, they "cancel" each other out and create a gray color. However, when placed 
-   side-by- side, these colors appear more vibrant and produce a strong visual contrast
-
-   One final point, each page should always have one (and only one) h1 element, which is the main subject of your content. This and the other 	 headings are used in part by search engines to understand the topic of the page.
+   One final point, each page should always have one (and only one) h1 element, which is the main subject of your content.
+   h1 and the other headings(h2 - h6) are used in part by search engines to understand the topic of the page.
