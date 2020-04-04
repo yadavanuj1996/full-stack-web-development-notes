@@ -1,10 +1,12 @@
 								
 
-					   	 CSS 3 (Front End)
+					   	    CSS 3 (Front End)
 
 1) Box properties Section:-
 	Every element within a document is structured as a rectangular box inside the document layout,
 	the size and "onion layers" of which can be tweaked using some specific CSS properties.
+	
+	![alt text](https://i.ibb.co/MZhYmmX/box-model-css.png "Box Model Image")
 
  Width and Height  
 	The width and height properties set the width and height of the content box, which is the area in 
@@ -69,7 +71,8 @@
 
 	Note: By default, block level elements have display: block; set on them, and inline elements have display: inline; set on them.
 
-2)  Box-sizing property set to border-box. This makes sure that the padding and border are included in the total width and height of the 		elements.
+2)  	Box-sizing property set to border-box. This makes sure that the padding and border are included in the 
+	total width and height of the elements.
 
 
 	Grid View
