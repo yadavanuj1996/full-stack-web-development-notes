@@ -21,22 +21,32 @@
 	`<link rel="stylesheet" href="css/style.css">`  
 	`<script src="jsfolder/comp.js">`  
 	`<html lang="en-US">` for defining the standard language for our web page.  
-4) 	Block Elements vs Inline Elements
-	Block Element	
-	a) Block elements are the ones which contain all the space of parent element(container) they usually break the line and start from new 		   line.
-	b) Block level may contain other block element, data or any inline element.
-	c) By default, block-level elements begin on new lines, but inline elements can start anywhere in a line.
-	ex:- <div>,<p>,<ul>,<ol>,<lo>,<table>,<section>
 	
-	Inline elements
-	a) Inline elements does not create new line and can be created inside another block level element, they can start from anywhere and 		   does not need to start from new line.
-	b) Inline level may contain other inlilne level element and data but cannot contain block level elements.
-	c) By default, inline elements do not force a new line to begin in the document flow
-	ex:- <b>,<strong>,<a>,<img>,<input>
-5) 	<div> is a block element,<span> is inline.
-	This means that to use them semantically, divs should be used to wrap sections of a document, while spans should be used to wrap small 		portions of text, images, etc.
+4) 	Block Elements vs Inline Elements  
+	Block Element	 
+	a) Block elements are the ones which contain all the space of parent element(container)
+	they usually break the line and start from new line.  
+	b) Block level may contain other block element, data or any inline element.  
+	c) By default, block-level elements begin on new lines, but inline elements can start anywhere in a line.  
+	ex:- `<div>,<p>,<ul>,<ol>,<lo>,<table>,<section>`  
+	
+	Inline elements  
+	a) Inline elements does not create new line and can be created inside another block level 
+	element, they can start from anywhere and does not need to start from new line.  
+	b) Inline level may contain other inlilne level element and data but cannot contain block level elements.  
+	c) By default, inline elements do not force a new line to begin in the document flow.  
+	ex:- `<b>,<strong>,<a>,<img>,<input>`  
+	
+5) 	`<div>` is a block element,`<span>` is inline.
+
+	This means that to use them semantically, divs should be used to wrap sections of a document, 
+	while spans should be used to wrap small portions of text, images, etc.
+	
 6) 	Forms
-	HTML Forms are one of the main points of interaction between a user and a web site or application. They allow users to send data to 		the web site. Most of the time that data is sent to the web server, but the web page can also intercept it to use it on its 		own.	
+	HTML Forms are one of the main points of interaction between a user and a web site or application.
+	They allow users to send data to the web site. Most of the time that data is sent to the web server,
+	but the web page can also intercept it to use it on its own.	
+	````
 	<form action="/my-handling-form-page" method="post">
 	  <div>
 	    <label for="name">Name:</label>
@@ -51,13 +61,21 @@
 	    <textarea id="msg" name="user_message"></textarea>
 	  </div>
 	</form>
+	```
+	
 7) 	Form Validation
-	Client-side validation is validation that occurs in the browser before the data has been submitted to the server. Client-side 		validation is more user-friendly than server-side validation because it gives an instant response. 
+	Client-side validation is validation that occurs in the browser before the data has been submitted
+	to the server. Client-side validation is more user-friendly than server-side validation because it 
+	gives an instant response. 
+	```
 	a) Client-side validation is further subdivided into the following categories:
 		-JavaScript validation is coded using JavaScript. This validation is completely customizable.
 		-Built-in form validation uses HTML5 form validation features. 
 	b) Server-side validation is validation that occurs on the server after the data has been submitted.
-	required keyword is used in html 5 to make it required , minlength will determine minimum length that has to be entered maxlength is 		maximum length that has to be entered while min and max are for numbers.
+	```
+	
+	`required` keyword is used in html 5 to make it required , `minlength` will determine minimum length
+	that has to be entered maxlength is maximum length that has to be entered while min and max are for numbers.
 	type="password" type="number" type="text" type="email" are all valid for putting in input element
 
 		<form>
