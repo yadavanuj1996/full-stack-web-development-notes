@@ -52,7 +52,7 @@
 	A block box is defined as a box that's stacked upon other boxes (i.e. content before and after the 
 	box appears on a separate line), and can have width and height set on it. The whole box model as
 	described above applies to block boxes.
-	```
+	
 
 	An inline box is the opposite of a block box: it flows with the document's text (i.e. it will appear 
 	on the same line as surrounding text and other inline elements, and its content will break with the 
@@ -68,18 +68,25 @@
 	2nd line of text while keeping the shape of a box as there is not enough space for it on the first 
 	line, whereas inline box does break on multiple lines if there is not enough space — it loses the 
 	shape of a box.
+	```
+	
+	Note: By default, block level elements have display: block; set on them, and 
+	inline elements have display: inline; set on them.  
 
-	Note: By default, block level elements have display: block; set on them, and inline elements have display: inline; set on them.
 
-2)  	Box-sizing property set to border-box. This makes sure that the padding and border are included in the 
-	total width and height of the elements.
+2)  	```
+	Box-sizing property set to border-box. This makes sure that the padding and border are
+	included in the total width and height of the elements.
+	```
 
 
 	Grid View
-	A responsive grid-view often has 12 columns, and has a total width of 100%, and will shrink and expand as you resize the browser 	 window.
-	First ensure that all HTML elements have the box-sizing property set to border-box. This makes sure that the padding and border are 		included in the total width and height of the elements.
+	A responsive grid-view often has 12 columns, and has a total width of 100%, and will shrink and expand
+	as you resize the browser window.  
+	First ensure that all HTML elements have the box-sizing property set to border-box. This makes sure that
+	the padding and border are included in the total width and height of the elements.
 
-	Add the following code in your CSS:
+	Add the following code in your CSS:  
 
 	* {
 	  box-sizing: border-box;
@@ -110,6 +117,7 @@
 	</div>
 
 3) 9 basic principles of responsive web design
+	```
 	a) Responsive vs Adaptive web design
 	b) The flow
 	c) Relative units
@@ -119,9 +127,10 @@
 	g) Mobile or Desktop first
 	h) Webfonts vs System fonts
 	i) Bitmap images vs Vectors		(Always process pictures first)
+	```
 
 4) Flex Box
-
+	```
 	#pond {
 	  display: flex;
 	}
@@ -130,7 +139,10 @@
 	justify-content:  flex-start | flex-end | center | space-between | space-around
 	align-items: 	  flex-start | flex-end | center | baseline | stretch
 	order  :(...,-2,-1,0,1,2,...) 
-		 takes up the number default:0  higher the order it will switch towards (not just right but rather 			 			 towards flex-end) and we get it -ve it will go (not just left but rather flex-start)
+		 takes up the number default:0  higher the order it will switch towards
+		 (not just right but rather towards flex-end) and we get it -ve it will go
+		 (not just left but rather flex-start)  
+		 
 		 align-self    applied on sub elements takes input same as align-items but works only for single element;
 	flex-wrap: nowrap | wrap | wrap-reverse
 		nowrap: Every item is fit to a single line. (default)
@@ -138,18 +150,25 @@
 		wrap-reverse: Items wrap around to additional lines in reverse.
 
 	 align-content: same as align-items; 
-		This can be confusing, but align-content determines the spacing between lines, while align-items determines how the items as a 			whole are aligned within the container. When there is only one line, align-content has no effect.
+		This can be confusing, but align-content determines the spacing between lines, while align-items
+		determines how the items as a whole are aligned within the container. When there is only one line, 
+		align-content has no effect.
 
 	align-self align-items feature for paricular item
 	flex-basis
-		The flex-basis property specifies the initial size of the item before CSS makes adjustments with flex-shrink or flex-grow.
-		The units used by the flex-basis property are the same as other size properties (px, em, %, etc.). The value auto sizes items  			based on the content.
+		The flex-basis property specifies the initial size of the item before CSS makes adjustments with 
+		flex-shrink or flex-grow.
+		The units used by the flex-basis property are the same as other size properties (px, em, %, etc.). 
+		The value auto sizes items based on the content.
 	flex-grow
-		flex-grow value of 1 and the other has a flex-grow value of 3, the one with the value of 3 will grow three times as much as 			the other.
+		flex-grow value of 1 and the other has a flex-grow value of 3, the one with the value of 3 will grow 
+		three times as much as the other.
 	flex-shrink 
 		vice versa of flex-grow with same concept.
 	flex
 		flex: flex-grow-value flex-basis; shorthand of flex-grow and flex-basis combined
+		
+	```
 5) Overriding CSS
 	the class property will override body style if two classes are added and are overlapping properties then the one declared last in
 	<style> tag will given preference to apply the style property, the id will override on classes but if a class property has 
