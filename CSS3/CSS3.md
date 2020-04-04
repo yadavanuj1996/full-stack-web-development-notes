@@ -1,38 +1,71 @@
 								
 
-								CSS 3 (Front End)
+					   	 CSS 3 (Front End)
 
-1) Box properties Section
-	Every element within a document is structured as a rectangular box inside the document layout, the size and "onion layers" of which 		can be tweaked using some specific CSS properties.
+1) Box properties Section:-
+	Every element within a document is structured as a rectangular box inside the document layout,
+	the size and "onion layers" of which can be tweaked using some specific CSS properties.
 
-  width and height
-	The width and height properties set the width and height of the content box, which is the area in which the content of the box is 		displayed — this content includes both text content set inside the box, and other boxes representing nested child elements.
+ Width and Height  
+	The width and height properties set the width and height of the content box, which is the area in 
+	which the content of the box is displayed — this content includes both text content set inside the 
+	box, and other boxes representing nested child elements.
 
 
-  Padding
-	Padding refers to the inner margin of a CSS box — between the outer edge of the content box and the inner edge of the border. The size 		of this layer can be set on all four sides at once with the padding shorthand property, or one side at a time with the padding-top, 		padding-right, padding-bottom and padding-left properties.
+  Padding  
+	Padding refers to the inner margin of a CSS box — between the outer edge of the content box and the 
+	inner edge of the border. The size of this layer can be set on all four sides at once with
+	the padding shorthand property, or one side at a time with the padding-top, padding-right, 
+	padding-bottom and padding-left properties.
 
-  Border
-	The border of a CSS box sits between the outer edge of the padding and the inner edge of the margin. By default the border has a size 		of 0 — making it invisible — but you can set the thickness, style and color of the border to make it appear. The border shorthand 		property allows you to set all of these on all four sides at once, for example border: 1px solid black. 
+  Border  
+	The border of a CSS box sits between the outer edge of the padding and the inner edge of the margin. 
+	By default the border has a size of 0 — making it invisible — but you can set the thickness, style and 
+	color of the border to make it appear. The border shorthand property allows you to set all of these on
+	all four sides at once, for example border: 1px solid black. 
  
   Margin
-	The margin surrounds a CSS box, and pushes up against other CSS boxes in the layout. It behaves rather like padding; the shorthand 		property is margin and the individual properties are margin-top, margin-right, margin-bottom, and margin-left.
+	The margin surrounds a CSS box, and pushes up against other CSS boxes in the layout. It behaves rather like
+	padding but it wraps the content box, padding and border; the shorthand property is margin and the individual 
+	properties are margin-top, margin-right, margin-bottom, and margin-left.
 
 
-  Overflow
-	When you set the size of a box with absolute values (e.g. a fixed pixel width/height), the content may not fit within the allowed 		size, in which case the content overflows the box. To control what happens in such cases, we can use the overflow property. It takes 		several possible values, but the most common are:
+  Overflow  
+	When you set the size of a box with absolute values (e.g. a fixed pixel width/height), the content may not
+	fit within the allowed size, in which case the content overflows the box. To control what happens in such 
+	cases, we can use the overflow property. It takes several possible values, but the most common are:
 
 	auto: If there is too much content, the overflowing content is hidden and scroll bars are shown to let the user scroll & view content.
 	hidden: If there is too much content, the overflowing content is hidden.
 	visible: If there is too much content, the overflowing content is shown outside of the box (this is usually the default behavior)
 
-  Types of Boxes a) inline b) block c) inline-block
+  Types of Boxes  
+  	```
+	  a) inline 
+	  b) block 
+	  c) inline-block
+	  ```
 	
-	A block box is defined as a box that's stacked upon other boxes (i.e. content before and after the box appears on a separate line), 		and can have width and height set on it. The whole box model as described above applies to block boxes.
+	```
+	A block box is defined as a box that's stacked upon other boxes (i.e. content before and after the 
+	box appears on a separate line), and can have width and height set on it. The whole box model as
+	described above applies to block boxes.
+	```
 
-	An inline box is the opposite of a block box: it flows with the document's text (i.e. it will appear on the same line as surrounding 		text and other inline elements, and its content will break with the flow of the text, like lines of text in a paragraph.) Width and 		height settings have no effect on inline boxes; any padding, margin and border set on inline boxes will update the position of 		surrounding text, but will not affect the position of surrounding block boxes.
+	An inline box is the opposite of a block box: it flows with the document's text (i.e. it will appear 
+	on the same line as surrounding text and other inline elements, and its content will break with the 
+	flow of the text, like lines of text in a paragraph.) Width and height settings have no effect on 
+	inline boxes; any padding, margin and border set on inline boxes will update the position of 
+	surrounding text, but will not affect the position of surrounding block boxes.
 	
-	An inline-block box is something in between the first two: It flows with surrounding text and other inline elements without creating 		line breaks before and after it unlike a block box, but it can be sized using width and height and maintains its block integrity like 		a block box. It won't be broken across paragraph lines like an inline box. In the below example the inline-block box goes onto the 2nd 		line of text while keeping the shape of a box as there is not enough space for it on the first line, whereas inline box does break on 		multiple lines if there is not enough space — it loses the shape of a box.
+	
+	An inline-block box is something in between the first two: It flows with surrounding text and other
+	inline elements without creating line breaks before and after it unlike a block box, but it can be 
+	sized using width and height and maintains its block integrity like a block box. It won't be broken
+	across paragraph lines like an inline box. In the below example the inline-block box goes onto the
+	2nd line of text while keeping the shape of a box as there is not enough space for it on the first 
+	line, whereas inline box does break on multiple lines if there is not enough space — it loses the 
+	shape of a box.
 
 	Note: By default, block level elements have display: block; set on them, and inline elements have display: inline; set on them.
 
