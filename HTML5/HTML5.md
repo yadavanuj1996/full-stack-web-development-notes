@@ -92,6 +92,7 @@
 		  </div>
 		</form>
 8)	Some important tags for html forms
+	```
 	<input> it is a self closing tag
 	<textarea></textarea>
 	<label></label>
@@ -103,18 +104,24 @@
 	
 	<input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
  	<input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
+	```
 
-9) 	The web is based on a very basic client/server architecture that can be summarized as follows: a client (usually a Web browser) sends 		a request to a server (most of the time a web server like Apache, Nginx, IIS, Tomcat, etc.), using the HTTP protocol. The server 	 answers the request using the same protocol.
+9) 	The web is based on a very basic client/server architecture that can be summarized as follows: a client
+	(usually a Web browser) sends a request to a server (most of the time a web server like Apache, Nginx, 
+	IIS, Tomcat, etc.), using the HTTP protocol. The server answers the request using the same protocol.  
 
 
-	On the client side, an HTML form is nothing more than a convenient user-friendly way to configure an HTTP request to send data to a 		server. This enables the user to provide information to be delivered in the HTTP request.
+	On the client side, an HTML form is nothing more than a convenient user-friendly way to configure an HTTP
+	request to send data to a server. This enables the user to provide information to be delivered in the HTTP request.
 	
-	<form action="http://foo.com" method="get">
-	action will contain the target api url or script where the data will go and method will contain the type of HTTP request most common 		ones that we will be using are (get) and (post).
+	`<form action="http://foo.com" method="get">`
+	
+	action will contain the target api url or script where the data will go and method will contain the
+	type of HTTP request most common ones that we will be using are (get) and (post).
 
-	required and 
+	
 10)     For Get request the data goes in the parameter GET  (abc.com?say=Hi&to=mom)
-	
+	```
 	Get request looks like 
 	/?say=Hi&to=Mom HTTP/2.0
 	Host: foo.com
@@ -126,30 +133,40 @@
 	Content-Length: 13
 
 	say=Hi&to=Mom
+	```
+	
+	Get is used when updates or insertion are made while POST is used when we have to pass data and expect
+	something from server. Post sends the data in body so it is more secure so we should use post if data is critical.
 
-	Get is used when updates or insertion are made while POST is used when we have to pass data and expect something from server. Post 		sends the data in body so it is more secure so we should use post if data is critical.
 
-11) 	The enctype attributeSection.This attribute lets you specify the value of the Content-Type HTTP header included in the request 		generated when the form is submitted. This header is very important because it tells the server what kind of data is being sent. By 		default, its value is application/x-www-form-urlencoded. In human terms, this means: "This is form data that has been encoded into URL 		parameters."
+	  
 
-If you want to send files, you need to take three extra steps:
+11)	The enctype attributeSection.This attribute lets you specify the value of the Content-Type HTTP header
+	included in the request generated when the form is submitted. This header is very important because it 
+	tells the server what kind of data is being sent. By default, its value is application/x-www-form-urlencoded.
+	In human terms, this means: "This is form data that has been encoded into URL parameters."   
 
-1) Set the method attribute to POST because file content can't be put inside URL parameters.
-2) Set the value of enctype to multipart/form-data because the data will be split into multiple parts, one for each file plus one for the text data included in the form body (if text is also entered into the form).
-3) Include one or more File picker widgets to allow your users to select the file(s) that will be uploaded.
-For example:
+	If you want to send files, you need to take three extra steps:  
+	```
+	1) Set the method attribute to POST because file content can't be put inside URL parameters.
+	2) Set the value of enctype to multipart/form-data because the data will be split into multiple parts, one for each file plus one for the text data included in the form body (if text is also entered into the form).
+	3) Include one or more File picker widgets to allow your users to select the file(s) that will be uploaded.
+	For example:
 
-<form method="post" enctype="multipart/form-data">
-  <div>
-    <label for="file">Choose a file</label>
-    <input type="file" id="file" name="myFile">
-  </div>
-  <div>
-    <button>Send the file</button>
-  </div>
-</form>
+	<form method="post" enctype="multipart/form-data">
+	  <div>
+	    <label for="file">Choose a file</label>
+	    <input type="file" id="file" name="myFile">
+	  </div>
+	  <div>
+	    <button>Send the file</button>
+	  </div>
+	</form>
+	```
  
 12) Meta tags
+	```
 	<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScrit" > for SEO 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
-
+	```
 
