@@ -1,6 +1,6 @@
 							HTML 5 (Front End)
 
-1) <!Doctype html>
+1) `<!Doctype html>`
 	is written so that the browser know the doctument has to be rendered according to the full standard mode decided by W3C for HTML ,CSS
 	there are three modes:- quirks, almost standard and full standard as in starting the standard was for netscape browser and msft 	browser internet explorer.
 2)	Nowdays most of the browsers use full standard mode
