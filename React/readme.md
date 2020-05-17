@@ -24,49 +24,61 @@ c) Can you compute it based on any other state or props in your component? If so
 	3) A compiler such as Babel. It lets you write modern JavaScript code that still works in older browsers.	
 	```
 3) Deploy only after shifting to production mode.
+
 4) JSX Prevents Injection Attacks
 	It is safe to embed user input in JSX:
-
+	```
 	const title = response.potentiallyMaliciousInput;
 	// This is safe:
 	const element = <h1>{title}</h1>;
+	```
 	By default, React DOM escapes any values embedded in JSX before rendering them. Thus it ensures that you
-	can never inject anything that’s not explicitly written in your application.
-5) Such functions are called “pure” because they do not attempt to change their inputs, and always return the same
-   result for the same inputs.
+	can never inject anything that’s not explicitly written in your application.  
+	
+5) Such functions are called “pure” because they do not attempt to change their inputs, and always return the same  
+   result for the same inputs.  
 
-6) All React components must act like pure functions with respect to their props.
+6) All React components must act like pure functions with respect to their props.  
 
 7) Do Not Modify State Directly
 	For example, this will not re-render a component:
-
+	```
 	// Wrong
 	this.state.comment = 'Hello';
 	Instead, use setState():
 
 	// Correct
 	this.setState({comment: 'Hello'});
-
+	```
+	
 8) State Updates May Be Asynchronous.
 
-	State Updates May Be Asynchronous
-	React may batch multiple setState() calls into a single update for performance.
+	State Updates May Be Asynchronous  
+	React may batch multiple setState() calls into a single update for performance.  
 
-	Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
+	Because this.props and this.state may be updated asynchronously, you should not rely on their 
+	values for calculating the next state.  
 
-	For example, this code may fail to update the counter:
-
+	```
+	For example, this code may fail to update the counter:  
 	// Wrong
 	this.setState({
 	  counter: this.state.counter + this.props.increment,
 	});
-	To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:
+	
+	
+	To fix it, use a second form of setState() that accepts a function rather than an object. 
+	That function will receive the previous state as the first argument, and the props at the time 
+	the update is applied as the second argument:  
+
 
 	// Correct
 	this.setState((state, props) => ({
 	  counter: state.counter + props.increment
 	}));
 
+	```
+	
 9) State Updates are Merged
 	When you call setState(), React merges the object you provide into the current state.
 
