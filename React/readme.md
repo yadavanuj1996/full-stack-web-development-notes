@@ -4,6 +4,14 @@ This link contains the notes whatever is not covered there is being documented h
 https://github.com/yadavanuj1996/freecodecamp-solutions/blob/master/Front%20End%20Libraries%20Certification/README.md
 
 
+
+How to decide whether the particular piece of data is state or not
+Go through each data piece and figure out which one is state. Ask three questions about each piece of data:
+
+a) Is it passed in from a parent via props? If so, it probably isn’t state.  
+b) Does it remain unchanged over time? If so, it probably isn’t state.  
+c) Can you compute it based on any other state or props in your component? If so, it isn’t state.  
+
 1) Minify your js before production.
 2) A JavaScript build toolchain typically consists of:
 	```
