@@ -69,4 +69,93 @@ above line ensures
 	microservices performance.
     3) To run scheduled jobs ,or run a job that will call another jobs
 
+
+8) How Volumes and Storage Work in kubernetes
+	A volumne is a seperate object defined under the context of kuberenetes pod.
+	The volume is associated with pod but is mounted into a container at a particular path.
  
+	i) Empry dir :- The directory is present on the machine where pod is located, lifecycle is 
+	related to pod life so it can only be used for caching, temporary info like coordination 
+	between different containers in application.
+
+  	ii) Persistent Volume:- (cloud mounted volumes) Persistent volume can be mapped to
+ 	something like azure disk or ISCSI or any persistent volumen types, this kind of disks are not
+	dependent on pod life , if pod changes machine the persistent volume will move withpod 
+	to new location of pod.
+
+9) The basics of stateful applications in kuberenetes:-
+
+	It's easier to apply data replication in cloud 	
+	native application like mongodb and cassandra 
+	as compare to the MySql.
+
+ 	Replica sets are one way of replication in 
+	kuberenetes and each replica set has a RANDOM hash
+	value. Replica sets are not best fit for
+	data replication as if a scaling down a 
+	container is choose a random  and deleted while 	many stateful application expect host names to be
+	constant thus making it tough for replica sets 
+	to be used with stateful applications.
+
+
+	Stateful set is similar to replica sets with
+	gurantees to make it easier to manage stateful
+	application.The stateful sets in kubernetes have 
+	indices so the replica has stable host names and 	 fixed indexs like 0,1,2and host name are constant
+	like my-sever-0, my-sever-1 and so on.  The scaling up and down happens in predictable way. Like if second replica is created it already has a guarantee there is already a replica with index 0 that exists and when we scale down the replica set with highest index will be deleted , if there are 3 container the one with index 2 will be killed first.
+
+	Stateful replica set provide ability to develop DNS names that actually target individual replicas.ex:- "cassandra-0", "cassandra-1"
+
+10) Secret Mangement in kubernetes:-
+	 As pod has multiple container and one of the pod requires a secret like db passowrd or a certificate to access a API or serving a file, there is a built in kuberenetes secret mangament. A Secret resource in kuberenetes is a collection of key-value pairs, and we can multiple key-value pairs within the context of a particular decret, also we can use the key-value pair as contents of file. Ex:-
+	dbpassword: foo
+	cert: <file> 
+
+We can declare a Secret volume in the list of volumes in Pods and mount the path in particular path we can make the nginx directory check on certs/ folder for the required certificate.
+
+We can also link a Sercret as a ENV variable in kuberneted or a file.	
+
+Kuberenetes stores all the Secrets in a etcd in an Un-Encrypted form , there are various external key mangement store and encrypt the secrets before storing into etcd and even if someone get access to etcd it will contain encrypted key. RBAC ensures that only right people have access to the kubeneted API.It's recommended to store the credentials as kuberenetes secrets and not in docker image, or source control.
+
+10) Kuberenetes and config management
+	Config Map is resouce with key value pairs in kubernetes used for config mangement.A Config Map can be
+mount as a volume to a pod itself and thus mount it to a container in a particular directory.
+
+Above is useful for configuration that is a file , if configuration is a simple key-value pair we can use a ENV
+Variable and easily access it like getenv("Lang")
+
+Rollout of config map is also possible so if with new configuration our app does not work we can do a rollout and go back to prev version of Config Map.
+
+Templating can be used for having base config map and then making basic differences for different environments.
+
+11) Role Based Access Control (RBAC) in kuberenetes:-
+
+	Why do we need it :- We don't want all the memebers of our team to give access to all the resources of our cluster, let's say user1 is given access to resources of user2 then he can delete the work of user1, or if there is some upcoming secret project that one of your team in company is working on you don't want everyone else in company to know about it. Also RBAC makes sure user1 does not know there is any user2 in the with the kubernetes access.
+
+Role are stored as Restful resource in kuberenetes and new roles can also be added it container 
+verbs:- get,list
+nouns:- Pods,Volumes
+
+If a user is granted a role of edit he can get/list/edit (verb) a pod/volume(noun).
+
+Generally a group is given permission for a role let's say a group has been given a role of edit or cluster-admin then anyone who joins the group will have the access provided and anyone who is removed from the group his acess will cease to exist.
+
+Role Binding:- 
+Role binding is of 2 type:-
+i) CLuster Role Binding
+ii) Role Binding (Limited to a namespace)
+
+
+A edit role binded to a namespace can only do the available commands of edit role in that particular namespace. ex:-
+
+/my-team/pods
+/your-team/pods
+
+a access of pods of my team will be available to me but not of your team pods.
+
+A cluster Role binding is powerful and gives access to particular role in whole cluster i.e., all of namespace including the ones that will be created in future.
+
+
+/my-team/role binding ----> edit ---->user 1
+
+a user named user1 is given permission to my-team namespace limiting the scope to my-team namespace and giving level of access of edit Role. 
