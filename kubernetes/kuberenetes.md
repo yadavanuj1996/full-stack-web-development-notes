@@ -62,4 +62,11 @@ ex:- Spreading, Prefer not sick machine
 image: myregistry.acr.io/*
 above line ensures 
 
+7) Common scenario for usage of kuberenetes
+    1) Serving web application 
+    2) Let's say if your website have users traffic high in day and low in night and you want to do batch analytics
+	you can set the time to run such analytics during night or during low traffic time without affecting much of your
+	microservices performance.
+    3) To run scheduled jobs ,or run a job that will call another jobs
+
  
