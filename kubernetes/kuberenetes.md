@@ -260,3 +260,112 @@ i) kubectl apply -f deployment.yaml
 	curl host01:30080 command will send the request and will be processed by one of our pods in the current deployment.
 					  as 30080 is defined as nodePort in service.yaml the external port will map the request to
 					  internal port 80 of the container.
+
+
+14)  Kubernetes Secret Management
+
+i)	kubectl create -f secret.yaml 	(Creating a secret)
+
+	Use Kubernetes to manage Secrets
+	Kubernetes requires secrets to be encoded as Base64 strings.
+
+	(> are not to be typed they are copied during terminal command copying)
+	controlplane $ username=$(echo -n "admin" | base64)
+	controlplane $ password=$(echo -n "a62fjbd37942dcs" | base64)
+	controlplane $ echo "apiVersion: v1
+	> kind: Secret
+	> metadata:
+	>   name: test-secret
+	> type: Opaque
+	> data:
+	>   username: $username
+	>   password: $password" >> secret.yaml
+	controlplane $ kubectl create -f secret.yaml
+	secret/test-secret created
+
+ii) kubectl get secrets		(Listing all the secrets)
+
+	controlplane $ kubectl get secrets
+	NAME                  TYPE                                  DATA   AGE
+	default-token-m4xkg   kubernetes.io/service-account-token   3      2m4s
+	test-secret           Opaque                                2      86s
+
+iii) 	kubectl exec -it secret-env-pod env | grep SECRET_		(NOT RECOMMENDED)			
+	(Consuming or using the secrets as env variable)
+
+	In the file secret-env.yaml we've defined a Pod which has environment variables populated
+ 	from the previously created secret.
+
+	-controlplane $ cat secret-env.yaml
+	 	# this is secret-env.yaml file this is the first way to consume a secret in kubernetes
+		# using a  env variable (second is consuming a file)
+		apiVersion: v1
+		kind: Pod
+		metadata:
+		name: secret-env-pod
+		spec:
+		containers:
+			- name: mycontainer
+			image: alpine:latest
+			command: ["sleep", "9999"]
+			env:
+				- name: SECRET_USERNAME
+				valueFrom:
+					secretKeyRef:
+					name: test-secret
+					key: username
+				- name: SECRET_PASSWORD
+				valueFrom:
+					secretKeyRef:
+					name: test-secret
+					key: password
+		restartPolicy: Never
+
+	-Launch the Pod using 
+		kubectl create -f secret-env.yaml
+
+	-Once the Pod started, you output the populated environment variables.
+	 	kubectl exec -it secret-env-pod env | grep SECRET_
+
+	controlplane $ kubectl get pods
+	NAME             READY   STATUS    RESTARTS   AGE
+	secret-env-pod   1/1     Running   0          17m
+
+iv) Consume a Secret via Volumes (RECOMMENDED APPROACH)
+
+	The use of environment variables for storing secrets in memory can result in them accidentally leaking. The recommend approach is to use mount them as a Volume.
+
+	The Pod specification can be viewed using cat secret-pod.yaml.
+
+	To mount the secrets as volumes we first define a volume with a well-known name, in this case, secret-volume, and provide it with our stored secret.
+
+	volumes:
+	- name: secret-volume
+	secret:
+		secretName: test-secret
+	When we define the container we mount our created volume to a particular directory. Applications will read the secrets as files from this path.
+
+	volumeMounts:
+	- name: secret-volume
+	mountPath: /etc/secret-volume
+	Task
+	Create our new Pod using kubectl create -f secret-pod.yaml
+
+	Once started you can interact with the mounted secrets. For example, you can list all the secrets available as if they're regular data. For example kubectl exec -it secret-vol-pod ls /etc/secret-volume
+
+	Reading the files allows us to access the decoded secret value. To access username we'd use kubectl exec -it secret-vol-pod cat /etc/secret-volume/username
+
+	For the password, we'd read the password file kubectl exec -it secret-vol-pod cat /etc/secret-volume/password
+
+
+	The use of environment variables for storing secrets in memory can result in them accidentally leaking. The recommend approach is to use mount them as a Volume.
+
+15) Networking in kubernetes 
+
+	Kubernetes’s advanced networking capabilities allow pods and Services to communicate inside and externally to the cluster’s network. You’ll learn about a variety of Kubernetes services, including Cluster IP, Target Ports, Load Balancer, and more.
+
+	Cluster IP is the default approach when creating a Kubernetes Service. The service is 
+	allocated an internal IP that other components can use to access the pods.
+
+	By having a single IP address it enables the service to be load balanced across multiple 
+	Pods.
