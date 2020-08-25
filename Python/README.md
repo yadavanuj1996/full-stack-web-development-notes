@@ -1,3 +1,5 @@
+Head First python notes
+
 1) We do not need to explicitly define the data type for identifiers in
  python.
 
@@ -489,3 +491,99 @@ accesses the items from index location 3
 up-to-but-not-including index location 6.
  Create a set using the set() factory
 function.
+
+
+
+CHapter 6
+
+
+1)  “Dictionary” - a built-in data
+structure that allows you to
+associate data values with keys.
+• “Key” - the look-up part of
+the dictionary.
+• “Value” - the data part of the
+dictionary (which can be any value,
+including another data structure)
+
+
+2) “self” - a method argument
+that always refers to the current
+object instance
+
+
+3) SUmmary 
+	 Create a empty dictionary using the
+dict() factory function or using {}.
+ To access the value associated with
+the key Name in a dictionary called
+person, use the familiar square bracket
+notation: person['Name'].
+ Like list and set, a Python’s dictionary
+dynamically grows as new data is added
+to the data structure.
+ Populate a dictionary as you go:
+new_d = {} or new_d = dict()
+and then
+d['Name'] = 'Eric Idle'
+or do the same thing all in the one go:
+new_d = {'Name': 'Eric
+Idle'}
+ The class keyword lets you define a
+class.
+ Class methods (your code) are defined in
+much the same way as functions, that is,
+with the def keyword.
+ Class attributes (your data) are just like
+variables that exist within object instances.
+ The __init__() method can be
+defined within a class to initialize object
+instances.
+ Every method defined in a class must
+provide self as its first argument.
+ Every attribute in a class must be prefixed
+with self. in order to associate it data
+with its instance.
+ Classes can be built from scratch or can
+inherit from Python’s built-in classes or
+from other custom classes.
+ Classes can be put into a Python module
+and uploaded to PyPI. 
+
+
+Free code camp course notes
+1) The None keyword is used to define a null variable or an object. In Python, None keyword is an object, and it is a data type of the class NoneType . We can assign None to any variable, but you can not create other NoneType objects.
+
+2) if 0 is 0.0: # this condition will return false
+	#write code
+
+	print(0 is 0.0) # false
+
+	print(0 == 0.0) # true
+
+	because == (double equal to) only tests the equality of value
+	while   is (equality check using is) is more stronger and tests both type and value of variable
+
+	(Mostly use == when using numbers and string , try to use it more on booleand and None)
+
+	`isNot` also a opeartor working opposite of what `is` opeartor do
+ 
+3) for n in "banana":
+   	print(n)
+
+	Output: b
+		a
+		n
+		a
+		n
+		a
+
+4) continue and break both works in python as they work in other programming languages.
+5) \n is used for next line in a string
+6) 
+x="asterix"
+print(x[1])   #s
+print(x[2:4]) #te
+print(x[:3])  #ast
+print(x[2:])  #terix
+print(x[-3:]) #rix
