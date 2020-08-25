@@ -211,3 +211,111 @@ unnoticed in Python.
 
 Files & Exceptions: Dealing with errors:
 
+1) The basic input mechanism in Python is line based: when read into your
+program from a text file, data arrives one line at a time.
+Python’s open() BIF lives to interact with files. When combined with a for
+statement, reading files is straightforward.
+ open()
+
+When you use the open() BIF to access your data in a file, an iterator is
+created to feed the lines of data from your file to your code one line at a time.
+But let’s not get ahead of ourselves
+
+2) Syntax to read file
+	the_file = open('sketch.txt')
+	 # Do something with the data
+	 # in "the_file".
+	 the_file.close()
+
+3)  details=Man: Is this the right room for an argument?
+	 (role, line_spoken) = details.split(":")
+	# role will contain string Man
+	# line_spoken will contain string  Is this the right room for an argument?
+
+	The split() method returns a list of strings, which are assigned to a list of target identifiers.
+	This is known as multiple assignment:
+
+4) Have you noticed that when something goes wrong with your code, the
+Python interpreter displays a traceback followed by an error message?
+The traceback is Python’s way of telling you that something unexpected has
+occurred during runtime. In the Python world, runtime errors are called
+exceptions
+
+Of course, if you decide to ignore an exception when it occurs, your program
+crashes and burns.
+But here’s the skinny: Python let’s you catch exceptions as they occur, which
+gives you with a chance to possibly recover from the error and, critically, not
+crash.
+
+5) The try/except mechanism
+Python includes the try statement, which exists to provide you with a way to
+systematically handle exceptions and errors at runtime. The general form of
+the try statement looks like this:
+try:
+ your code (which might cause a runtime error)
+except:
+ your error-recovery code
+
+6) No. Not mad. And, yes. Letting errors occur.
+If you try to code for every possible error, you’ll be at it for a
+long time, because all that extra logic takes a while to work out.
+Paradoxically, when you worry less about covering every
+possible error condition, your coding task actually gets easier
+
+Python approach to let the code go into runtime error and recover from there rather than writing extra if else condition to handle the anamoly cases in code itself in the first place.
+
+7) Q: Something has been bugging me for a while. When the split() method executes, it passes back a list, but the target identifiers
+are enclosed in regular brackets, not square brackets, so how is this a list?
+A: Well spotted. It turns out that there are two types of list in Python: those that can change (enclosed in square brackets) and those that
+cannot be changed once they have been created (enclosed in regular brackets). The latter is an immutable list, more commonly referred
+to as a tuple. Think of tuples as the same as a list, except for one thing: once created, the data they hold cannot be changed under any
+circumstances. Another way to think about tuples is to consider them to be a constant list. At Head First, we pronounce “tuple” to rhyme with
+“couple.” Others pronounce “tuple” to rhyme with “rupal.” There is no clear concensus as to which is correct, so pick one and stick to it.
+
+8) 
+	 data = open('sketch.txt')
+	 for each_line in data:
+		 try:
+			 (role, line_spoken) = each_line.split(':', 1)
+			 print(role, end='')
+			 print(' said: ', end='')
+			 print(line_spoken, end='')
+		except:
+			pass
+	 data.close()
+
+	Now, no matter what happens when the split() method is invoked, the
+	try statement catches any and all exceptions and handles them by ignoring the
+	error with pass.
+
+9) Use except in try to make the error less generalized
+
+	 try:
+		data = open('sketch.txt')
+		for each_line in data:
+			 try:
+				 (role, line_spoken) = each_line.split(':', 1)
+				 print(role, end='')
+				 print(' said: ', end='')
+				 print(line_spoken, end='')
+			 except ValueError:
+			 	 pass
+		data.close()
+	except IOError:
+		print('The data file is missing!')
+
+	Of course, if an different type of runtime error occurs, it is no longer handled
+by your code, but at least now you’ll get to hear about it. When you are
+specific about the runtime errors your code handles, your programs no longer
+silently ignore some runtime errors.
+
+Using “try/except”
+lets you concentrate
+on what your code
+needs to do.
+
+...and it lets you avoid
+adding unnecessary code
+and logic to your programs.
+That works for me!
+
