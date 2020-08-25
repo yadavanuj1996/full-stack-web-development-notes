@@ -314,8 +314,178 @@ lets you concentrate
 on what your code
 needs to do.
 
+
 ...and it lets you avoid
 adding unnecessary code
 and logic to your programs.
 That works for me!
 
+10) Summary
+An “exception” occurs as a result
+of a runtime error, producing a
+traceback.
+• A “traceback” is a detailed
+description of the runtime error
+that has occurred
+
+
+ Use the open() BIF to open a disk file,
+creating an iterator that reads data from
+the file one line at a time.
+ The readline() method reads a
+single line from an opened file.
+ The seek() method can be used to
+“rewind” a file to the beginning.
+ The close() method closes a
+previously opened file.
+ The split() method can break a
+string into a list of parts.
+ An unchangeable, constant list in Python
+is called a tuple. Once list data is
+assigned to a tuple, it cannot be changed.
+Tuples are immutable.
+ A ValueError occurs when your data
+does not conform to an expected format.
+ An IOError occurs when your data
+cannot be accessed properly (e.g.,
+perhaps your data file has been moved or
+renamed).
+ The help() BIF provides access to
+Python’s documentation within the IDLE
+shell.
+ The find() method locates a specific
+substring within another string.
+ The not keyword negates a condition.
+ The try/except statement provides
+an exception-handling mechanism,
+allowing you to protect lines of code that
+might result in a runtime error.
+ The pass statement is Python’s empty
+or null statement; it does nothing.
+
+
+Persistence: Saving data to file
+
+1)  
+	When you have a situation where code must always run no matter what errors
+occur, add that code to your try statement’s finally suite:
+	
+try:
+ man_file = open('man_data.txt', 'w')
+ other_file = open('other_data.txt', 'w')
+ print(man, file=man_file)
+ print(other, file=other_file)
+ except IOError:
+ print('File error.')
+ finally:
+ man_file.close()
+ other_file.close()
+
+If no runtime errors occur, any code in the finally suite executes. Equally,
+if an IOError occurs, the except suite executes and then the finally
+suite runs.
+No matter what, the code in the finally suite always runs.
+
+2) Strings in Python are immutable,
+which means that once a string is created, it cannot be changed.
+
+Python variables contain a reference to a
+data object.The data object contains the data and, because you
+can conceivably have a string object used in many different places
+throughout your code, it is safest to make all strings immutable so
+that no nasty side effects occur
+
+ If you try to change an immutable
+value, Python raises a TypeError exception
+
+
+3) Skipped the rest of the chapter for now
+
+
+comprehending data (Chapter 5) 
+
+1) Perform an in-place sort using the sort() method that is built in as standard to every Python list:
+>>> data.sort()
+>>> data
+[1, 2, 3, 4, 5, 6]
+Reset data to its original unordered state, and then perform a copied sort using the sorted() BIF:
+>>> data = [6, 3, 1, 2, 4, 5]
+>>> data
+[6, 3, 1, 2, 4, 5]
+>>> data2 = sorted(data)
+>>> data
+[6, 3, 1, 2, 4, 5]
+>>> data2
+
+2) TO add to list
+
+	 clean_mikey = []
+	 for each_t in mikey:
+	 	clean_mikey.append(sanitize(each_t))
+
+3) Iterate to remove duplicates
+
+	unique_james = []
+	for each_t in james:
+		if each_t not in unique_james:
+			unique_james.append(each_t)
+[1, 2, 3, 4, 5, 6]
+
+4) Remove duplicates with sets 
+
+	In addition to lists, Python also comes with the set data structure, which
+behaves like the sets you learned all about in math class.
+The overriding characteristics of sets in Python are that the data items in a set
+are unordered and duplicates are not allowed. If you try to add a data item to a set
+that already contains the data item, Python simply ignores it.
+
+	#create a new empty set
+	 distances = set()
+
+	# create and initialize the set in one step
+	 distances = {10.6, 11, 8, 10.6, "two", 7}
+
+	Any duplicates in the supplied list of data values are ignored.
+
+	#creating a set from a list removing duplicated items of list in the set
+	 distances = set(james)
+
+	Any duplicates in the “james” list are ignored. 
+
+5) Summary
+
+	 “In-place” sorting - transforms
+and then replaces.
+• “Copied” sorting - transforms
+and then returns.
+• “Method Chaining” - reading
+from left to right, applies a
+collection of methods to data.
+• “Function Chaining” - reading
+from right to left, applies a
+collection of functions to data.
+
+
+The sort() method changes the
+ordering of lists in-place.
+ The sorted() BIF sorts most any data
+structure by providing copied sorting.
+ Pass reverse=True to either
+sort() or sorted() to arrange your
+data in descending order.
+ When you have code like this:
+new_l = []
+for t in old_l:
+ new_l.
+append(len(t))
+rewrite it to use a list comprehension,
+like this:
+new_l = [len(t) for t
+in old_l]
+ To access more than one data item from
+a list, use a slice. For example:
+my_list[3:6]
+accesses the items from index location 3
+up-to-but-not-including index location 6.
+ Create a set using the set() factory
+function.
