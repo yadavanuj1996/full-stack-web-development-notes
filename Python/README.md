@@ -587,3 +587,80 @@ print(x[2:4]) #te
 print(x[:3])  #ast
 print(x[2:])  #terix
 print(x[-3:]) #rix
+7) A list can contain another list
+8) append() is used to add elements to list
+
+9) words = 'His e-mail is q-lar@freecodecamp.org'
+	pieces = words.split()
+	parts = pieces[3].split('-')
+	n = parts[1]
+	print(n) #lar@freecodecamp.org
+
+10) While List is a linear collection of values that stay in order
+
+	Dictionary is like a "bag" of values, each with its
+	own label
+
+	Dictory is an equivalent of HashMap in java.
+
+	Dictionaires are python's most powerful data collection.
+	Dictionaries work on key values based mechanism
+	
+	Dictionary does not keep order
+	To initialize a new dictionary
+
+	purse=dict()
+	purse['money']=12
+	purse['candy']=3
+	purse['tissues']=75
+	print(purse) # {'money':12, 'tissues': 75, 'candy': 3}
+	print(purse['candy']) # 3
+	purse['candy']=purse['candy']+2 # is valid syntax that will
+	update the candy key's value 
+
+	to make a empty dictionaty 
+	x=dict() or x={}
+
+11) 'csev' in ccc
+
+	we can use in operator to check whether a dictionary contains a key or not
+
+12)  
+
+	if name in counts: 
+		x= counts[name]
+	else:
+		x=0
+
+	above code is equivalent to
+
+	x=counts.get(name,0)
+
+13) 
+	x=input('')
+	print(x)
+	will take input from user and print it
+
+14) 
+	counts = { 'chuck' : 1 , 'annie' : 42, 'jan': 100}
+	for key in counts:
+	    if counts[key] > 10:
+		print(key, counts[key])
+
+	will print
+		annie 42
+		jan 100
+
+	for (k,v) in d.items():
+		print(k,v)
+
+
+15) Tuples DS
+	They function similar to list but are immutable
+
+	x=('Glen','Sally')
+	print(x[1]) # Sally	
+	Tuples cannot be sorted, 
+	any functions that changes the order or no of element in list cannot be applied to tuples
+
+16) urllib can used for data scraping
