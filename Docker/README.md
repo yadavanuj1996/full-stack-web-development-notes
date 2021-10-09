@@ -95,6 +95,9 @@
    vii) Open a web browser and navigate to the DNS name or IP address of the Docker host that you are running the container from,
         and point it to port 8080. You will see the a web page.
    ```
+
+### xi) docker image rm image_name
+   To delete a Docker image
    
 # Docker Engine
 
@@ -172,4 +175,32 @@
 docker search alpine   (To search alpine)
 docker search alpine --filter "is-official=true" (You can use --filter "is-official=true" so that only official repos are displayed, alternate: is-automated=true)
 
+
+A Docker image is just a bunch of loosely-connected read-only layers with each layer comprising one or more files. This is shown below.
+
+### docker image inspect ubuntu:latest
+     To inspect docker image
+    
+### docker history
+   The docker history command is another way of inspecting an image and seeing layer data. However, it shows the build history of an 
+   image and is not a strict list of layers in the final image
+   
+### docker image ls --digests alpine
+   To list the digest (hash of image) along with other details about docker image
+
+   Take a moment to consider what happened there; you have an image called golftrack:1.5 that has a bug. That image is being used by 
+   containers in your production environment. You create a new version of the image that includes a fix. Then comes the mistake; you 
+   build and push the fixed image back to its repository with the same tag as the vulnerable image! This overwrites the original image 
+   and leaves you without a great way of knowing which of your production containers are using the vulnerable image and which are using
+   the fixed image. They both have the same tag!
+   This is where image digests come to the rescue.
+   
+   Command to delete and pull alpine image using digest
+   ```
+   docker image rm alpine:latest
+   docker image pull alpine@sha256:9a839e63da...9ea4fb9a54
+   ```
+
+### docker manifest inspect
+### docker buildx
 
