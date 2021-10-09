@@ -228,5 +228,22 @@ common for containers to be based on minimalist images that only include softwar
    On the other hand, containers perform OS virtualization. They carve OS resources into virtual versions called containers.
 
 
+   The VM model carves low-level hardware resources into VMs. Each VM is a software construct containing virtual CPUs, virtual RAM,
+   and virtual disks, etc. As such, every VM needs its own OS to claim, initialize, and manage all of those virtual resources. And 
+   sadly, every OS comes with its own set of baggage and overheads. For example, every OS consumes a slice of CPU, a slice of RAM, 
+   and a slice of storage, etc. Some need their own licenses, as well as people and infrastructure to patch and upgrade them.
  
- 
+
+   Another thing to consider is the application start times. As a container isn’t a full-blown OS, it starts much faster than a VM. 
+   Remember, there’s no kernel inside of a container that needs locating, decompressing, and initializing—not to mention all of the
+   hardware enumerating and initializing associated with a normal kernel bootstrap. None of that is needed when starting a container.
+   The single shared kernel, running on the host machine, has already started. Net result: containers can start in less than a second.
+   The only thing that has an impact on container start time is the time it takes to start the application it’s running.
+
+   This all amounts to the container model being leaner and more efficient than the VM model. You can pack more applications onto fewer 
+   resources, start them faster, and pay less in licensing and admin costs as well as present less of an attack surface to the dark side.
+   What’s not to like!?
+
+   Well, one thing that’s not so great about the container model is security. Out of the box, containers are less secure and provide
+   less workload isolation than VMs. Technologies exist to secure containers and lock them down, but at the time of writing, some of 
+   them are prohibitively complex.
