@@ -201,6 +201,7 @@ A Docker image is just a bunch of loosely-connected read-only layers with each l
    docker image pull alpine@sha256:9a839e63da...9ea4fb9a54
    ```
 
-### docker manifest inspect
-### docker buildx
+### Other Docker image related commands 
+   docker manifest inspect
+   docker buildx
 
