@@ -99,6 +99,9 @@
 ### xi) docker image rm image_name
    To delete a Docker image
    
+### xii) docker container pause
+   To pause a Docker container
+   
 # Docker Engine
 
    In many ways, the Docker Engine is like a car engine; both are modular and created by connecting many small specialized parts:
@@ -279,3 +282,20 @@ common for containers to be based on minimalist images that only include softwar
    down. If it doesn’t exit within 10 seconds, it will receive a SIGKILL. This is effectively the bullet to the head. But hey, it got 10 seconds 
    to sort itself out first.
    
+
+   
+   docker container run -d --name webserver -p 8000:8080 educative1/ddd-web
+   
+   Daemon mode#
+Notice that your shell prompt hasn’t changed. This is because this container was started in the background with the -d flag. Starting a container like this doesn’t attach it to your terminal.
+
+Take a look at some of the other arguments in the command.
+
+We know docker container run starts a new container. However, this time we give it the -d flag instead of -it. -d stands for daemon mode, and it tells the container to run in the background. You can’t use the -d and -it flags in the same command.
+
+After that, the command names the container “webserver.”
+
+Exposing ports#
+The -p flag maps port 8000 on the Docker host to port 8080 inside the container. This means that traffic hitting the Docker host on port 8000 will be directed to port 8080 inside of the container. It just so happens that the image we’re using for this container defines a web service that listens on port 8080. This means the container will come up running a web server listening on port 8080.
+
+
