@@ -101,3 +101,25 @@ runtimes, and shims, etc.
 At the time of writing, the major components that make up the Docker engine are: the Docker daemon, containerd, runc, and various plugins, such as networking and storage. Together, these create and run containers.
 
 ![docker screenshot](https://user-images.githubusercontent.com/22169012/136653145-3f555275-c539-4f48-97f1-3d2a1c6f64b2.png)
+
+## How a new container starts
+   **docker container run --name ctr1 -it alpine:latest sh**
+   
+   When you type commands like this into the Docker CLI, the Docker client converts them into the appropriate API payload and POSTs them to the API endpoint exposed by the Docker daemon.
+
+The API is implemented in the daemon and can be exposed over a local socket or the network. On Linux the socket is /var/run/docker.sock and on Windows it’s \pipe\docker_engine.
+
+Once the daemon receives the command to create a new container, it makes a call to containerd. Remember that the daemon no-longer contains any code to create containers!
+
+The daemon communicates with containerd via a CRUD-style API over gRPC.
+
+Despite its name, containerd cannot actually create containers. It uses runc to do that. It converts the required Docker image into an OCI bundle and tells runc to use this to create a new container.
+
+runc interfaces with the OS kernel to pull together all of the constructs necessary to create a container (namespaces, cgroups, etc.). The container process is started as a child-process of runc, and as soon as it is started, runc will exit.
+
+Voila! The container is now started.
+
+The process is summarized in the figure below
+![docker screenshot 2](https://user-images.githubusercontent.com/22169012/136653456-5e5590fa-d4a7-4385-adfa-03eca6203e29.png)
+
+
