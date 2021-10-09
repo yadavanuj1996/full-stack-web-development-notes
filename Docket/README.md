@@ -1,5 +1,8 @@
 # DOCKER Technology and Commands
 
+## Installation
+   Simply download Docker Desktop on your local system from Docker Website,
+
 ## 1. Docker Technology consists of 3 items:
    ### i) The runtime
     The runtime operates at the lowest level and is responsible for starting and stopping containers (this includes building all of the OS
@@ -72,6 +75,20 @@
          
 ### ix) docker container rm epic_jones
          To remove a stopped container 
-         Even on docker container rm epic_jones
-        
+         Even on docker container ls -a, no entry of the container would be present
+         
+### x) docker image build
+
+      **docker image build -t test:latest .**
+      Use the docker image build command to create a new image using the instructions in the Dockerfile. This example 
+      creates a new Docker image called test:latest.        
+      
+      i)   Clone a repo **git clone https://github.com/nigelpoulton/psweb.git**
+      ii)  Go in the psweb folder, this is a basic node js web application
+      iii) nano Dockerfile, to read the contents of Dockerfile
+      iv)  Build docker image from the application code using **docker image build -t test:latest .**
+      v)   Check newly build docker image using **docker image ls** , this image contains all the app code along with the dependencies
+      vi)  Run a container using the docker image **docker container run -d --name web1 --publist 8080:8080 test:latest**
+      vii) Open a web browser and navigate to the DNS name or IP address of the Docker host that you are running the container from,
+           and point it to port 8080. You will see the a web page.
        
