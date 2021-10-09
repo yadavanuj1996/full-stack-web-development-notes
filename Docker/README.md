@@ -122,4 +122,46 @@ Voila! The container is now started.
 The process is summarized in the figure below
 ![docker screenshot 2](https://user-images.githubusercontent.com/22169012/136653456-5e5590fa-d4a7-4385-adfa-03eca6203e29.png)
 
+**Run Docker Daemon and Docker Client with TLS in Production env for security purposes**
+
+
+# Docker Images
+
+A Docker image is a unit of packaging that contains everything required for an application to run. This includes: application code,
+application dependencies, and OS constructs. If you have an application’s Docker image, the only other thing you need to run that 
+application is a computer running Docker.
+
+Docker image is like a stopped container. If you’re a developer you can think of them as similar to classes as, they are like blueprint
+of a container.
+
+You get Docker images by pulling them from an image registry. The most common registry is Docker Hub, but others exist. The pull operation downloads 
+the image to your local Docker host where Docker can use it to start one or more containers.
+
+Images are made up of multiple layers that are stacked on top of each other and represented as a single object. Inside of the image is 
+a cut-down operating system (OS) and all of the files and dependencies required to run an application. Because containers are intended 
+to be fast and lightweight, images tend to be small.
+
+Images are considered build-time constructs, whereas containers are run-time constructs.
+
+ Once you’ve started a container from an image, the two constructs become dependent on each other, and you cannot delete the image until 
+ the last container using it has been stopped and destroyed. Attempting to delete an image without stopping and destroying all containers
+ using it will result in an error.
+
+The image also doesn’t contain a kernel; all containers running on a Docker host share access to the host’s kernel. For these reasons,
+we sometimes say images contain “just enough operating system” (usually just OS-related files and filesystem objects).
+
+
+## Docker Registries
+**Docker Registries is to docker image what the code Github is to Code Repositories**
+We store images in centralized places called image registries. This makes it easy to share and access them.
+The most common registry is Docker Hub. 
+
+If you want to pull images from 3rd party registries (not Docker Hub), you need to prepend the repository name with the DNS name of the registry. For example, the following command pulls the 3.1.5 image from the google-containers/git-sync repo on the Google Container Registry (gcr.io).
+
+**docker image pull gcr.io/google-containers/git-sync:v3.1.5**
+
+## Docker search and limit
+docker search alpine   (To search alpine)
+docker search alpine --filter "is-official=true" (You can use --filter "is-official=true" so that only official repos are displayed, alternate: is-automated=true)
+
 
