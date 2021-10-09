@@ -92,5 +92,12 @@
       vii) Open a web browser and navigate to the DNS name or IP address of the Docker host that you are running the container from,
            and point it to port 8080. You will see the a web page.
            
-### xi) 
+# Docker Engine
+
+In many ways, the Docker Engine is like a car engine; both are modular and created by connecting many small specialized parts:
+The Docker Engine is made from many specialized tools that work together to create and run containers, such as APIs, execution driver, 
+runtimes, and shims, etc.
        
+At the time of writing, the major components that make up the Docker engine are: the Docker daemon, containerd, runc, and various plugins, such as networking and storage. Together, these create and run containers.
+
+![docker screenshot](https://user-images.githubusercontent.com/22169012/136653145-3f555275-c539-4f48-97f1-3d2a1c6f64b2.png)
