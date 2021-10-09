@@ -218,7 +218,7 @@ more lightweight. Instead of running a full-blown OS like a VM, containers share
 common for containers to be based on minimalist images that only include software and dependencies required by the application.
 
 
-**docker container start**  (Command to run a container that is in STOPPED status)
+**docker container start**  (Restarting the container, Command to run a container that is in STOPPED status)
   
 
 ## Containers vs VMs
@@ -247,3 +247,35 @@ common for containers to be based on minimalist images that only include softwar
    Well, one thing that’s not so great about the container model is security. Out of the box, containers are less secure and provide
    less workload isolation than VMs. Technologies exist to secure containers and lock them down, but at the time of writing, some of 
    them are prohibitively complex.
+
+### Exiting with terminating
+   If you’re logged on to the container and type exit, you’ll terminate the Bash process, and the container will exit (terminate). 
+   This is because a container cannot exist without its designated main process. This is true of Linux and Windows containers: killing
+   the main process in the container will kill the container.
+
+### Are containers persistent?
+   While this example illustrates the persistent nature of containers, it’s important you understand two things:
+
+   The data created in this example is stored on the Docker hosts local filesystem. If the Docker host fails, the data will be lost.
+   Containers are designed to be immutable objects, and it’s not a good practice to write data to them.
+   For these reasons, Docker provides volumes that exist separately from the container but can be mounted into the container at runtime.
+
+## Stopping Containers Gracefully
+
+### Two stage approach
+   Most containers in the Linux world will run a single process. Things are a bit different with Windows containers, but they 
+   still run a single main application process and the following rules apply.
+
+   Suppose you have a container running the /bin/bash app. When you kill a running container with docker container rm <container> -f, the container
+   is killed without warning. The procedure is quite violent. It is a bit like sneaking up behind the container and shooting it in the back of 
+   the head. You’re literally giving the container and the app it’s running, no chance to complete any operation and gracefully exit.
+
+   However, the docker container stop command is far more polite like pointing a gun to the container’s head and saying, “you’ve got 10 
+   seconds to say any final words.” It gives the process inside of the container a heads-up that it’s about to be stopped, giving it
+   a chance to get things in order before the end comes. Once it completes, you can then delete the container with docker container rm.
+
+   The magic behind the scenes here can be explained with Linux/POSIX signals. docker container stop sends a SIGTERM signal to the main 
+   application process inside the container (PID 1). As we said, this gives the process a chance to clean things up and gracefully shut itself 
+   down. If it doesn’t exit within 10 seconds, it will receive a SIGKILL. This is effectively the bullet to the head. But hey, it got 10 seconds 
+   to sort itself out first.
+   
