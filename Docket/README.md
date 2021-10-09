@@ -1,4 +1,4 @@
-# DOCKER
+# DOCKER Technology and Commands
 
 ## 1. Docker Technology consists of 3 items:
    ### i) The runtime
@@ -52,4 +52,26 @@
          
          **Press Ctrl + PQ** for exiting the terminal of container and coming back to shell. 
          
+### vi) docker container ls
+         To list all the running containers
+         
+### vii) docker container exec -it running_container_name bash
+
+      exec is used to Run a command in a running container
+      
+      we used the -it options to attach our shell to the container’s shell
+      
+      You can attach your shell to the terminal of a running container with the **docker container exec** command. 
+      We can make a connection to one of the running containers.
+      
+### viii) docker container stop running_container_name
+         To stop a running container
+         run docker container ls and the container will not display now as it is stopped
+         
+         although if we run docker container ls -a command we can see the entry of that container in **Exited** status
+         
+### ix) docker container rm epic_jones
+         To remove a stopped container 
+         Even on docker container rm epic_jones
+        
        
