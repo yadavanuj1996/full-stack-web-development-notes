@@ -51,7 +51,7 @@
          Look closely at the output from the previous commands. You should notice that the shell prompt has changed in each instance. 
          **This is because the -it flags switch your shell into the terminal of the container**; you are literally inside of the new container!
       
-         The **ps -elf** command/process that we ran to list the running processes.
+         The ** ps -elf ** command/process that we ran to list the running processes.
          
          **Press Ctrl + PQ** for exiting the terminal of container and coming back to shell. 
          
@@ -91,4 +91,6 @@
       vi)  Run a container using the docker image **docker container run -d --name web1 --publist 8080:8080 test:latest**
       vii) Open a web browser and navigate to the DNS name or IP address of the Docker host that you are running the container from,
            and point it to port 8080. You will see the a web page.
+           
+### xi) 
        
