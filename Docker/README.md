@@ -205,3 +205,28 @@ A Docker image is just a bunch of loosely-connected read-only layers with each l
    docker manifest inspect
    docker buildx
 
+
+# Docker Containers
+
+docker container run image_name app_to_run
+Simplest command to run docker container
+   
+
+A container is the runtime instance of an image. In the same way that you can start a virtual machine (VM) from a virtual machine template, 
+you can start one or more containers from a single image. The big difference between a VM and a container is that containers are faster and 
+more lightweight. Instead of running a full-blown OS like a VM, containers share the OS/kernel with the host they’re running on. It’s also
+common for containers to be based on minimalist images that only include software and dependencies required by the application.
+
+
+**docker container start**  (Command to run a container that is in STOPPED status)
+  
+
+## Containers vs VMs
+   (Please read the difference from other topic too, i have read about the difference in depth i am not listing this topic in detail here.
+   
+   At a high level, hypervisors perform hardware virtualization. They carve up physical hardware resources into virtual versions called VMs.
+   On the other hand, containers perform OS virtualization. They carve OS resources into virtual versions called containers.
+
+
+ 
+ 
