@@ -101,6 +101,8 @@
    
 ### xii) docker container pause
    To pause a Docker container
+### xiii) docker image history image_name_with_tag
+    To check history of a docker image
    
 # Docker Engine
 
