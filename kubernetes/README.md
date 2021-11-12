@@ -369,3 +369,34 @@ iv) Consume a Secret via Volumes (RECOMMENDED APPROACH)
 
 	By having a single IP address it enables the service to be load balanced across multiple 
 	Pods.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+# Quick Start Kubernetes
+	
+### What is kubernetes 
+	Kuberenetes is an open-source container-orchestration system for automating computer application deployment, scaling and management. 
+	At its core , Kubernetes is and orchestrator of cloud-native microservices applications.
+		
+	Cloud Native application must:- 
+	1. Scale on demand
+	    Scaling on demand is the ability for an application and associated infrastructure to automatically scale up and down based on demand.
+      	    If configured correctly, Kubernetes can automatically scale your applications and infrastructure up when demand increases and scale 
+	    them down when the demand drops off.
+
+
+	2. Self-heal applications
+		But for now, when you deploy an application on Kubernetes, you will have to specify what the application should look like. 
+		The following specifications will be necessary:
+			-The number of instances of each microservice
+			-The names of the networks to attach to
+		Kubernetes saves this as your desired state and monitors your application to make sure it always matches this desired state.
+		If something changes, for example if an instance crashes, Kubernetes notices this and spins up a replacement. This is called self-healing.
+	3. 
+	
