@@ -398,5 +398,15 @@ iv) Consume a Secret via Volumes (RECOMMENDED APPROACH)
 			-The names of the networks to attach to
 		Kubernetes saves this as your desired state and monitors your application to make sure it always matches this desired state.
 		If something changes, for example if an instance crashes, Kubernetes notices this and spins up a replacement. This is called self-healing.
-	3. 
 	
+	3. Zero-downtime rolling updates
+		Zero-downtime rolling updates is just a fancy way of saying you can incrementally update parts of an application without
+		having to shut it down and without clients even noticing. You will see this in action later in the course.
+	
+	4. Run anywhere
+		One final point of interest regarding cloud-native is that a cloud-native application is not an application that
+		only runs in the public cloud. No! A cloud-native application can run anywhere you have Kubernetes, such as AWS, Azure,
+		Linode, your on-premises datacenter, or even your Raspberry Pi cluster at home.
+	
+	To summarize, cloud-native applications can self-heal, automatically scale, and be updated without downtime. 
+	They can also run wherever you have Kubernetes.
