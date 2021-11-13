@@ -410,3 +410,28 @@ iv) Consume a Secret via Volumes (RECOMMENDED APPROACH)
 	
 	To summarize, cloud-native applications can self-heal, automatically scale, and be updated without downtime. 
 	They can also run wherever you have Kubernetes.
+
+### Why Do We Need Kubernetes?
+
+ Kubernetes also does an amazing job of abstracting underlying cloud and server infrastructure. This basically allowed Kubernetize to commoditize infrastructure.
+
+ #### OS of the cloud
+
+ - Why tech companies need Kubernetes#
+ “Abstracting and commoditizing infrastructure” is a fancy way of saying that Kubernetes makes it so you don’t have to worry which cloud or servers your applications are running on. In fact, this is at the heart of the idea that Kubernetes is the operating system (OS) of the cloud. So, in the same way, Linux and Windows mean you do not have to care if your applications are running on Dell, Cisco, HPE, or Nigel Poulton servers. Using Kubernetes means that you do not have to care if your applications are running on AWS or Azure.
+
+ - Why the user community needs Kubernetes#
+ It has already been stated that Kubernetes can abstract lower-level on-prem and cloud infrastructure, allowing you to write your applications 
+ to run on  ubernetes without even knowing which cloud is behind it. Well, this has a few side benefits, including:
+
+ You can deploy to one cloud today and switch to another tomorrow.
+ You can run multi-cloud
+ You can ramp onto a cloud and then ramp off back to on-prem more easily.
+
+ ### What Does kubernetes Look Like?
+
+#### Master and Nodes
+
+##### OS of the cloud
+
+Kubernetes has already been established as the OS of the cloud. As such, it sits between the applications and infrastructure. Kubernetes runs on infrastructure, and applications run on Kubernetes.
