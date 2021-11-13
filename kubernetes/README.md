@@ -475,4 +475,20 @@ It is good practice for the Masters to exclusively run control plane services (n
 All user applications should run on Nodes.
 
 
+#### Masters
 	
+Masters host the control plane. That is a fancy way of referring to the brains of the cluster.
+
+With this in mind, it is good practice to have more than one Master in order to maintain high availability (HA). This way,
+if one of them fails, the cluster can remain operational. It is common to have 3 or 5 Masters in a production cluster
+and to spread them across failure domains. It is not wise to stick them all in the same room, under the same leaky air
+conditioning unit, functioning on the same glitchy electricity supply.
+
+1. Assuming you have to create a highly available control plane with 3 Masters. Each one should be in a separate failure domain with
+different network infrastructures and distinct power infrastructures, etc.
+
+2. Masters run the following services that form the control plane:
+	- API Server
+	- Scheduler
+	- Store
+	- Cloud controller
