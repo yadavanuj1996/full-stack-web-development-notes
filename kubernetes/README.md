@@ -111,7 +111,8 @@ different network infrastructures and distinct power infrastructures, etc.
 	- Cloud controller
 
 ##### API server
-The API Server is the only part of a Kubernetes cluster that you directly interact with. When you send commands to the cluster, they go to the API server. When you receive responses, they come from the API server.
+The API Server is the only part of a Kubernetes cluster that you directly interact with. When you send commands to the cluster,
+they go to the API server. When you receive responses, they come from the API server.
 
 ##### Scheduler
 The Scheduler chooses which Nodes to run the user applications on.
@@ -120,12 +121,31 @@ The Scheduler chooses which Nodes to run the user applications on.
 The Store is where the state of the cluster and all the applications are stored.
 
 ##### Cloud controller
-The Cloud controller allows Kubernetes to integrate with cloud services, such as storage and load-balancers. The hands-on examples that will come up in later chapters will help you integrate a cloud load-balancer with an application that you will deploy to a Kubernetes cluster.
+The Cloud controller allows Kubernetes to integrate with cloud services, such as storage and load-balancers. The hands-on examples 
+that will come up in later chapters will help you integrate a cloud load-balancer with an application that you will deploy to a Kubernetes cluster.
 
 
 
+#### Nodes
+Nodes run user applications and can either be Linux or Windows Nodes. Linux Nodes run Linux applications, whereas Windows Nodes run 
+Windows applications.
+
+All Nodes run two main services, namely:
+- Kubelet
+- Container runtime
 
 
+
+##### Kubelet
+The kubelet is the main Kubernetes agent. It joins the Node to the cluster and communicates with the control plane, in charge of 
+notifying when tasks are received and reporting on the status of those tasks.
+
+##### Container runtime
+The container runtime starts and stops containers.
+
+Note: In the past, Kubernetes would use docker as its container runtime. However, Kubernetes 1.20 announced that support for the 
+Docker container runtime would be dropped in a future release of Kubernetes. Although Kubernetes will stop supporting Docker as a runtime, 
+it will continue to support images created by Docker.
 
 
 
