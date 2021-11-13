@@ -148,6 +148,22 @@ Docker container runtime would be dropped in a future release of Kubernetes. Alt
 it will continue to support images created by Docker.
 
 
+#### Hosted Kubernetes
+Hosted Kubernetes is where your cloud provider rents you a Kubernetes cluster. Sometimes, it is called Kubernetes as a Service.
+
+In the hosted model, the cloud provider builds the Kubernetes cluster, owns the control plane, and is responsible for all of the following:
+
+- Control plane performance
+- Control plane availability
+- Control plane updates
+
+
+You, the user, are responsible for:
+- Worker Nodes
+- User applications
+- Paying the bill
+
+![Screenshot 2021-11-13 at 12 45 02 PM](https://user-images.githubusercontent.com/22169012/141609790-3d1a2cbb-07cb-420a-83a4-8a21c8b71da8.png)
 
 
 
