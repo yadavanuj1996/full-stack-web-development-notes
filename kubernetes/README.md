@@ -432,6 +432,47 @@ iv) Consume a Secret via Volumes (RECOMMENDED APPROACH)
 
 #### Master and Nodes
 
+
 ##### OS of the cloud
 
-Kubernetes has already been established as the OS of the cloud. As such, it sits between the applications and infrastructure. Kubernetes runs on infrastructure, and applications run on Kubernetes.
+Kubernetes has already been established as the OS of the cloud. As such, it sits between the applications and infrastructure. 
+Kubernetes runs on infrastructure, and applications run on Kubernetes.
+	
+![Screenshot 2021-11-13 at 11 50 04 AM](https://user-images.githubusercontent.com/22169012/141608421-0cabaea3-b26b-4898-a99d-ccb3b511f48c.png)
+	
+The illustration shows four Kubernetes installations running on four different infrastructure platforms. Because Kubernetes
+abstracts the underlying infrastructure, the application at the top of the diagram can run on any of the Kubernetes installations.
+You can also migrate it from one Kubernetes installation to another.
+
+A Kubernetes installation is known as a Kubernetes cluster.
+
+There are a couple of things worth clarifying here:
+
+It is unusual for a single Kubernetes cluster to span multiple infrastructures.
+
+For example, you likely won’t see Kubernetes clusters that span multiple clouds. Likewise, you’ll rarely see clusters that 
+span on-prem and the public cloud. This is mainly due to network speed and reliability. Generally speaking, you want high-speed 
+reliable networks connecting the Nodes in a cluster.
+
+Although Kubernetes can run on many platforms, applications that run on Kubernetes have stricter requirements. You will learn about this 
+later on in the chapter, but Windows applications will only run on Kubernetes clusters with Windows Nodes, Linux applications only
+run on clusters with Linux Nodes, and applications written for ARM/Raspberry Pis require clusters with ARM Nodes.
+	
+A Kubernetes cluster consists of one or more machines that have Kubernetes installed on them. The machines can be physical servers,
+virtual machines (VM), cloud instances, your laptop, Raspberry Pis, and more. Installing Kubernetes on these machines and
+connecting them together creates a Kubernetes cluster. After creating a cluster, you can deploy applications to that cluster.
+
+-Machines in a Kubernetes cluster are, normally, referred to as Nodes.
+
+Speaking of Nodes, a Kubernetes cluster contains two types of Nodes:
+-Master Nodes
+-Worker Nodes
+Usually, Master Nodes are referred to as “Masters” and Worker Nodes are called “Nodes”.
+
+Masters host the control plane and Nodes are where you run user applications.
+
+It is good practice for the Masters to exclusively run control plane services (no user applications). 
+All user applications should run on Nodes.
+
+
+	
