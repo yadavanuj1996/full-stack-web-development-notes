@@ -181,6 +181,41 @@ kubectl is a command-line utility used to communicate with kubernetes cluster
 - kubectl describe pod first-pod
 
 
+##### pod.yml
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    project: qsk-course
+spec:
+  containers:
+    - name: web-ctr
+      image: educative1/qsk-course:1.0
+      ports:
+        - containerPort: 8080
+
+```
+
+#####  svc-cloud.yml
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    project: qsk-course
+
+
+
+
+```
 
 
 
