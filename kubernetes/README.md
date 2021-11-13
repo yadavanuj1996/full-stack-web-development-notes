@@ -167,6 +167,22 @@ You, the user, are responsible for:
 
 
 
+Although Kubernetes orchestrates and runs containers, these containers must be wrapped in a Kubernetes construct called a Pod.
+### What is a Pod?
+- A Pod is a lightweight wrapper found around a container. In fact, the terms container and Pod are, sometimes, used interchangeably. For now, you need to know that Kubernetes runs containers inside of Pods – in the same way that VMware runs applications inside of VMs, Kubernetes runs containerized applications inside of Pods.
+
+
+## Kubernetes Commands
+kubectl is a command-line utility used to communicate with kubernetes cluster
+- kubectl get nodes
+- kubectl apply -f pod.yml (To create a pod from pod.yml file)
+- kubectl get pods
+- kubectl port-forward --address 0.0.0.0 first-pod 8080:8080 (kubectl port-forward TYPE/NAME [options] LOCAL_PORT:REMOTE_PORT)
+- kubectl describe pod first-pod
+
+
+
+
 
 # Detailed Notes
 Kuberenetes (pronounced koo-ber-netes) is container-orchestration system.
