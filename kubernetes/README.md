@@ -1,3 +1,141 @@
+# Quick Start Kubernetes
+	
+### What is kubernetes 
+	Kuberenetes is an open-source container-orchestration system for automating computer application deployment, scaling and management. 
+	At its core , Kubernetes is and orchestrator of cloud-native microservices applications.
+		
+	Cloud Native application must:- 
+	1. Scale on demand
+	    Scaling on demand is the ability for an application and associated infrastructure to automatically scale up and down based on demand.
+      	    If configured correctly, Kubernetes can automatically scale your applications and infrastructure up when demand increases and scale 
+	    them down when the demand drops off.
+
+
+	2. Self-heal applications
+		But for now, when you deploy an application on Kubernetes, you will have to specify what the application should look like. 
+		The following specifications will be necessary:
+			-The number of instances of each microservice
+			-The names of the networks to attach to
+		Kubernetes saves this as your desired state and monitors your application to make sure it always matches this desired state.
+		If something changes, for example if an instance crashes, Kubernetes notices this and spins up a replacement. This is called self-healing.
+	
+	3. Zero-downtime rolling updates
+		Zero-downtime rolling updates is just a fancy way of saying you can incrementally update parts of an application without
+		having to shut it down and without clients even noticing. You will see this in action later in the course.
+	
+	4. Run anywhere
+		One final point of interest regarding cloud-native is that a cloud-native application is not an application that
+		only runs in the public cloud. No! A cloud-native application can run anywhere you have Kubernetes, such as AWS, Azure,
+		Linode, your on-premises datacenter, or even your Raspberry Pi cluster at home.
+	
+	To summarize, cloud-native applications can self-heal, automatically scale, and be updated without downtime. 
+	They can also run wherever you have Kubernetes.
+
+### Why Do We Need Kubernetes?
+
+ Kubernetes also does an amazing job of abstracting underlying cloud and server infrastructure. This basically allowed Kubernetize to commoditize infrastructure.
+
+ #### OS of the cloud
+
+ - Why tech companies need Kubernetes#
+ “Abstracting and commoditizing infrastructure” is a fancy way of saying that Kubernetes makes it so you don’t have to worry which cloud or servers your applications are running on. In fact, this is at the heart of the idea that Kubernetes is the operating system (OS) of the cloud. So, in the same way, Linux and Windows mean you do not have to care if your applications are running on Dell, Cisco, HPE, or Nigel Poulton servers. Using Kubernetes means that you do not have to care if your applications are running on AWS or Azure.
+
+ - Why the user community needs Kubernetes#
+ It has already been stated that Kubernetes can abstract lower-level on-prem and cloud infrastructure, allowing you to write your applications 
+ to run on  ubernetes without even knowing which cloud is behind it. Well, this has a few side benefits, including:
+
+ You can deploy to one cloud today and switch to another tomorrow.
+ You can run multi-cloud
+ You can ramp onto a cloud and then ramp off back to on-prem more easily.
+
+ ### What Does kubernetes Look Like?
+
+#### Master and Nodes
+
+
+##### OS of the cloud
+
+Kubernetes has already been established as the OS of the cloud. As such, it sits between the applications and infrastructure. 
+Kubernetes runs on infrastructure, and applications run on Kubernetes.
+	
+![Screenshot 2021-11-13 at 11 50 04 AM](https://user-images.githubusercontent.com/22169012/141608421-0cabaea3-b26b-4898-a99d-ccb3b511f48c.png)
+	
+The illustration shows four Kubernetes installations running on four different infrastructure platforms. Because Kubernetes
+abstracts the underlying infrastructure, the application at the top of the diagram can run on any of the Kubernetes installations.
+You can also migrate it from one Kubernetes installation to another.
+
+A Kubernetes installation is known as a Kubernetes cluster.
+
+There are a couple of things worth clarifying here:
+
+It is unusual for a single Kubernetes cluster to span multiple infrastructures.
+
+For example, you likely won’t see Kubernetes clusters that span multiple clouds. Likewise, you’ll rarely see clusters that 
+span on-prem and the public cloud. This is mainly due to network speed and reliability. Generally speaking, you want high-speed 
+reliable networks connecting the Nodes in a cluster.
+
+Although Kubernetes can run on many platforms, applications that run on Kubernetes have stricter requirements. You will learn about this 
+later on in the chapter, but Windows applications will only run on Kubernetes clusters with Windows Nodes, Linux applications only
+run on clusters with Linux Nodes, and applications written for ARM/Raspberry Pis require clusters with ARM Nodes.
+	
+A Kubernetes cluster consists of one or more machines that have Kubernetes installed on them. The machines can be physical servers,
+virtual machines (VM), cloud instances, your laptop, Raspberry Pis, and more. Installing Kubernetes on these machines and
+connecting them together creates a Kubernetes cluster. After creating a cluster, you can deploy applications to that cluster.
+
+-Machines in a Kubernetes cluster are, normally, referred to as Nodes.
+
+Speaking of Nodes, a Kubernetes cluster contains two types of Nodes:
+-Master Nodes
+-Worker Nodes
+Usually, Master Nodes are referred to as “Masters” and Worker Nodes are called “Nodes”.
+
+Masters host the control plane and Nodes are where you run user applications.
+
+It is good practice for the Masters to exclusively run control plane services (no user applications). 
+All user applications should run on Nodes.
+
+
+#### Masters
+	
+Masters host the control plane. That is a fancy way of referring to the brains of the cluster.
+
+With this in mind, it is good practice to have more than one Master in order to maintain high availability (HA). This way,
+if one of them fails, the cluster can remain operational. It is common to have 3 or 5 Masters in a production cluster
+and to spread them across failure domains. It is not wise to stick them all in the same room, under the same leaky air
+conditioning unit, functioning on the same glitchy electricity supply.
+
+1. Assuming you have to create a highly available control plane with 3 Masters. Each one should be in a separate failure domain with
+different network infrastructures and distinct power infrastructures, etc.
+
+2. Masters run the following services that form the control plane:
+	- API Server
+	- Scheduler
+	- Store
+	- Cloud controller
+
+##### API server
+The API Server is the only part of a Kubernetes cluster that you directly interact with. When you send commands to the cluster, they go to the API server. When you receive responses, they come from the API server.
+
+##### Scheduler
+The Scheduler chooses which Nodes to run the user applications on.
+
+##### Store
+The Store is where the state of the cluster and all the applications are stored.
+
+##### Cloud controller
+The Cloud controller allows Kubernetes to integrate with cloud services, such as storage and load-balancers. The hands-on examples that will come up in later chapters will help you integrate a cloud load-balancer with an application that you will deploy to a Kubernetes cluster.
+
+
+
+
+
+
+
+
+
+
+
+
 Kuberenetes (pronounced koo-ber-netes) is container-orchestration system.
 
 1. How kuberenetes (k8s) works:-
@@ -374,121 +512,3 @@ iv) Consume a Secret via Volumes (RECOMMENDED APPROACH)
 	
 	
 	
-	
-	
-	
-	
-# Quick Start Kubernetes
-	
-### What is kubernetes 
-	Kuberenetes is an open-source container-orchestration system for automating computer application deployment, scaling and management. 
-	At its core , Kubernetes is and orchestrator of cloud-native microservices applications.
-		
-	Cloud Native application must:- 
-	1. Scale on demand
-	    Scaling on demand is the ability for an application and associated infrastructure to automatically scale up and down based on demand.
-      	    If configured correctly, Kubernetes can automatically scale your applications and infrastructure up when demand increases and scale 
-	    them down when the demand drops off.
-
-
-	2. Self-heal applications
-		But for now, when you deploy an application on Kubernetes, you will have to specify what the application should look like. 
-		The following specifications will be necessary:
-			-The number of instances of each microservice
-			-The names of the networks to attach to
-		Kubernetes saves this as your desired state and monitors your application to make sure it always matches this desired state.
-		If something changes, for example if an instance crashes, Kubernetes notices this and spins up a replacement. This is called self-healing.
-	
-	3. Zero-downtime rolling updates
-		Zero-downtime rolling updates is just a fancy way of saying you can incrementally update parts of an application without
-		having to shut it down and without clients even noticing. You will see this in action later in the course.
-	
-	4. Run anywhere
-		One final point of interest regarding cloud-native is that a cloud-native application is not an application that
-		only runs in the public cloud. No! A cloud-native application can run anywhere you have Kubernetes, such as AWS, Azure,
-		Linode, your on-premises datacenter, or even your Raspberry Pi cluster at home.
-	
-	To summarize, cloud-native applications can self-heal, automatically scale, and be updated without downtime. 
-	They can also run wherever you have Kubernetes.
-
-### Why Do We Need Kubernetes?
-
- Kubernetes also does an amazing job of abstracting underlying cloud and server infrastructure. This basically allowed Kubernetize to commoditize infrastructure.
-
- #### OS of the cloud
-
- - Why tech companies need Kubernetes#
- “Abstracting and commoditizing infrastructure” is a fancy way of saying that Kubernetes makes it so you don’t have to worry which cloud or servers your applications are running on. In fact, this is at the heart of the idea that Kubernetes is the operating system (OS) of the cloud. So, in the same way, Linux and Windows mean you do not have to care if your applications are running on Dell, Cisco, HPE, or Nigel Poulton servers. Using Kubernetes means that you do not have to care if your applications are running on AWS or Azure.
-
- - Why the user community needs Kubernetes#
- It has already been stated that Kubernetes can abstract lower-level on-prem and cloud infrastructure, allowing you to write your applications 
- to run on  ubernetes without even knowing which cloud is behind it. Well, this has a few side benefits, including:
-
- You can deploy to one cloud today and switch to another tomorrow.
- You can run multi-cloud
- You can ramp onto a cloud and then ramp off back to on-prem more easily.
-
- ### What Does kubernetes Look Like?
-
-#### Master and Nodes
-
-
-##### OS of the cloud
-
-Kubernetes has already been established as the OS of the cloud. As such, it sits between the applications and infrastructure. 
-Kubernetes runs on infrastructure, and applications run on Kubernetes.
-	
-![Screenshot 2021-11-13 at 11 50 04 AM](https://user-images.githubusercontent.com/22169012/141608421-0cabaea3-b26b-4898-a99d-ccb3b511f48c.png)
-	
-The illustration shows four Kubernetes installations running on four different infrastructure platforms. Because Kubernetes
-abstracts the underlying infrastructure, the application at the top of the diagram can run on any of the Kubernetes installations.
-You can also migrate it from one Kubernetes installation to another.
-
-A Kubernetes installation is known as a Kubernetes cluster.
-
-There are a couple of things worth clarifying here:
-
-It is unusual for a single Kubernetes cluster to span multiple infrastructures.
-
-For example, you likely won’t see Kubernetes clusters that span multiple clouds. Likewise, you’ll rarely see clusters that 
-span on-prem and the public cloud. This is mainly due to network speed and reliability. Generally speaking, you want high-speed 
-reliable networks connecting the Nodes in a cluster.
-
-Although Kubernetes can run on many platforms, applications that run on Kubernetes have stricter requirements. You will learn about this 
-later on in the chapter, but Windows applications will only run on Kubernetes clusters with Windows Nodes, Linux applications only
-run on clusters with Linux Nodes, and applications written for ARM/Raspberry Pis require clusters with ARM Nodes.
-	
-A Kubernetes cluster consists of one or more machines that have Kubernetes installed on them. The machines can be physical servers,
-virtual machines (VM), cloud instances, your laptop, Raspberry Pis, and more. Installing Kubernetes on these machines and
-connecting them together creates a Kubernetes cluster. After creating a cluster, you can deploy applications to that cluster.
-
--Machines in a Kubernetes cluster are, normally, referred to as Nodes.
-
-Speaking of Nodes, a Kubernetes cluster contains two types of Nodes:
--Master Nodes
--Worker Nodes
-Usually, Master Nodes are referred to as “Masters” and Worker Nodes are called “Nodes”.
-
-Masters host the control plane and Nodes are where you run user applications.
-
-It is good practice for the Masters to exclusively run control plane services (no user applications). 
-All user applications should run on Nodes.
-
-
-#### Masters
-	
-Masters host the control plane. That is a fancy way of referring to the brains of the cluster.
-
-With this in mind, it is good practice to have more than one Master in order to maintain high availability (HA). This way,
-if one of them fails, the cluster can remain operational. It is common to have 3 or 5 Masters in a production cluster
-and to spread them across failure domains. It is not wise to stick them all in the same room, under the same leaky air
-conditioning unit, functioning on the same glitchy electricity supply.
-
-1. Assuming you have to create a highly available control plane with 3 Masters. Each one should be in a separate failure domain with
-different network infrastructures and distinct power infrastructures, etc.
-
-2. Masters run the following services that form the control plane:
-	- API Server
-	- Scheduler
-	- Store
-	- Cloud controller
