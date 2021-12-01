@@ -179,6 +179,12 @@ kubectl is a command-line utility used to communicate with kubernetes cluster
 - kubectl get pods
 - kubectl port-forward --address 0.0.0.0 first-pod 8080:8080 (kubectl port-forward TYPE/NAME [options] LOCAL_PORT:REMOTE_PORT)
 - kubectl describe pod first-pod
+- kubectl get services (To list all services)
+- kubectl describe svc <service-name> (To get details about a service)
+- kubectl port-forward --address 0.0.0.0 service/cloud-lb 8080:8080.  (For port forwarding a service running in kubernetes in local system)
+- kubectl delete svc cloud-lb (To delete a service)
+- kubectl delete pod first-pod (To delete a pod)
+	
 
 
 ##### pod.yml
@@ -216,6 +222,7 @@ spec:
 
 
 ```
+
 
 
 
