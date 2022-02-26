@@ -1,6 +1,25 @@
 # AIRFLOW
 
 
+## Data Pipelines
+- Data pipelines extract data from a data source, apply operations, such as transformations, filters, joins, or aggregations to the data, and publish the processed data to a data sink.
+
+### Batch Data Pipelines
+- Batch data pipelines are executed manually or recurringly. In each run, they extract all data from the data source, apply operations to the data, and publish the processed data to the data sink. They are done once all data have been processed.
+- Typical use cases for batch data pipelines have complex requirements on the data processing, such as joining dozens of different data sources (or tables), and are not time-sensitive. Examples include payroll, billing, or low-frequency reports based on historical data.
+
+### Streaming Data Pipelines
+- As opposed to batch data pipelines, streaming data pipelines are executed continuously, all the time. They consume streams of messages, apply operations, such as transformations, filters, aggregations, or joins, to the messages, and publish the processed messages to another stream.
+
+- Typically, they are deployed together with
+  - a data source connector, which takes care of extracting data change events from a data store, e.g., a database system, and writing them into the stream consumed by the data pipeline, and
+  - a data sink connector, which extracts processed messages from the stream filled by the data pipeline and publishes them to a data store, e.g., a data warehouse.
+
+- Traditional message queues, such as RabbitMQ, delete messages once they have been consumed. Modern event stores, such as Apache Kafka, allow to keep messages as long as needed: for a certain time period, up to a certain amount of storage space, or even forever. This does not only enable to reconstruct the state of a data set at the time of a certain message (or event) but also emphasizes reprocessing (or replaying) messages.
+
+- Common use cases for streaming data pipelines are time-sensitive and must gain insights into the most recent changes that occurred in a certain data store. Examples include fraud detection, critical reports supporting important operational decisions, monitoring of customer behavior, or cybersecurity.
+
+
 ## Why Airflow?
 Airflow is used to manage data pipelines and execute tasks in reliable way also you can monitor & retry taks easily. 
 
