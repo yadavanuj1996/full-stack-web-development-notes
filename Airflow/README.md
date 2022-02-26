@@ -101,7 +101,33 @@ Tasks are saved as Operators in Aiflow. Each time a operator is executed that op
 
 Used for limited no of tasks or POC purpose.
 
-### Multi Nodes Architecture 
+### Multi Nodes Architecture (Celery)
+
+2 Nodes are assigned for running Airflow 
+#### The first node will contain 
+- Web Server
+- Scheduler
+- Executor
+#### The Second node will contain
+- Metasotre
+- Queue
+
+#### Worker Nodes
+There can be multiple Worker Nodes (Celery  Worker) that will be executing the Airflow tasks unlike Single Node Architecture the Tasks will not be executing on Nodes that contains the Airflow components also the Queue will be external to the Executor.
+While the Tasks 
+*Queue used can be RabbitMQ or Redis.*
+
+- The Web Server will be in sync with meta store for powering the UI and displaying the status and monitoring part of airflow.
+- The Scheduler will be interacting with Metastore and Executor to scheule the taks execution.
+- The Executor will push the task in Queue for processing
+- The Airflow Worker / Celery Worker will listen to the Queue and execute the tasks.-
+
+<img width="875" alt="Screenshot 2022-02-26 at 2 57 57 PM" src="https://user-images.githubusercontent.com/22169012/155837877-ff50f108-f096-419c-8288-30561fa1605b.png">
+
+
+
+
+
 
 
 ## Dag Commands:
