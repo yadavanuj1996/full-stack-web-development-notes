@@ -180,3 +180,5 @@ ls airflow/logs/your_dag_name
     - Shows the status of task instances of the current active DAG Run
   - Gantt View
     - Shows the time taken and order (parallel or serial order) of Task Instances
+- You can click on any Task Instance to check additional details about the task instance including the log of Task Instance (also we can mark a task instance success or failed from the same modal)
+
