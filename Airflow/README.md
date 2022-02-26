@@ -125,6 +125,17 @@ While the Tasks
 <img width="875" alt="Screenshot 2022-02-26 at 2 57 57 PM" src="https://user-images.githubusercontent.com/22169012/155837877-ff50f108-f096-419c-8288-30561fa1605b.png">
 
 
+### How it Works
+- We will add our python file containing data piepelines in Folder Dags.
+- The Folder Dags is parsed by both Web Server and Scheduler
+- Once it's time to trigger the DAG, the Scheduler will udpate the Metastore and a DagRun instance will be created in Metastore, this DagRun instance status will be running 
+-  The first TaskInstance of this DAGRun will be created.
+-  Once the TaskInstance object is created the TaskIntance is sent to Executor by Scheduler. 
+-  Once the TaskInstance is executed/run by Executor it will update the TaskInstance 
+-  Scheduler will check the DAGRun instance and check if the DAGRun instance is complete and subsquently update the status of DAG to Completed
+
+
+<img width="832" alt="Screenshot 2022-02-26 at 3 07 16 PM" src="https://user-images.githubusercontent.com/22169012/155838160-d7072dda-6675-40fc-a383-89d478cc6c8a.png">
 
 
 
