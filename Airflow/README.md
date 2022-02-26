@@ -227,11 +227,10 @@ ls airflow/logs/your_dag_name
 airflow tasks test dag_id task_id date_prev_than_today
 
 ### The Providers
-- As you know, Airflow allows you to interact with a ton of different tools such as Spark, AWS, Databrick, etc.
-- In fact, Airflow has more than 700 operators 
-- Airflow 2.0 is composed of multiple separated but connected packages with a Core package apache-airflow and providers.
-- A provider is an independent python package that brings everything your need to interact with a service or a tool such as Spark or AWS.
-- It contains connection types, operators, hooks and so on.
+- Apache Airflow 2 is built in modular way. The "Core" of Apache Airflow provides core scheduler functionality which allow you to write some basic tasks, but the capabilities of Apache Airflow can be extended by installing additional packages, called providers.
+- Providers can contain operators, hooks, sensor, and transfer operators to communicate with a multitude of external systems, but they can also extend Airflow core with new capabilities.
+- As you know, Airflow allows you to interact with a ton of different tools such as Spark, AWS, Databrick, etc there are existing provider for that but also we can write our own custom providers too 
+- A provider is an independent python package that brings everything you need to interact with a service or a tool such as Spark or AWS.
 - By default, some operators are pre installed by default such as the PythonOperator and the BashOperator but for the others you will have to install the corresponding prodiver.
 
 
@@ -240,5 +239,5 @@ airflow tasks test dag_id task_id date_prev_than_today
 ### Important Links
 - Airflow Providers Packages:
 https://airflow.apache.org/docs/apache-airflow-providers/packages-ref.html
-
+ 
 -
