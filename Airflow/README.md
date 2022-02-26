@@ -1,3 +1,22 @@
+# AIRFLOW
+
+
+## Why Airflow?
+Airflow is used to manage data pipelines and execute tasks in reliable way also you can monitor & retry taks easily. 
+
+Let's say we have a data pipeline that contains 3 steps:
+- Downloading Data  
+  - Request API
+- Processing Data 
+   - Spark Job
+- Storing Data
+  - DB Insertion
+
+For this we have to not only execute tasks in data pipeline but also make sure the external tools like API and Database are available, let's say if there is a case that API or Spark Job Fails or DB service is not available and managing all this manually will prove a challenging task. Assume we have 100 such pieplines to manage thus this data pipeline cannot be managed manually and we need a tool loke Airflow for handling such multiple pipelines.
+
+
+
+
 
 
 
