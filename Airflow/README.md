@@ -149,25 +149,26 @@ While the Tasks
 airflow version
 
 #### List all the DAGs available.
-airflow list_dags
+airflow dags list
 
 #### Examine the DAG. Tasks are listed with dependencies
-airflow show_dag your_dag_name
+airflow dags show your_dag_name
 
 #### List the tasks for DAG 
-airflow list_tasks your_dag_name
+airflow tasks list your_dag_name
 
-#### List the runs for DAG.
-airflow list_dag_runs your_dag_name
+#### Trigger a DAG
+airflow dags trigger -e 2022-02-27 example_xcom_args
+
+#### List All the DAG runs
+airflow dags list-runs
+
+#### Pause DAG so that it executes.
+airflow pause your_dag_name
 
 #### Unpause DAG so that it executes.
 airflow unpause your_dag_name
 
-#### List All the DAG runs
-airflow list_dag_runs your_dag_name
-
 #### To check logs
 ls airflow/logs/your_dag_name
 
-#### Manually trigger the DAG
-airflow trigger_dag your_dag_name
