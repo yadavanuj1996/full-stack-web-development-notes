@@ -31,7 +31,7 @@ or Airflow is an orchestrator allowing you to execute your tasks at the right ti
 
 ### Airflow Architecture consists of the following entities:
 1. Web server
-  - Flask Server with Gunicorn serving the UI
+   - Flask Server with Gunicorn serving the UI
 2. Scheduler
    - Daemon in charge of scheduing workflows (tasks)
 3. Metastore (Database)
@@ -89,7 +89,19 @@ Tasks are saved as Operators in Aiflow. Each time a operator is executed that op
  
  
 
+## How Airflow Works?
 
+### One Node Architecture
+- Web server, schduler, metastore and executor will be on same machine
+- Web server will fetch meta data from meta store
+- Scheduler will talk to metasore and executor and schedule the task for execution
+- Executor will contain a Queue that will defined the order in which the tasks will be executed.
+
+<img width="768" alt="Screenshot 2022-02-26 at 2 45 33 PM" src="https://user-images.githubusercontent.com/22169012/155837531-19106e56-2fb2-4803-bc9b-8a7b4db50b04.png">
+
+Used for limited no of tasks or POC purpose.
+
+### Multi Nodes Architecture 
 
 
 ## Dag Commands:
