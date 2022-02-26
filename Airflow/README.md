@@ -91,6 +91,9 @@ The state of the DAGs and their constituent tasks needs to be saved in a databas
 - DAG is Directed Acyclic Graph. In Aiflow a DAG is a data pipeline.
 - Python is used to code DAGs with Apache Airflow.
 
+<img width="1323" alt="Screenshot 2022-02-26 at 5 14 43 PM" src="https://user-images.githubusercontent.com/22169012/155841922-3ae51d9d-f585-4664-a0b9-4c9cab8d1d65.png">
+
+
 ### Operator
 An operator is wrapper around the task (item) you want to achieve.
 ex:- Connecting to db and inserting data we will use a Operator
