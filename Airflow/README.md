@@ -104,7 +104,9 @@ Operators executing function or commands. ex: bash operator can be used to run a
 #### Transfer Operators
 Transfer opearaots are used for transfer data from source to destination.  
 #### Sensor Operators
-They wait for something to happen, let's say if we use a file sensor operator and provide source, whenever a file is available in that particular source the Sensor Operator will trigger.
+- Wait for a Condition to be met.
+- They wait for something to happen, let's say if we use a file sensor operator and provide source, whenever a file is available in that particular source the Sensor Operator will trigger.
+- ex:- Wait for a file to land at specified location we can use File Sensor, if we want to wait for an mysql record update we will use SQL Sensor.
 
 ### Task / Task Instance:
 Tasks are saved as Operators in Aiflow. Each time a operator is executed that operator becomes Task Instance
@@ -206,4 +208,13 @@ ls airflow/logs/your_dag_name
   - Gantt View
     - Shows the time taken and order (parallel or serial order) of Task Instances
 - You can click on any Task Instance to check additional details about the task instance including the log of Task Instance (also we can mark a task instance success or failed from the same modal)
+
+
+
+#### What is an Operator?
+
+- One Operator should handle one task, ex:- if a python operator contains two taks Cleaning Data & Processing Data and let's say Processing Data step fails on rerun the cleaning data will also need to be executed again even if Cleaning Data was executed successfully.
+
+
+<img width="1617" alt="Screenshot 2022-02-26 at 5 52 04 PM" src="https://user-images.githubusercontent.com/22169012/155842998-a4bec83d-9b4d-4cf2-aa34-097d9dfc34b4.png">
 
