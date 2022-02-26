@@ -95,8 +95,9 @@ The state of the DAGs and their constituent tasks needs to be saved in a databas
 
 
 ### Operator
-An operator is wrapper around the task (item) you want to achieve.
-ex:- Connecting to db and inserting data we will use a Operator
+- An operator is wrapper around the task (item) you want to achieve.
+- ex:- Connecting to db and inserting data we will use a Operator
+- One Operator should handle one task, ex:- if a python operator contains two taks Cleaning Data & Processing Data and let's say Processing Data step fails on rerun the cleaning data will also need to be executed again even if Cleaning Data was executed successfully.
 
 Types:
 #### Action Operator
@@ -188,6 +189,9 @@ airflow dags trigger -e 2022-02-27 example_xcom_args
 #### List All the DAG runs
 airflow dags list-runs
 
+#### To list all the Providers
+airflow providers list
+
 #### Pause DAG so that it executes.
 airflow pause your_dag_name
 
@@ -210,11 +214,31 @@ ls airflow/logs/your_dag_name
 - You can click on any Task Instance to check additional details about the task instance including the log of Task Instance (also we can mark a task instance success or failed from the same modal)
 
 
-
-#### What is an Operator?
-
-- One Operator should handle one task, ex:- if a python operator contains two taks Cleaning Data & Processing Data and let's say Processing Data step fails on rerun the cleaning data will also need to be executed again even if Cleaning Data was executed successfully.
+## Creating Data Pipeline
 
 
 <img width="1617" alt="Screenshot 2022-02-26 at 5 52 04 PM" src="https://user-images.githubusercontent.com/22169012/155842998-a4bec83d-9b4d-4cf2-aa34-097d9dfc34b4.png">
 
+### Connection
+#### Adding a new connection
+- We can create a new connection using airflow webserver, in header > admin > Connections
+
+#### To test a new connection
+airflow tasks test dag_id task_id date_prev_than_today
+
+### The Providers
+- As you know, Airflow allows you to interact with a ton of different tools such as Spark, AWS, Databrick, etc.
+- In fact, Airflow has more than 700 operators 
+- Airflow 2.0 is composed of multiple separated but connected packages with a Core package apache-airflow and providers.
+- A provider is an independent python package that brings everything your need to interact with a service or a tool such as Spark or AWS.
+- It contains connection types, operators, hooks and so on.
+- By default, some operators are pre installed by default such as the PythonOperator and the BashOperator but for the others you will have to install the corresponding prodiver.
+
+
+
+
+### Important Links
+- Airflow Providers Packages:
+https://airflow.apache.org/docs/apache-airflow-providers/packages-ref.html
+
+-
