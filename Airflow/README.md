@@ -35,8 +35,9 @@ For this we have to not only execute tasks in data pipeline but also make sure t
 
 
 ## What is Airflow?
-Apache Airflow is an open source platform to programmatically author, schedule and monitor workflows.
-or Airflow is an orchestrator allowing you to execute your tasks at the right time in right way in right order. Airflow helps you interact with various tools so you can execute the taks in right manner.
+- Def 1: Apache Airflow is an open source platform to programmatically author, schedule and monitor workflows.
+- Def 2: Airflow is an orchestrator allowing you to execute your tasks at the right time in right way in right order. Airflow helps you interact with various tools so you can execute the taks in right manner.
+- Def 3: An orchestrator to deal with batch data pipelines programmatically by authoring, scheduling and monitoring them through a beautiful web UI.
 
 ### Benifits:
 - Data pipeline are dynamic
@@ -86,7 +87,9 @@ The state of the DAGs and their constituent tasks needs to be saved in a databas
 
 
 ### DAG
-DAG is Directed Acyclic Graph. In Aiflow a DAG is a data pipeline.
+- A DAG is basically a graph object representing our data pipeline composed of different tasks with their dependencies.
+- DAG is Directed Acyclic Graph. In Aiflow a DAG is a data pipeline.
+- Python is used to code DAGs with Apache Airflow.
 
 ### Operator
 An operator is wrapper around the task (item) you want to achieve.
