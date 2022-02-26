@@ -139,8 +139,6 @@ While the Tasks
 
 
 
-
-
 ## Dag Commands:
 #### Start Airflow by running the start.sh script
 ./start.sh
@@ -172,3 +170,13 @@ airflow unpause your_dag_name
 #### To check logs
 ls airflow/logs/your_dag_name
 
+
+
+## Airflow UI
+- DAG
+  - Tree View
+    - Shows history of DAG Runs and status of each task instance of that DAG Run
+  - Graph View
+    - Shows the status of task instances of the current active DAG Run
+  - Gantt View
+    - Shows the time taken and order (parallel or serial order) of Task Instances
