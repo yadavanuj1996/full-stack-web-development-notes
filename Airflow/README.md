@@ -233,6 +233,15 @@ airflow tasks test dag_id task_id date_prev_than_today
 - A provider is an independent python package that brings everything you need to interact with a service or a tool such as Spark or AWS.
 - By default, some operators are pre installed by default such as the PythonOperator and the BashOperator but for the others you will have to install the corresponding prodiver.
 
+## DAG Scheduling & Backfilling
+
+### catchup parameter
+- A catchup paramteter (True or False) can be passed in DAG that represents that whether the DAG needs to be run for older dates or not.
+  - with DAG('user_processing', start_date=days_ago(2), schedule_interval='@daily', default_args=default_args, catchup=False) as dag:  
+  - The above line will create a DAG RUN Instances for last two days as well that is called Backfilling.
+- After materializing DAG run entries of a DAG, the Airflow scheduler will “backfill” all past DAG runs whose time dependency has been met if catchup is enabled. If you want that old DAG RUN Instance is not needed set the catchup to False.
+
+
 
 
 
@@ -240,4 +249,4 @@ airflow tasks test dag_id task_id date_prev_than_today
 - Airflow Providers Packages:
 https://airflow.apache.org/docs/apache-airflow-providers/packages-ref.html
  
--
+
