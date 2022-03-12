@@ -167,7 +167,7 @@ While the Tasks
 
 
 
-## Dag Commands:
+## Airflow Commands:
 #### Start Airflow by running the start.sh script
 ./start.sh (We need to start webserver and scheduler to start and monitor Airflow)
 
@@ -180,6 +180,9 @@ airflow scheduler
 #### Examine the version of Airflow
 airflow version
 
+#### Create airflow user
+airflow users create -u user_name -p password_here -r Admin -f first_name -l last_name -e your_email_id (for role Admin)
+
 #### List all the DAGs available.
 airflow dags list
 
@@ -188,6 +191,9 @@ airflow dags show your_dag_name
 
 #### List the tasks for DAG 
 airflow tasks list your_dag_name
+
+#### To test a task
+airflow tasks test dag_id task_id date_prev_than_today
 
 #### Trigger a DAG
 airflow dags trigger -e 2022-02-27 example_xcom_args
@@ -230,7 +236,10 @@ ls airflow/logs/your_dag_name
 - We can create a new connection using airflow webserver, in header > admin > Connections
 
 #### To test a new connection
-airflow tasks test dag_id task_id date_prev_than_today
+airflow db check
+
+#### To initialize db (Only run this commmand on initialization of DB as this flushes the database)
+aiflow db init
 
 ### The Providers
 - Apache Airflow 2 is built in modular way. The "Core" of Apache Airflow provides core scheduler functionality which allow you to write some basic tasks, but the capabilities of Apache Airflow can be extended by installing additional packages, called providers.
