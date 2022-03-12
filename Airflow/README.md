@@ -242,6 +242,25 @@ airflow tasks test dag_id task_id date_prev_than_today
 - After materializing DAG run entries of a DAG, the Airflow scheduler will “backfill” all past DAG runs whose time dependency has been met if catchup is enabled. If you want that old DAG RUN Instance is not needed set the catchup to False.
 
 
+## Databases and Executors
+
+### Basics: 
+- Executors configuration defined whether the task will run tasks in sequence or parallel.
+- Executor Config is important for acheving scalability in Airflow for prod env.
+-  Default Executor - Sequential Executor
+  - The Sequential Executor is by default configured in Airflow and only support execution of events in sequence (as the name suggests)
+
+- For configuration of Executor two parametes are important sql alchemy connection and executor
+  - To check sql alchemy connection use command 
+    - airflow config get-value core sql_alchemy_conn
+    - returns metastore used by default by Airflow i.e., **sqlite**
+    - default value is connection to sqlite db. (SQLite does not support multiple writes at same time), only one task after another can be executed if we are using sqlite
+  - To check executor use command
+    -  airflow config get-value core executor
+    -  By default **SequentialExecutor** is used
+    -  Allows tasks execution one after another
+    -  
+
 
 
 
