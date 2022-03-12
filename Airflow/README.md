@@ -169,7 +169,13 @@ While the Tasks
 
 ## Dag Commands:
 #### Start Airflow by running the start.sh script
-./start.sh
+./start.sh (We need to start webserver and scheduler to start and monitor Airflow)
+
+#### Start Airflow webserver
+airflow webserver
+
+#### Start Airflow scheduler
+airflow scheduler
 
 #### Examine the version of Airflow
 airflow version
