@@ -268,7 +268,12 @@ airflow tasks test dag_id task_id date_prev_than_today
     -  Allows tasks execution one after another
     -  
 
-
+#### Run tasks in Paralled
+- Two items from default config needs to be changed two run tasks in paralled
+  - Executor (LocalExecutor - In Local System for Testing, Celery Executor in Prod)
+    - SequentialExecutor only supports task execution in sequence 
+  - Database (MySQL or Postgres) 
+    - As sqlite does not support multiple write at same time
 
 
 ### Important Links
