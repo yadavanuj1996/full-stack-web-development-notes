@@ -287,6 +287,18 @@ aiflow db init
 ![Screenshot 2022-03-12 at 7 14 36 PM](https://user-images.githubusercontent.com/22169012/158020426-e435af43-3eb2-49c5-bda6-d6fcd450c108.png)
 
 
+### Celery Executor
+- Celery Executor provides feature to execute tasks on multiple machines.
+- Tasks are executed in workers (machines). The more workers, the more tasks can be executed.
+- We have to use a external queue, where items would be pushed and pulled out by the worker. 
+- **Recommended Queue: Redis**. To use celery Executor we need to setup and install a external Queue like Redis.
+- Each worker corresponds to a Machine, so each machine has an Airflow instance running where the tasks will be executed. (All machines should share dependencies)
+- worker_concurrency represents the **no. of tasks atmost** in each of worker, this is defined in configuration file of Airflow. 
+  - In case there are 3 workers with worker_concurrency=4, then at most we can execute 12 tasks at a time (max 4 task for each worker).
+
+![Screenshot 2022-03-12 at 7 37 05 PM](https://user-images.githubusercontent.com/22169012/158021125-49035496-1451-4616-9155-984776ff9d70.png)
+
+
 
 ### Important Links
 - Airflow Providers Packages:
