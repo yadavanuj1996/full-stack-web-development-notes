@@ -275,14 +275,17 @@ aiflow db init
     -  airflow config get-value core executor
     -  By default **SequentialExecutor** is used
     -  Allows tasks execution one after another
-    -  
-
-#### Run tasks in Paralled
+    
+#### Run tasks in Parallel
 - Two items from default config needs to be changed two run tasks in paralled
   - Executor (LocalExecutor - In Local System for Testing, Celery Executor in Prod)
     - SequentialExecutor only supports task execution in sequence 
   - Database (MySQL or Postgres) 
     - As sqlite does not support multiple write at same time
+    
+
+![Screenshot 2022-03-12 at 7 14 36 PM](https://user-images.githubusercontent.com/22169012/158020426-e435af43-3eb2-49c5-bda6-d6fcd450c108.png)
+
 
 
 ### Important Links
