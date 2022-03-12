@@ -255,6 +255,7 @@ airflow tasks test dag_id task_id date_prev_than_today
 - Executor Config is important for acheving scalability in Airflow for prod env.
 -  Default Executor - Sequential Executor
   - The Sequential Executor is by default configured in Airflow and only support execution of events in sequence (as the name suggests)
+  - The Sequential Executor is good for experimenting and debugging (as tasks run in sequence)
 
 - For configuration of Executor two parametes are important sql alchemy connection and executor
   - To check sql alchemy connection use command 
