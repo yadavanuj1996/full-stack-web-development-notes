@@ -298,6 +298,28 @@ aiflow db init
 
 ![Screenshot 2022-03-12 at 7 37 05 PM](https://user-images.githubusercontent.com/22169012/158021125-49035496-1451-4616-9155-984776ff9d70.png)
 
+### XComs
+- XComs are used to send small packet of data from one task to another task
+- If we return a value from a python_callable function that value is stored in a XCOM (it is automatically pushed into a XCOM.)
+
+### BranchPythonOperator (If Else condition in task execution)
+- BranchPythonOperator is used to choose a specific path in our DAG, (Like choosing a task path on the basis of if else condition) 
+- When we use branching, the skipped tasks are considered as failed tasks and so if we run again the DAG and the condition follows a previously skipped path, it won't be executed.
+
+### Trigger Rules
+- Trigger Rule to alert Error Cases
+  - Use trigger rule **one_failed** to alert the error in any task ()
+- Other trigger rules
+  - **all_success**: (default) all parents have succeeded
+  - **all_failed**: all parents are in a failed or upstream_failed state
+  - **all_done**: all parents are done with their execution
+  - **one_failed**: fires as soon as at least one parent has failed, it does not wait for all parents to be done
+  - **one_success**: fires as soon as at least one parent succeeds, it does not wait for all parents to be done
+  - **none_failed**: all parents have not failed (failed or upstream_failed) i.e. all parents have succeeded or been skipped
+  - **none_skipped**: no parent is in a skipped state, i.e. all parents are in a success, failed, or upstream_failed state
+  - **dummy**: dependencies are just for show, trigger at will
+
+
 
 
 ### Important Links
