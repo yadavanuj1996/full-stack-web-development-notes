@@ -213,6 +213,8 @@ airflow unpause your_dag_name
 #### To check logs
 ls airflow/logs/your_dag_name
 
+#### To start airflow flower
+airflow celery flower
 
 
 ## Airflow UI
@@ -296,7 +298,16 @@ aiflow db init
 - worker_concurrency represents the **no. of tasks atmost** in each of worker, this is defined in configuration file of Airflow. 
   - In case there are 3 workers with worker_concurrency=4, then at most we can execute 12 tasks at a time (max 4 task for each worker).
 
+#### Concurrency Parameters
+- **parallelism**
+  - In airflow.cfg there is a parameter naemd parallelism which is by default set to 32 that means at max 32 tasks in parallel entire airflow instance.
+- **max_active_tasks_per_dag**
+  - The maximum number of task instances allowed to run concurrently in each DAG. To calculate the number of tasks that is running concurrently for a DAG, add up the number of running tasks for all DAG runs of the DAG. This is configurable at the DAG level with `max_active_tasks`, which is defaulted as max_active_tasks_per_dag
+
 ![Screenshot 2022-03-12 at 7 37 05 PM](https://user-images.githubusercontent.com/22169012/158021125-49035496-1451-4616-9155-984776ff9d70.png)
+
+
+
 
 ### XComs
 - XComs are used to send small packet of data from one task to another task
