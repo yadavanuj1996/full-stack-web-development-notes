@@ -184,32 +184,41 @@ kubectl is a command-line utility used to communicate with kubernetes cluster
 - kubectl port-forward --address 0.0.0.0 service/cloud-lb 8080:8080.  (For port forwarding a service running in kubernetes in local system)
 - kubectl delete svc cloud-lb (To delete a service)
 - kubectl delete pod first-pod (To delete a pod)
+- kubectl config view
 	
 
 
-##### pod.yml
+##### Pod Deployment
+	
+**pod.yml**
+	
 ```
 apiVersion: v1
 kind: Pod
 metadata:
-  name: first-pod
+  name: diy-pod
   labels:
-    project: qsk-course
+    project: task-DIY
 spec:
   containers:
-    - name: web-ctr
-      image: educative1/qsk-course:1.0
-      ports:
-        - containerPort: 8080
+  - name: test-container-server
+    image: educative1/qsk-course:1.0
+    ports:
+    - containerPort: 8080
 
 ```
 
-#####  svc-cloud.yml
+##### Service Deployment
+	
+**svc-cloud.yml**
+	
 ```
 apiVersion: v1
 kind: Service
 metadata:
-  name: cloud-lb
+  name: diy-test-cloud-lb
+  labels:
+    app: test-svc-server
 spec:
   type: LoadBalancer
   ports:
@@ -217,13 +226,22 @@ spec:
     targetPort: 8080
   selector:
     project: qsk-course
-
-
-
-
 ```
 
+- The metadata section names the Service “cloud-lb”.
+- The spec section is where the magic happens. The spec.type: LoadBalancer field tells Kubernetes to provision an internet-facing load balancer on the underlying cloud platform.
+- For example, if your cluster runs on AWS, this Service will automatically provision an AWS Network Load Balancer (NLB) or Classic Load Balancer (CLB). This spec section will configure an internet-facing load-balancer on the underlying cloud that will accept traffic on port 8080 and forward on port 8080 to any Pods with the project: qsk-course label.
+	
+### Configure kubectl to talk to remote cluster	
 
+- To check the current kubectl config
+	
+	
+#### Namespaces
+- Namespaces are Kubernetes objects which partition a single Kubernetes cluster into multiple virtual clusters. Each Kubernetes namespace provides the scope for Kubernetes Names it contains; which means that using the combination of an object name and a Namespace, each object gets an unique identity across the cluster.
+- In Kubernetes, namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects (e.g. Deployments, Services, etc) and not for cluster-wide objects (e.g. StorageClass, Nodes, PersistentVolumes, etc).
+
+	
 
 
 # Detailed Notes
