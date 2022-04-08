@@ -228,13 +228,15 @@ spec:
     project: qsk-course
 ```
 
+- Kubernetes uses a dedicated Service object to provide network connectivity to applications running in Pods
 - The metadata section names the Service “cloud-lb”.
 - The spec section is where the magic happens. The spec.type: LoadBalancer field tells Kubernetes to provision an internet-facing load balancer on the underlying cloud platform.
 - For example, if your cluster runs on AWS, this Service will automatically provision an AWS Network Load Balancer (NLB) or Classic Load Balancer (CLB). This spec section will configure an internet-facing load-balancer on the underlying cloud that will accept traffic on port 8080 and forward on port 8080 to any Pods with the project: qsk-course label.
 	
 ### Configure kubectl to talk to remote cluster	
 
-- To check the current kubectl config
+## Kubernetes Deployments
+	
 	
 	
 #### Namespaces
