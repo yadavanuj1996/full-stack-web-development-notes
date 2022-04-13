@@ -236,7 +236,8 @@ spec:
 ### Configure kubectl to talk to remote cluster	
 
 ## Kubernetes Deployments
-	
+- Kubernetes has another dedicated object called a Deployment to provide self-healing. In fact, Deployments also enable scaling and rolling updates.
+- As with Pods and Service objects, Deployments are defined in YAML manifest files.
 	
 	
 #### Namespaces
