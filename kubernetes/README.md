@@ -233,12 +233,52 @@ spec:
 - The spec section is where the magic happens. The spec.type: LoadBalancer field tells Kubernetes to provision an internet-facing load balancer on the underlying cloud platform.
 - For example, if your cluster runs on AWS, this Service will automatically provision an AWS Network Load Balancer (NLB) or Classic Load Balancer (CLB). This spec section will configure an internet-facing load-balancer on the underlying cloud that will accept traffic on port 8080 and forward on port 8080 to any Pods with the project: qsk-course label.
 	
-### Configure kubectl to talk to remote cluster	
 
 ## Kubernetes Deployments
 - Kubernetes has another dedicated object called a Deployment to provide self-healing. In fact, Deployments also enable scaling and rolling updates.
 - As with Pods and Service objects, Deployments are defined in YAML manifest files.
+
+There are two important elements to the working of a Deployment.
+- The Deployment object
+	- The Deployment object is the YAML configuration that defines an application. It states things like which container to run, what network port to listen on, and how many instances (Pods) to deploy.
+- The Deployment controller
+	- The Deployment controller is a control plane process, which is constantly monitoring the cluster to ensure that all the Deployment objects are running as they are supposed to.
+
+#### deployment.yaml
 	
+**pod.yml**
+	
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qsk-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      project: qsk-course
+  template:
+    metadata:
+      labels:
+        project: qsk-course
+    spec: 
+      containers:
+      - name: qsk-pod
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        image: edxxxxive1/qsk-course:1.0
+	
+```
+
+This nesting, or wrapping, is important in understanding how everything works.
+- The container provides the OS and other application dependencies.
+- The Pod provides metadata and other constructs for the container to run on Kubernetes.
+- The Deployment provides cloud-native features, including self-healing.
+
+![Screenshot 2022-04-14 at 9 53 42 AM](https://user-images.githubusercontent.com/22169012/163313284-9d251c3e-1f57-4457-b3c6-0e741588291a.png)
+
 	
 #### Namespaces
 - Namespaces are Kubernetes objects which partition a single Kubernetes cluster into multiple virtual clusters. Each Kubernetes namespace provides the scope for Kubernetes Names it contains; which means that using the combination of an object name and a Namespace, each object gets an unique identity across the cluster.
