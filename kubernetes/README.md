@@ -244,9 +244,9 @@ There are two important elements to the working of a Deployment.
 - The Deployment controller
 	- The Deployment controller is a control plane process, which is constantly monitoring the cluster to ensure that all the Deployment objects are running as they are supposed to.
 
-#### deployment.yaml
+#### Deployment Yaml File
 	
-**pod.yml**
+**deployment.yml**
 	
 ```
 apiVersion: apps/v1
