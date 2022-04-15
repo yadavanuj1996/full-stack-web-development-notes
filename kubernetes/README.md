@@ -276,7 +276,15 @@ spec:
         image: edxxxxive1/qsk-course:1.0
 	
 ```
-
+- **kind**: Type of oject being defined (Pod, Service, Deployment)
+- **matchLabels**: Tells the Deployment controller to match labels
+- **project** in matchLabels -> selector represents which Pods to manage
+- **name** in metadata represents the name of deployment
+	- If you trigger kubectl get deployments command you will get this name (i.e., qsk-deploy)
+- **replicas** in spec represents how pod replicas is required
+- 
+		
+	
 This nesting, or wrapping, is important in understanding how everything works.
 - The container provides the OS and other application dependencies.
 - The Pod provides metadata and other constructs for the container to run on Kubernetes.
