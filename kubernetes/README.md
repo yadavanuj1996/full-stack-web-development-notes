@@ -228,6 +228,11 @@ spec:
     project: qsk-course
 ```
 
+**Metadata Name and App Labels**
+- The name in metadata is the name of service, when you fire **kubectl get services** you will get the service name (i.e., diy-test-cloud-lb)
+- The app label passed in labels in metadata is used in deployment to use a given service for linking it to pods, so that pods will get network access.
+
+ **Other points**
 - Kubernetes uses a dedicated Service object to provide network connectivity to applications running in Pods
 - The metadata section names the Service “cloud-lb”.
 - The spec section is where the magic happens. The spec.type: LoadBalancer field tells Kubernetes to provision an internet-facing load balancer on the underlying cloud platform.
