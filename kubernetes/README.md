@@ -222,7 +222,12 @@ spec:
     - containerPort: 8080
 
 ```
-
+- **apiVersion** and **kind** is basically telling Kubernetes to deploy a Pod based on version 1 (v1) of the Pod specification.
+- **metadata**: The metadata block lists the Pod name and a single label
+	- **name**: helps us identify and manage the Pod when it is running
+	- **label**: (project = qsk-course) is useful for organizing Pods and associating them with other objects, such as load balancers. 
+	
+	
 ##### Service Deployment
 	
 **svc-cloud.yml**
@@ -244,9 +249,13 @@ spec:
 ```
 
 **Metadata Name and App Labels**
-- The name in metadata is the name of service, when you fire **kubectl get services** you will get the service name (i.e., diy-test-cloud-lb)
-- The app label passed in labels in metadata is used in deployment to use a given service for linking it to pods, so that pods will get network access.
-
+- **name** in **metadata** is the name of service, when you fire **kubectl get services** you will get the service name (i.e., diy-test-cloud-lb)
+- The **app** label passed in **labels** in **metadata** is used in deployment to use a given service for linking it to pods, so that pods will get network access.
+- **type** in **spec** represents type of service. Options:
+	- ClusterIP
+	- NodePort
+	- LoadBalancer
+ 
  **Other points**
 - Kubernetes uses a dedicated Service object to provide network connectivity to applications running in Pods
 - The metadata section names the Service “cloud-lb”.
@@ -313,13 +322,23 @@ NOTE: Deployments wrap a Pod spec, which in turn wraps a container, which in tur
 ```
 
 	
+### Miscellaneous Points
+	
 #### Namespaces
 - Namespaces are Kubernetes objects which partition a single Kubernetes cluster into multiple virtual clusters. Each Kubernetes namespace provides the scope for Kubernetes Names it contains; which means that using the combination of an object name and a Namespace, each object gets an unique identity across the cluster.
 - In Kubernetes, namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects (e.g. Deployments, Services, etc) and not for cluster-wide objects (e.g. StorageClass, Nodes, PersistentVolumes, etc).
 
+#### What is a NodePort?
+- A NodePort is an open port on every node of your cluster. Kubernetes transparently routes incoming traffic on the NodePort to your service, even if your application is running on a different node.
+
+#### Service Types
+- **ClusterIP**: Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster. This is the default ServiceType
+
+- **NodePort**: Exposes the service on each Node’s IP at a static port (the NodePort). A ClusterIP service, to which the NodePort service will route, is automatically created. You’ll be able to contact the NodePort service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
+
+- **LoadBalancer**: Exposes the service externally using a cloud provider’s load balancer. NodePort and ClusterIP services, to which the external load balancer will route, are automatically created.
+
 	
-
-
 # Detailed Notes
 Kuberenetes (pronounced koo-ber-netes) is container-orchestration system.
 
