@@ -231,3 +231,32 @@ run on a Kubernetes cluster. Once you’ve defined the Pod, you’re ready to de
 - It is possible to run a stand-alone Pod on a Kubernetes cluster, but the preferred model is to deploy all Pods via higher-level controllers. The most common controller is the Deployment. It offers scalability, self-healing, and rolling updates. You define Deployments in YAML manifest files that specify things like which image to use and how many replicas to deploy.
 
 - Once everything is defined in the Deployment YAML file, you POST it to the API server as the desired state of the application and let Kubernetes implement it.
+
+
+### The Declarative Model and the Desired State
+
+The declarative model and the concept of desired state are at the very heart of Kubernetes.
+
+In Kubernetes, the declarative model works like this:
+1. Declare the desired state of an application (microservice) in a manifest file
+2. POST it to the API server
+3. Kubernetes stores it in the cluster store as the application’s desired state
+4. Kubernetes implements the desired state on the cluster
+5. Kubernetes implements watch loops to make sure the current state of the application doesn’t vary from the desired state
+
+
+- Manifest files are written in simple YAML, and they tell Kubernetes how you want an application to look. This is called the desired state. It includes things such as; which image to use, how many replicas to run, which network ports to listen on, and how to perform updates.
+
+- Once you’ve created the manifest, you POST it to the API server. The most common way of doing this is with the kubectl command-line utility. This sends the manifest to the control plane as an HTTP POST, usually on port 443.
+
+- Once the request is authenticated and authorized, Kubernetes inspects the manifest, identifies which controller to send it to (e.g., the Deployments controller), and records the config in the cluster store as part of the cluster’s overall desired state. Once this is done, the work gets scheduled on the cluster. This includes the hard work of pulling images, starting containers, building networks, and starting the application’s processes.
+
+- Finally, Kubernetes utilizes background reconciliation loops that constantly monitor the state of the cluster. If the current state of the cluster varies from the desired state, Kubernetes will perform whatever tasks are necessary to reconcile the issue.
+
+
+#### Declarative model vs. imperative model
+- It’s important to understand that what we’ve described is the opposite of the traditional imperative model. The imperative model is where you issue long lists of platform-specific commands to build things.
+- Not only is the declarative model a lot simpler than long scripts with lots of imperative commands, it also enables self-healing, scaling, and lends itself to version control and self-documentation. It does this by telling the cluster how things should look. If they stop looking like this, the cluster notices the discrepancy and does all of the hard work to reconcile the situation.
+- The declarative story doesn’t end there – things go wrong, and things change. When they do, the current state of the cluster no longer matches the desired state. As soon as this happens, Kubernetes kicks into action and attempts to bring the two back into harmony.
+
+
