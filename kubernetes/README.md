@@ -255,6 +255,9 @@ spec:
 	- ClusterIP
 	- NodePort
 	- LoadBalancer
+- ports
+	- **port**: Port exposes the Kubernetes service on the specified port within the cluster. Other pods within the cluster can communicate with this server on the specified port.
+	- **targetPort**: TargetPort is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also.
  
  **Other points**
 - Kubernetes uses a dedicated Service object to provide network connectivity to applications running in Pods
