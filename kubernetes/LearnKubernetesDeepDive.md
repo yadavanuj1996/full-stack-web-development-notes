@@ -102,16 +102,17 @@ At the highest level, Kubernetes is two things:
 
 ![Screenshot 2022-04-16 at 4 01 08 PM](https://user-images.githubusercontent.com/22169012/163671604-eac58ccf-572a-4019-9f2b-278ccee95d8d.png)
 
-```
+
 To run applications on a Kubernetes cluster, we follow this simple pattern:
 - Write the application as small independent microservices in our favorite languages.
 - Package each microservice in its own container.
 - Wrap each container in its own Pod.
 - Deploy Pods to the cluster via higher-level controllers, such as, Deployments, DaemonSets, StatefulSets, CronJobs etc.
- -  Deployments offer scalability and rolling updates.   
- -  DaemonSets run one instance of a service on every node in the cluster.  
- -  StatefulSets are for stateful application components, and CronJobs are for short-lived tasks that need to run at set times.
-```
+  - Deployments offer scalability and rolling updates.   
+  - DaemonSets run one instance of a service on every node in the cluster.  
+  - StatefulSets are for stateful application components.  
+  - CronJobs are for short-lived tasks that need to run at set times.
+
 
 Kubernetes likes to manage applications **declaratively**. This is a pattern where you describe how you want your application to 
 look and feel in a set of YAML files. You POST these files to Kubernetes, then sit back while Kubernetes makes it all happen.
