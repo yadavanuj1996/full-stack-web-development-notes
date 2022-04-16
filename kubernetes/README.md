@@ -48,7 +48,7 @@
  You can run multi-cloud
  You can ramp onto a cloud and then ramp off back to on-prem more easily.
 
- ### What Does kubernetes Look Like?
+### What Does kubernetes Look Like?
 
 #### Master and Nodes
 
@@ -127,6 +127,13 @@ that will come up in later chapters will help you integrate a cloud load-balance
 
 
 #### Nodes
+
+##### What is Node?
+- A Node is a worker machine in Kubernetes and may be either a virtual or a physical machine, depending on the cluster. Each Node is managed by the control plane. A Node can have multiple pods, and the Kubernetes control plane automatically handles scheduling the pods across the Nodes in the cluster. 
+- Every Kubernetes Node runs at least:
+	- Kubelet, a process responsible for communication between the Kubernetes control plane and the Node; it manages the Pods and the containers running on a machine.
+	- A container runtime (like Docker) responsible for pulling the container image from a registry, unpacking the container, and running the application.
+
 Nodes run user applications and can either be Linux or Windows Nodes. Linux Nodes run Linux applications, whereas Windows Nodes run 
 Windows applications.
 
