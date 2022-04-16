@@ -72,3 +72,48 @@ cloud today and not have to stick with that decision for the rest of your life.
 - Consider the process of sending goods via a courier service. You package the goods in the courier’s standard packaging, put a label on it, and hand it over to the courier the courier abstracts everything else and takes care of scheduling and other logistics.
 - It’s the same for apps on Kubernetes. You package the app as a container, give it a declarative manifest, and let Kubernetes take care of deploying it and keeping it running. You also get a rich set of tools and APIs that let you introspect (observe and examine) your app. It’s a beautiful thing.
  
+
+
+## Kubernetes Principles of Operation
+ 
+### Kubernetes From 40K Feet
+At the highest level, Kubernetes is two things:
+- A cluster for running applications.
+- An orchestrator of cloud-native microservices apps.
+
+
+**Kubernetes as a cluster**
+ - Kubernetes is like any other cluster – a bunch of nodes and a control plane. The control plane exposes an API and 
+ records the state in a persistent store; it also has a scheduler for assigning work to nodes. Nodes are where application 
+ services run.
+ - It can be useful to think of the control plane as the brains of the cluster and the nodes as the muscle. In this analogy, 
+ the control plane is the brain because it implements all of the important features, such as auto-scaling and zero-downtime 
+ rolling updates. The nodes are the muscle because they do the every-day hard work of executing application code. 
+ 
+**Kubernetes as an orchestrator**
+ - Orchestrator is just a fancy word for a system that takes care of deploying and managing applications.
+
+
+
+#### How it works
+- To make this happen, you start out with an app; you package it up and give it to the cluster (Kubernetes). The cluster is made up of one or more masters and a bunch of nodes.
+- The masters, sometimes called heads or head nodes, are in charge of the cluster. This means they make scheduling decisions, perform monitoring, implement changes, respond to events, and more. For these reasons, we often refer to the masters as the control plane.
+- The nodes are where application services run, and we sometimes call them the data plane. Each node has a reporting line back to the masters and constantly watches for new work assignments.
+
+![Screenshot 2022-04-16 at 4 01 08 PM](https://user-images.githubusercontent.com/22169012/163671604-eac58ccf-572a-4019-9f2b-278ccee95d8d.png)
+
+```
+To run applications on a Kubernetes cluster, we follow this simple pattern:
+- Write the application as small independent microservices in our favorite languages.
+- Package each microservice in its own container.
+- Wrap each container in its own Pod.
+- Deploy Pods to the cluster via higher-level controllers, such as, Deployments, DaemonSets, StatefulSets, CronJobs etc.
+ -  Deployments offer scalability and rolling updates.   
+ -  DaemonSets run one instance of a service on every node in the cluster.  
+ -  StatefulSets are for stateful application components, and CronJobs are for short-lived tasks that need to run at set times.
+```
+
+Kubernetes likes to manage applications **declaratively**. This is a pattern where you describe how you want your application to 
+look and feel in a set of YAML files. You POST these files to Kubernetes, then sit back while Kubernetes makes it all happen.
+
+But it doesn’t stop there. Because the declarative pattern tells Kubernetes how an application should look, Kubernetes can watch it and make sure things don’t stray from what you asked for. If something isn’t as it should be, Kubernetes tries to fix it.
