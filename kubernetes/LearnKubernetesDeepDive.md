@@ -212,3 +212,22 @@ The last piece of the node puzzle is the kube-proxy. This runs on every node in 
 - The cluster’s DNS service has a static IP address that is hard-coded into every Pod on the cluster, meaning all containers and Pods know how to find it. Every new service is automatically registered with the cluster’s DNS so that all components in the cluster can find every Service by name. Some other components that are registered with the cluster DNS are StatefulSets and the individual Pods that a StatefulSet manages.
  
 ![Screenshot 2022-04-16 at 7 12 23 PM](https://user-images.githubusercontent.com/22169012/163677200-efcb14dc-8718-4b61-9aab-17e6cd8c08bc.png)
+
+
+### Packaging Apps for Kubernetes
+
+For an application to run on a Kubernetes cluster, it needs to tick a few boxes. These include:
+1. Being packaged as a container
+2. Being wrapped in a Pod
+3. Being deployed via a declarative manifest file
+
+It goes like this: you write an application service in a language of your choice. You build it into a container image
+and store it in a registry. At this point, the application service is containerized.  
+
+Next, you define a Kubernetes Pod to run the containerized application. Pod is just a wrapper that allows a container to
+run on a Kubernetes cluster. Once you’ve defined the Pod, you’re ready to deploy it on the cluster.
+
+#### Deployments
+- It is possible to run a stand-alone Pod on a Kubernetes cluster, but the preferred model is to deploy all Pods via higher-level controllers. The most common controller is the Deployment. It offers scalability, self-healing, and rolling updates. You define Deployments in YAML manifest files that specify things like which image to use and how many replicas to deploy.
+
+- Once everything is defined in the Deployment YAML file, you POST it to the API server as the desired state of the application and let Kubernetes implement it.
