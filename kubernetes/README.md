@@ -282,8 +282,9 @@ spec:
 - **name** in metadata represents the name of deployment
 	- If you trigger kubectl get deployments command you will get this name (i.e., qsk-deploy)
 - **replicas** in spec represents how pod replicas is required
-- 
-		
+- **containerPort** represents the Network Port
+- **image** is your Docker Image
+ 		
 	
 This nesting, or wrapping, is important in understanding how everything works.
 - The container provides the OS and other application dependencies.
