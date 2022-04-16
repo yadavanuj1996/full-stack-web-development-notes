@@ -291,7 +291,7 @@ spec:
 - **replicas** in spec represents how pod replicas is required
 - **containerPort** represents the Network Port
 - **image** is your Docker Image
- 		
+
 	
 This nesting, or wrapping, is important in understanding how everything works.
 - The container provides the OS and other application dependencies.
@@ -299,6 +299,10 @@ This nesting, or wrapping, is important in understanding how everything works.
 - The Deployment provides cloud-native features, including self-healing.
 
 ![Screenshot 2022-04-14 at 9 53 42 AM](https://user-images.githubusercontent.com/22169012/163313284-9d251c3e-1f57-4457-b3c6-0e741588291a.png)
+```	
+NOTE: Deployments wrap a Pod spec, which in turn wraps a container, which in turn
+      houses an application and its dependencies.
+```
 
 	
 #### Namespaces
