@@ -297,3 +297,31 @@ The point is, a Kubernetes Pod is a construct for running one or more containers
 - A single Pod can only be scheduled to a single node. This is also true of multi-container Pods – all containers in the same Pod will run on the same node.
 
 
+#### Deployments
+- Most of the time you’ll deploy Pods indirectly via a higher-level controller. Examples of higher-level controllers include, Deployments, DaemonSets, and StatefulSets.
+- For example, a Deployment is a higher-level Kubernetes object that wraps around a particular Pod and adds features such as scaling, zero-downtime updates, and versioned rollbacks.
+- Behind the scenes, Deployments, DaemonSets and StatefulSets implement a controller and a watch loop that is constantly observing the cluster making sure that current state matches the desired state.
+
+#### Services
+- We’ve just learned that Pods are mortal and can die. However, if they’re managed via Deployments or DaemonSets, they get replaced when they fail. But replacements come with totally different IP addresses. This also happens when you perform scaling operations – scaling up adds new Pods with new IP addresses, whereas scaling down takes existing Pods away. Events like these cause a lot of IP churn.
+
+- The point I’m making is that Pods are unreliable, which poses a challenge. Assume you’ve got a microservices app with a bunch of Pods performing video rendering. How will this work if other parts of the app that need to use the rendering service cannot rely on the rendering Pods being there when they need them?
+
+- This is where Services come into play. Services provide reliable networking for a set of Pods.
+
+![Screenshot 2022-04-16 at 8 17 02 PM](https://user-images.githubusercontent.com/22169012/163679486-1b0eab9f-1045-41f1-888d-3a81386d3103.png)
+
+-The Kubernetes Service is providing a reliable name and IP and is load balancing requests to the two renderer Pods behind it.
+
+- Digging into a bit more detail, Services are fully fledged objects in the Kubernetes API – just like Pods and Deployments. They have a front end that consists of a stable DNS name, IP address, and port. On the back end, they load balance across a dynamic set of Pods. As Pods come and go, the Service observes this, automatically updates itself, and continues to provide that stable networking endpoint.
+
+- The same applies if you scale the number of Pods up or down. New Pods are seamlessly added to the Service and will receive traffic. Terminated Pods are seamlessly removed from the Service and will not receive traffic.
+
+- That’s the job of a Service – it’s a stable network abstraction point that provides TCP and UDP load-balancing across a dynamic set of Pods.
+
+- As they operate at the TCP and UDP layer, Services do not possess application intelligence and cannot provide application-layer host and path routing. For that, you need an Ingress, which understands HTTP and provides host and path-based routing.
+
+#### Connecting Pods to Services
+- Services use labels and a label selector to know which set of Pods to load-balance traffic to. The Service has a label selector that is a list of all the labels a Pod must possess in order for it to receive traffic from the Service.
+- One final thing about Services. They only send traffic to healthy Pods. This means a Pod that is failing health checks will not receive traffic from the Service.
+- Those are the basics. Services bring stable IP addresses and DNS names to the unstable world of Pods.
