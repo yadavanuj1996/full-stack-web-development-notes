@@ -226,6 +226,7 @@ spec:
 - **metadata**: The metadata block lists the Pod name and a single label
 	- **name**: helps us identify and manage the Pod when it is running
 	- **label**: (project = qsk-course) is useful for organizing Pods and associating them with other objects, such as load balancers. 
+- **containerPort**: containerPort defines the port on which app can be reached out inside the container.
 	
 	
 ##### Service Deployment
@@ -257,7 +258,7 @@ spec:
 	- LoadBalancer
 - ports
 	- **port**: Port exposes the Kubernetes service on the specified port within the cluster. Other pods within the cluster can communicate with this server on the specified port.
-	- **targetPort**: TargetPort is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also.
+	- **targetPort**: TargetPort is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also (in pod using containerPod).
  
  **Other points**
 - Kubernetes uses a dedicated Service object to provide network connectivity to applications running in Pods
