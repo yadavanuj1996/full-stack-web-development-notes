@@ -54,6 +54,21 @@ Kubernetes deploys and manages (orchestrates) applications that are packaged and
 are built in ways (cloud-native microservices) that allow them to scale, self-heal, and be updated in line with modern business requirements.
 
 
+### The Operating System of the Cloud
+Kubernetes has emerged as the de-facto platform for deploying and managing cloud-native applications. In many ways, 
+it’s like an operating system (OS) for the cloud. Consider this:
+- You install a traditional OS (Linux or Windows) on a server, and the OS abstracts the physical server’s resources and schedules processes etc.
+- You install Kubernetes on a cloud, and it abstracts the cloud’s resources and schedules the various microservices of cloud-native applications.
 
+In the same way that Linux abstracts the hardware differences of different server platforms, Kubernetes abstracts the
+differences between different private and public clouds. Net result: as long as you’re running Kubernetes, it doesn’t matter 
+if the underlying systems are on-premises in your own data center, edge clusters, or in the public cloud.
 
+With this in mind, Kubernetes enables a true hybrid cloud, allowing you to seamlessly move and balance workloads across multiple 
+different public and private cloud infrastructures. You can also migrate to and from different clouds, meaning you can choose a 
+cloud today and not have to stick with that decision for the rest of your life.
 
+#### A quick analogy
+- Consider the process of sending goods via a courier service. You package the goods in the courier’s standard packaging, put a label on it, and hand it over to the courier the courier abstracts everything else and takes care of scheduling and other logistics.
+- It’s the same for apps on Kubernetes. You package the app as a container, give it a declarative manifest, and let Kubernetes take care of deploying it and keeping it running. You also get a rich set of tools and APIs that let you introspect (observe and examine) your app. It’s a beautiful thing.
+ 
