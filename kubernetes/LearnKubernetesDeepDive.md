@@ -129,6 +129,8 @@ services that make up the control plane of the cluster.
 - Generally speaking, running 3 or 5 replicated masters in an HA configuration is recommended.
 - It’s also considered a good practice not to run user applications on masters. This allows masters to concentrate entirely on managing the cluster.
 
+![Screenshot 2022-04-16 at 7 01 55 PM](https://user-images.githubusercontent.com/22169012/163676866-018e80c1-37cf-4fe7-b3e4-9a895a6797e5.png)
+
 
 ##### The API server
 The API server is the Grand Central Station of Kubernetes. All communication, between all components, must go through the API server,  it’s important to understand that internal system components, as well as external user components, all communicate via the same API.
