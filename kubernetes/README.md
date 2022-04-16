@@ -180,6 +180,8 @@ Although Kubernetes orchestrates and runs containers, these containers must be w
 
 
 ## Kubernetes Commands
+
+#### Commands
 kubectl is a command-line utility used to communicate with kubernetes cluster
 - kubectl get nodes
 - kubectl apply -f pod.yml (To create a pod from pod.yml file)
@@ -192,7 +194,13 @@ kubectl is a command-line utility used to communicate with kubernetes cluster
 - kubectl delete svc cloud-lb (To delete a service)
 - kubectl delete pod first-pod (To delete a pod)
 - kubectl config view
-	
+
+```
+kubectl get - list resources. 
+kubectl describe - show detailed information about a resource. 
+kubectl logs - print the logs from a container in a pod. 
+kubectl exec - execute a command on a container in a pod. 
+```
 
 
 ##### Pod Deployment
