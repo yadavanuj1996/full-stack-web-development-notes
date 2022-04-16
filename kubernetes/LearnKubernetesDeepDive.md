@@ -204,3 +204,11 @@ Note: containerd (pronounced “container-dee”) is the container supervisor an
 
 #### Kube-proxy 
 The last piece of the node puzzle is the kube-proxy. This runs on every node in the cluster and is responsible for local cluster networking. For example, it makes sure each node gets its own unique IP address and implements local IPTABLES or IPVS rules to handle routing and load-balancing of traffic on the Pod network.
+
+
+### Kubernetes DNS
+- As well as the various control plane and node components, every Kubernetes cluster has an internal DNS service that is vital to operations.
+
+- The cluster’s DNS service has a static IP address that is hard-coded into every Pod on the cluster, meaning all containers and Pods know how to find it. Every new service is automatically registered with the cluster’s DNS so that all components in the cluster can find every Service by name. Some other components that are registered with the cluster DNS are StatefulSets and the individual Pods that a StatefulSet manages.
+ 
+![Screenshot 2022-04-16 at 7 12 23 PM](https://user-images.githubusercontent.com/22169012/163677200-efcb14dc-8718-4b61-9aab-17e6cd8c08bc.png)
