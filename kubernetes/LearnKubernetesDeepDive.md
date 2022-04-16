@@ -260,3 +260,40 @@ In Kubernetes, the declarative model works like this:
 - The declarative story doesn’t end there – things go wrong, and things change. When they do, the current state of the cluster no longer matches the desired state. As soon as this happens, Kubernetes kicks into action and attempts to bring the two back into harmony.
 
 
+### Pods
+```
+A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, 
+and a specification for how to run the containers. A Pod's contents are always co-located and co-scheduled, and run in a 
+shared context.
+```
+In the VMware world, the atomic unit of scheduling is the virtual machine (VM). In the Docker world, it’s the container. Well, in the Kubernetes world, it’s the Pod.
+
+It’s true that Kubernetes runs containerized apps. However, you cannot run a container directly on a Kubernetes cluster – containers must always run inside of Pods.
+
+![Screenshot 2022-04-16 at 7 48 33 PM](https://user-images.githubusercontent.com/22169012/163678489-ce11313f-b200-4527-8578-dd87012f0812.png)
+
+
+#### Pods and containers
+The simplest model is to run a single container per Pod. However, there are advanced use cases that run multiple containers inside a single Pod.
+The point is, a Kubernetes Pod is a construct for running one or more containers.
+
+##### Pod anatomy
+- At the highest level, a Pod is a ring-fenced environment to run containers. The Pod itself doesn’t actually run anything, it’s just a sandbox for hosting containers. Keeping it high level, you ring-fence an area of the host OS, build a network stack, create a bunch of kernel namespaces, and run one or more containers in it. That’s a Pod.
+
+- If you’re running multiple containers in a Pod, they all share the same Pod environment. This includes things like the IPC namespace, shared memory, volumes, and network stack. As an example, this means that all containers in the same Pod will share the same IP address (the Pod’s IP). 
+
+- Multi-container Pods are ideal when you have requirements for tightly coupled containers that may need to share memory and storage. However, if you don’t need to tightly couple your containers, you should put them in their own Pods and loosely couple them over the network. This keeps things clean by having each Pod dedicated to a single task. It also creates a lot of network traffic that is unencrypted. You should seriously consider using a service mesh to secure traffic between Pods and application services.
+
+
+##### Pods as the unit of scaling
+- Pods are also the minimum unit of scaling in Kubernetes. If you need to scale your app, you add or remove Pods. You do not scale by adding more containers to an existing Pod. Multi-container Pods are only for situations where two different, but complementary, containers need to share resources.
+
+![Screenshot 2022-04-16 at 7 52 04 PM](https://user-images.githubusercontent.com/22169012/163678635-b715bf20-0f6f-47dd-8eb8-c6b99107c89d.png)
+
+
+##### Pods: atomic operations
+- The deployment of a Pod is an atomic operation. This means that a Pod is only considered ready for service when all of its containers are up and running. There is never a situation where a partially deployed Pod will service requests. The entire Pod either comes up and is put into service, or it doesn’t, and it fails.
+
+- A single Pod can only be scheduled to a single node. This is also true of multi-container Pods – all containers in the same Pod will run on the same node.
+
+
