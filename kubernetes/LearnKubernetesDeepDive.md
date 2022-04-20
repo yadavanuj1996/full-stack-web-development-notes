@@ -325,3 +325,26 @@ The point is, a Kubernetes Pod is a construct for running one or more containers
 - Services use labels and a label selector to know which set of Pods to load-balance traffic to. The Service has a label selector that is a list of all the labels a Pod must possess in order for it to receive traffic from the Service.
 - One final thing about Services. They only send traffic to healthy Pods. This means a Pod that is failing health checks will not receive traffic from the Service.
 - Those are the basics. Services bring stable IP addresses and DNS names to the unstable world of Pods.
+
+## Pod Theory
+-  All containers in a Pod have access to the same volumes, the same memory, the same IPC sockets, networking etc
+- Each Pod creates its own network namespace. This includes a single IP address, a single range of TCP and UDP ports, and a single routing table. If a Pod has a single container, that container has full access to the IP, port range, and routing table. If it’s a multi-container Pod, all containers in the Pod will share the IP, port range, and routing table.
+
+### Access to pods'
+- Every Pod in the cluster has its own IP address that’s fully routable on the Pod network. Because every Pod gets its own routable IP, every Pod on the Pod network can talk directly to every other Pod without the need for nasty port mappings.
+- As previously mentioned, intra-Pod communication – where two containers in the same Pod need to communicate – can happen via the Pod’s localhost interface.
+- If you need to make multiple containers in the same Pod available to the outside world, you can expose them on individual ports. Each container needs its own port, and two containers in the same Pod cannot use the same port.
+- In summary. It’s all about the Pod! The Pod gets deployed, the Pod gets the IP, the Pod owns all of the namespaces. The Pod is at the center of the Kuberverse.
+
+### Pods and cgroups
+- At a high level, Control Groups (cgroups) are a Linux kernel technology that prevents individual containers from consuming all of the available CPU, RAM, and IOPS on a node. You could say that cgroups actively police resource usage.
+- Individual containers have their own cgroup limits.
+- This means it’s possible for two containers in the same Pod to have their own set of cgroup limits. This is a powerful and flexible model. If we assume the typical multi-container Pod example, where a web server that utilizes a file synchronizer, you could set a cgroup limit on the file sync container so that it has access to less resources than the web service container. This might reduce the risk of it starving the web service container of CPU and memory.
+
+### Pod lifecycle
+```
+The lifecycle of a typical Pod goes something like this: you define it in a YAML manifest file and POST the manifest to the API server. Once there, the contents of the manifest are persisted to the cluster store as a record of intent (desired state), and the Pod is scheduled to a healthy node with enough resources. Once it’s scheduled to a node, it enters the pending state while the container runtime on the node downloads images and starts any containers. The Pod remains in the pending state until all of its resources are up and ready. Once everything’s up and ready, the Pod enters the running state. Once it has completed all of its tasks, it gets terminated and enters the succeeded state.
+```
+
+- Pods that are deployed via Pod manifest files are singletons – they are not managed by a controller that might add features such as auto-scaling and self-healing capabilities. For this reason, we almost always deploy Pods via higher-level controllers such as Deployments and DaemonSets, as these can reschedule Pods when they fail.
+- This is one of the main reasons you should design your applications so that they don’t store state in Pods. It’s also why we shouldn’t rely on individual Pod IPs.
