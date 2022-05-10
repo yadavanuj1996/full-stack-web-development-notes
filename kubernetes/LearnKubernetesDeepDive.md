@@ -348,3 +348,16 @@ The lifecycle of a typical Pod goes something like this: you define it in a YAML
 
 - Pods that are deployed via Pod manifest files are singletons – they are not managed by a controller that might add features such as auto-scaling and self-healing capabilities. For this reason, we almost always deploy Pods via higher-level controllers such as Deployments and DaemonSets, as these can reschedule Pods when they fail.
 - This is one of the main reasons you should design your applications so that they don’t store state in Pods. It’s also why we shouldn’t rely on individual Pod IPs.
+
+
+### Endpoints
+- An endpoint is an resource that gets IP addresses of one or more pods dynamically assigned to it, along with a port. An endpoint can be viewed using kubectl get endpoints.
+
+- An endpoint resource is referenced by a kubernetes service, so that the service has a record of the internal IPs of pods in order to be able to communicate with them.
+
+- We need endpoints as an abstraction layer because the 'service' in kubernetes acts as part of the orchestration to ensure distribution of traffic to pods (including only sending traffic to healthy pods). For example if a pod dies, a replacement pod will be generated, with a new IP address. Conceptually, the dead pod IP will be removed from the endpoint object, and the IP of the newly created pod will be added, so that the service is updated and 'knows' which pods to connect to.
+
+- An easy way to investigate and see the relationship is:
+  - kubectl describe pods - and observe the IP addresses of your pods
+  - kubectl get ep - and observe the IP addresses assigned to your endpoint
+  - kubectl describe service myServiceName - and observe the Endpoints associated with your service
