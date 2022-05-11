@@ -28,3 +28,4 @@ The data types that are supported in values:
   - Set offers constant time performance for adding and removing operations. We can use set to store data where uniqueness matters, e.g., storing the number of unique visitors on our website.  
 - Sorted set
 - Hash
+  - ![Screenshot 2022-05-11 at 5 38 07 PM](https://user-images.githubusercontent.com/22169012/167846147-e32fe92a-1f26-431e-8561-aba3b7fe6985.png)
