@@ -44,7 +44,25 @@ As we discussed earlier, Redis can also be used as a message queue. The publishe
 
 ![Screenshot 2022-05-11 at 5 42 57 PM](https://user-images.githubusercontent.com/22169012/167846959-e3c21d4b-f607-4262-9141-73a6a8b41700.png)
 
-- To Subscribe to a channel
-  - SUBSCRIBE channel_name
-- To Publish to a channel
-  - PUBLISH channel_name message
+- SUBSCRIBE channel_name
+  - To Subscribe to a channel
+- PUBLISH channel_name message
+  - To Publish to a channel
+- UNSUBSCRIBE channel
+  - To Unsubscribe to a channel
+- PSUBSCRIBE string*
+  - Subscribing to a group of channels#
+- PUNSUBSCRIBE string*
+  - Unsubscribing from a group of channels 
+
+```
+It is possible for different clients to subscribe to the same channel. Whenever a publisher publishes 
+this channel, all the receivers receive the message.
+```
+
+#### Commands
+- redis-server
+  - To start redis server
+- redis-cli
+  - To start redis cli  
+- PSUBSCRIBE string*
