@@ -115,3 +115,11 @@ Partitioning the data will not solve the problem of data safety. If a node goes 
 
 - A TTL (time to live) can be set for each key that is cached on the client-side. After a certain time period has elapsed, the key will be automatically removed from the cache, and the client will need to refer to the database to get the value. Although this is a simple solution, it can only be used in those situations where the data is changed frequently. If the data is a few minutes old, then it does not matter. If the application is data sensitive and data is changing frequently, then this technique is not useful.
 Another method is to use the PUB/SUB model of Redis to send invalidate messages to the client. Whenever a key is changed. the server will send invalidate messages to the clients. This will inform the clients that the key has been changed, and it should be deleted from the cache. The problem with this approach is that the server will need to send the message to all clients every time a key is changed, which can be very costly from the bandwidth point of view.
+
+
+#### Client-Side caching in Redis
+Redis provides support for client-side caching, called tracking. There are two different approaches that can be used:
+- Default mode: In this approach, the server stores the information regarding which key is stored by which client. By doing this, if a key is changed, the server sends the message to only those clients who have cached that key. Although this saves a lot of bandwidth, it consumes some memory on the server side. The client needs to enable the tracking as it is not enabled by default.
+
+- Broadcasting mode: In the second approach, the server does not need to keep track of the keys cached by the clients. The clients subscribe to key prefixes and will receive a notification message every time a key matching such prefix is touched. If the client does not specify any prefix, the invalidation message is received for each and every key. This approach saves a lot of memory on the server-side but can result in more bandwidth usage.
+
