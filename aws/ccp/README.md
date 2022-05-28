@@ -20,3 +20,5 @@ Scaled scoring ( 70% roughly required for passing)
   - 90 sec per question
   - Seat time: 120 mins
 - Exam Validity: 3 years
+
+
