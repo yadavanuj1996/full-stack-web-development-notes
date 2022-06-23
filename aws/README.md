@@ -58,3 +58,11 @@ of using the long-term credentials associated with an IAM user.
 arn:aws:iam::account-ID-without-hyphens:user/Richard
 
 - A unique identifier for the user. This ID is returned only when you use the **API**, Tools for Windows PowerShell, or **AWS CLI** to create the user; you do not see this ID in the console.
+
+### Users and credentials
+- Console password: A password that the user can type to sign in to interactive sessions such as the AWS Management Console. Disabling the password (console access) for a user prevents them from signing in to the AWS Management Console using their user name and password. It does not change their permissions or prevent them from accessing the console using an assumed role.
+- Access keys: A combination of an access key ID and a secret access key. You can assign two to a user at a time. These can be used to make programmatic calls to AWS. If the user has active access keys, they continue to function and allow access through the AWS CLI, Tools for Windows PowerShell, AWS API, or the AWS Console Mobile Application.
+- SSH keys for use with CodeCommit
+- Server certificates
+
+You can choose the credentials that are right for your IAM user. When you use the AWS Management Console to create a user, you must choose to at least include a console password or access keys. By default, a brand new IAM user created using the AWS CLI or AWS API has no credentials of any kind. You must create the type of credentials for an IAM user based on the needs of your user.
