@@ -45,3 +45,16 @@ of using the long-term credentials associated with an IAM user.
 - You created an AWS account and you're the only person who works in your account.
 - Create IAM users for the individuals who need access to your AWS resources, assign appropriate permissions to each user, and give each user his or her own credentials. We strongly recommend that you never share credentials among multiple users.
 
+
+### When to create an IAM role (instead of a user)
+- You're creating an application that runs on an Amazon Elastic Compute Cloud (Amazon EC2) instance and that application makes requests to AWS
+- You're creating an app that runs on a mobile phone and that makes requests to AWS.
+- Users in your company are authenticated in your corporate network and want to be able to use AWS without having to sign in again—that is, you want to allow users to federate into AWS.
+
+### How AWS identifies an IAM user
+- A "friendly name show in management console" for the user such as Richard or Anaya.
+
+- An Amazon Resource Name (ARN) for the user. You use the ARN when you need to uniquely identify the user across all of AWS. ex:-
+arn:aws:iam::account-ID-without-hyphens:user/Richard
+
+- A unique identifier for the user. This ID is returned only when you use the **API**, Tools for Windows PowerShell, or **AWS CLI** to create the user; you do not see this ID in the console.
