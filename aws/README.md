@@ -70,3 +70,7 @@ You can choose the credentials that are right for your IAM user. When you use th
 ### Permissions Boundary
 You can also add a permissions boundary to your users. A permissions boundary is an advanced feature that allows you to use AWS managed policies to limit the maximum permissions that an identity-based policy can grant to a user or role.
 
+
+### Example scenario using separate development and production accounts
+
+![roles-usingroletodelegate](https://user-images.githubusercontent.com/22169012/175478547-13706e92-001e-4766-815e-b24f8887e0bd.png)
