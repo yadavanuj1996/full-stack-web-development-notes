@@ -80,3 +80,13 @@ AWS IAM Access Analyzer provides the following capabilities:
 - Access Analyzer helps identify resources in your organization and accounts that are shared with an external entity.
 - Access Analyzer validates IAM policies against policy grammar and best practices.
 - Access Analyzer generates IAM policies based on access activity in your AWS CloudTrail logs.
+
+#### AWS Service Role
+Many AWS services require that you use roles to control what that service can access. A role that a service assumes to perform actions on your behalf is called a service role. When a role serves a specialized purpose for a service, it can be categorized as a service role for EC2 instances, or a service-linked role. 
+
+```
+A role requires two policies: a role trust policy that specifies the principal that is allowed to assume 
+the role and a permissions policy that specifies what can be done with the role. A role trust policy
+is the only type of resource-based policy in IAM. Other AWS services have resource-based policies, such
+as an Amazon S3 bucket policy.
+```
