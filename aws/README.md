@@ -72,5 +72,11 @@ You can also add a permissions boundary to your users. A permissions boundary is
 
 
 ### Example scenario using separate development and production accounts
-
 ![roles-usingroletodelegate](https://user-images.githubusercontent.com/22169012/175478547-13706e92-001e-4766-815e-b24f8887e0bd.png)
+
+
+### AWS IAM Access Analyzer
+AWS IAM Access Analyzer provides the following capabilities:
+- Access Analyzer helps identify resources in your organization and accounts that are shared with an external entity.
+- Access Analyzer validates IAM policies against policy grammar and best practices.
+- Access Analyzer generates IAM policies based on access activity in your AWS CloudTrail logs.
