@@ -361,3 +361,16 @@ The lifecycle of a typical Pod goes something like this: you define it in a YAML
   - kubectl describe pods - and observe the IP addresses of your pods
   - kubectl get ep - and observe the IP addresses assigned to your endpoint
   - kubectl describe service myServiceName - and observe the Endpoints associated with your service
+
+
+
+## Using RBAC Authorization (API Access Control)
+- Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within your organization.
+
+The RBAC API declares four kinds of Kubernetes object: 
+- Role
+- ClusterRole
+- RoleBinding 
+- ClusterRoleBinding.
+
+An RBAC Role or ClusterRole contains rules that represent a set of permissions. Permissions are purely additive (there are no "deny" rules).
