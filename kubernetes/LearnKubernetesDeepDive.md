@@ -366,11 +366,45 @@ The lifecycle of a typical Pod goes something like this: you define it in a YAML
 
 ## Using RBAC Authorization (API Access Control)
 - Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within your organization.
+- Documentation URL: https://kubernetes.io/docs/reference/access-authn-authz/rbac/#api-overview
 
+### RBAC API Objects
 The RBAC API declares four kinds of Kubernetes object: 
 - Role
 - ClusterRole
 - RoleBinding 
 - ClusterRoleBinding.
 
-An RBAC Role or ClusterRole contains rules that represent a set of permissions. Permissions are purely additive (there are no "deny" rules).
+#### Role and ClusterRole
+- An RBAC Role or ClusterRole contains rules that represent a set of permissions. Permissions are purely additive (there are no "deny" rules).
+- A Role always sets permissions within a particular namespace; when you create a Role, you have to specify the namespace it belongs in.
+- ClusterRole, by contrast, is a non-namespaced resource. The resources have different names (Role and ClusterRole) because a Kubernetes object always has to be either namespaced or not namespaced; it can't be both.
+
+ClusterRoles have several uses. You can use a ClusterRole to:
+1. define permissions on namespaced resources and be granted within individual namespace(s)
+2. define permissions on namespaced resources and be granted across all namespaces
+3. define permissions on cluster-scoped resources
+
+```
+If you want to define a role within a namespace, use a Role; if you want to define a role cluster-wide,
+use a ClusterRole.
+```
+
+- Role can be used to provide access to pods
+- ClusterRole can be used to provide access to cluster scoped-resources like nodes, non-resource endpoints (like /healthz), namespaced resources (like Pods) across all namespaces
+
+```
+For example: you can use a ClusterRole to allow a particular user to run kubectl get pods --all-namespaces
+```
+
+#### RoleBinding and ClusterRoleBinding
+- A role binding grants the permissions defined in a role to a user or set of users.
+- It holds a list of subjects (users, groups, or service accounts), and a reference to the role being granted.
+- A RoleBinding grants permissions within a specific namespace whereas a ClusterRoleBinding grants that access cluster-wide.
+
+```
+After you create a binding, you cannot change the Role or ClusterRole that it refers to. If you try to change 
+a binding's roleRef, you get a validation error. If you do want to change the roleRef for a binding, you need 
+to remove the binding object and create a replacement.
+```
+
