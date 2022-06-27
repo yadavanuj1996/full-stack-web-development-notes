@@ -408,3 +408,5 @@ a binding's roleRef, you get a validation error. If you do want to change the ro
 to remove the binding object and create a replacement.
 ```
 
+#### To check all the cluster configured:
+kubectl config view
