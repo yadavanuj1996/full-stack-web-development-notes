@@ -55,7 +55,11 @@
 
    **Press Ctrl + PQ** for exiting the terminal of container and coming back to shell. 
          
-   **We can also start a container with docker service create**         
+   **We can also start a container with docker service create**     
+   
+#### docker container run -p 8000:8080 -d yadavanuj/node-web-app
+- Running your image with -d runs the container in detached mode, leaving the container running in the background. The -p flag redirects a public port to a private port inside the container.
+- In this command, Docker mapped the 8080 port inside of the container to the port 8000 on your machine.
          
 ### vi) docker container ls
          To list all the running containers
