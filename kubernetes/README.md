@@ -343,3 +343,10 @@ NOTE: Deployments wrap a Pod spec, which in turn wraps a container, which in tur
 - **LoadBalancer**: Exposes the service externally using a cloud provider’s load balancer. NodePort and ClusterIP services, to which the external load balancer will route, are automatically created.
 
 	
+### To Check if pod is linked to a service 
+- The best way is follow labels and selectros
+- Your pod have a label section, and the service use it in the selector section
+- You can find the selectors of your service with:
+	- kubectl describe svc cass-operator-service
+- You can  list your labels with:
+	- kubectl get pods --show-labels
