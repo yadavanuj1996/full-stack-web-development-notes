@@ -410,3 +410,9 @@ to remove the binding object and create a replacement.
 
 #### To check all the cluster configured:
 kubectl config view
+
+#### To get list of user accounts of kubernetes
+kubectl get clusterroles.rbac.authorization.k8s.io --all-namespaces
+kubectl get roles.rbac.authorization.k8s.io --all-namespaces
+
+(https://stackoverflow.com/questions/69932281/kubectl-command-to-return-a-list-of-all-user-accounts-from-kubernetes)
