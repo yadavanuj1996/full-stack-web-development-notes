@@ -415,4 +415,8 @@ kubectl config view
 kubectl get clusterroles.rbac.authorization.k8s.io --all-namespaces
 kubectl get roles.rbac.authorization.k8s.io --all-namespaces
 
-(https://stackoverflow.com/questions/69932281/kubectl-command-to-return-a-list-of-all-user-accounts-from-kubernetes)
+### Other links
+- https://stackoverflow.com/questions/69932281/kubectl-command-to-return-a-list-of-all-user-accounts-from-kubernetes
+- RBAC with Kubernetes in Minikube
+    - https://medium.com/@HoussemDellai/rbac-with-kubernetes-in-minikube-4deed658ea7b
+
