@@ -1,7 +1,7 @@
 ## GCP
 
 
-### To add dockeer iamge in GCR (Google Container Registry)
+### To add docker iamge in GCR (Google Container Registry)
 - To push images to your private registry hosted by gcr, you need to tag the images with a registry name. The format is [hostname]/[project-id]/[image]:[tag].
 - For gcr:
   - [hostname]= gcr.io
