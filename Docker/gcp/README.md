@@ -13,3 +13,8 @@
 - Tag docker image
   - docker tag node-app:0.2 gcr.io/[project-id]/node-app:0.2
 - [hostname]/[project-id]/[image]:[tag]
+- Push docker image
+  - docker push gcr.io/[project-id]/node-app:0.2
+- Pull docker image
+  - docker pull gcr.io/[project-id]/node-app:0.2
+
