@@ -93,7 +93,8 @@
    i)   Clone a repo **git clone https://github.com/nigelpoulton/psweb.git**
    ii)  Go in the psweb folder, this is a basic node js web application
    iii) nano Dockerfile, to read the contents of Dockerfile
-   iv)  Build docker image from the application code using **docker image build -t test:latest .**
+   iv)  Build docker image from the application code using docker image build -t test:latest .
+      - The -t is to name and tag an image with the name:tag syntax.
    v)   Check newly build docker image using **docker image ls** , this image contains all the app code along with the dependencies
    vi)  Run a container using the docker image **docker container run -d --name web1 --publist 8080:8080 test:latest**
    vii) Open a web browser and navigate to the DNS name or IP address of the Docker host that you are running the container from,
