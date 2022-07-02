@@ -42,6 +42,8 @@
          
 ### v) docker container run
          To run a docker container
+ 
+### vi) docker logs container_id
          
 ####     docker container run -it ubuntu:latest /bin/bash
 
