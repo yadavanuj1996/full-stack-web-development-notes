@@ -110,7 +110,13 @@
    To pause a Docker container
 ### xiii) docker image history image_name_with_tag
     To check history of a docker image
-   
+### xiv) docker push [container_id]
+         - If we want to fetch from a container registry other than docker hub you have to provide hostname and project id as well [hostname]/[project-id]/[image]:[tag]
+### xv) docker pull gcr.io/[project-id]/node-app:0.2
+         - To pull a docker image from google cloud registry
+         - docker pull educative/ddd-image will pull image ddd-image from educative account from docker hub.
+         
+         
 # Docker Engine
 
    In many ways, the Docker Engine is like a car engine; both are modular and created by connecting many small specialized parts:
