@@ -45,3 +45,7 @@
 - Deleting the cluster
   - gcloud container clusters delete [CLUSTER-NAME]
 
+
+
+#### Create Cluster with specifying no of nodes
+- gcloud container clusters create bootcamp --num-nodes 5 --scopes "https://www.googleapis.com/auth/projecthosting,storage-rw"
