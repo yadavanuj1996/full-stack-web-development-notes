@@ -49,3 +49,8 @@
 
 #### Create Cluster with specifying no of nodes
 - gcloud container clusters create bootcamp --num-nodes 5 --scopes "https://www.googleapis.com/auth/projecthosting,storage-rw"
+
+
+
+#### Get pods with docker image name/path
+kubectl get pods -o jsonpath --template='{range .items[*]}{.metadata.name}{"\t"}{"\t"}{.spec.containers[0].image}{"\n"}{end}'
