@@ -54,3 +54,6 @@
 
 #### Get pods with docker image name/path
 kubectl get pods -o jsonpath --template='{range .items[*]}{.metadata.name}{"\t"}{"\t"}{.spec.containers[0].image}{"\n"}{end}'
+
+#### To get all the clusters 
+gcloud container clusters list
