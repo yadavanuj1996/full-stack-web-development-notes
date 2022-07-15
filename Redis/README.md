@@ -123,3 +123,6 @@ Redis provides support for client-side caching, called tracking. There are two d
 
 - Broadcasting mode: In the second approach, the server does not need to keep track of the keys cached by the clients. The clients subscribe to key prefixes and will receive a notification message every time a key matching such prefix is touched. If the client does not specify any prefix, the invalidation message is received for each and every key. This approach saves a lot of memory on the server-side but can result in more bandwidth usage.
 
+
+#### Stop redis server on loca
+brew services stop redis
