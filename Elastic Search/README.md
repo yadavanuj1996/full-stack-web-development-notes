@@ -71,3 +71,16 @@ Curl request to search terms in index **product**:
 - curl -u elastic -X GET -H "Content-Type:application/json" https://elastic-test-course-deployment.es.asia-south1.gcp.elastic-cloud.com/products/_search -d '{"query": {"match_all": {}  }  }'
 - Specify the Content-Type header when adding a request body
 
+
+#### Sharding and scalability
+- Sharding is a way to divide indices into smaller pieces
+- Each piece is referred to as a shard
+- Sharding is done at the index level
+- The main purpose is to horizontally scale the data volume.
+- One shard can be placed on one node
+
+One index contains 600 Gb of data while the the cluster contains two nodes with 500 GB disk space, in such case the index size is greated than disk size
+of a node thus the index is divided into shards and each shard is placed divided amongst the two nodes.
+
+![IMG_9245](https://user-images.githubusercontent.com/22169012/185746391-30181f1f-aed7-4d62-b00f-4cacc607090e.jpg)
+
