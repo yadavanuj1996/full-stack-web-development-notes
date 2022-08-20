@@ -66,4 +66,8 @@ Curl Request to access elastic search cluster on elastic cloud
 - curl -u user_name elastic_search_endpoint
   - curl -u elastic https://elastic-test-course-deployment.es.asia-south1.gcp.elastic-cloud.com 
   - Pass password for the user
-- 
+
+Curl request to search terms in index **product**:
+- curl -u elastic -X GET -H "Content-Type:application/json" https://elastic-test-course-deployment.es.asia-south1.gcp.elastic-cloud.com/products/_search -d '{"query": {"match_all": {}  }  }'
+- Specify the Content-Type header when adding a request body
+
