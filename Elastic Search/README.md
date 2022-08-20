@@ -36,8 +36,14 @@ Other Usages:
   - Add existing data into elastic search using script.
 
 
-#### Basic Architecture of Elastic Search
-- On launch of a deployment a cluster is auto created and a node is launched in th multiple nodes are launched and each contains a part of data in elastic search.
+### Basic Architecture of Elastic Search
+#### Main Points:
+- Elastic search cluster is a collection of nodes that are responsible for storing data
+- Nodes referes to runnign instance of elastic search running on a virtual machine or docker
+- Data is stored as documents, that are JSON objects.
+- Documents are grouped together with indices.
+
+#### Other Points:
 - In prod env each node should run on different node/ virtual machine.
 - A Elastic Search Deployment contains clusters (at least one) and each cluster can contain multiple nodes.
 - Each unit of data stored in cluster is a document (json objects)
@@ -45,7 +51,7 @@ Other Usages:
 - Every document in elastic search is stored within an index  
   - An index groups document and provides configuration option that are related to availability and scalability.
 - **Index** is collection of documents with similar charactersticks and are logically related.
-- Ex:- People index (contains people details), Departments index (Contain departments - marketing)
-  - Search is run on indexes
+  - Ex:- People index (contains people details), Departments index (Contain departments - marketing)
+  - Search runs on indexes
 
 
