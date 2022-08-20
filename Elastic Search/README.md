@@ -34,5 +34,18 @@ Other Usages:
 - Ingesting data
   - When new data needs to be added in web application, along with the db add the data in elasticsearch as well
   - Add existing data into elastic search using script.
-- 
+
+
+#### Basic Architecture of Elastic Search
+- On launch of a deployment a cluster is auto created and a node is launched in th multiple nodes are launched and each contains a part of data in elastic search.
+- In prod env each node should run on different node/ virtual machine.
+- A Elastic Search Deployment contains clusters (at least one) and each cluster can contain multiple nodes.
+- Each unit of data stored in cluster is a document (json objects)
+  - On indexing a document the original json object is stored with a metadata that is used internally.
+- Every document in elastic search is stored within an index  
+  - An index groups document and provides configuration option that are related to availability and scalability.
+- **Index** is collection of documents with similar charactersticks and are logically related.
+- Ex:- People index (contains people details), Departments index (Contain departments - marketing)
+  - Search is run on indexes
+
 
