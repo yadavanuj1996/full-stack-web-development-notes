@@ -30,7 +30,9 @@ Other Usages:
 
 
 
-
-
-
+- Use client library for acessing elastic search from our web application backend
+- Ingesting data
+  - When new data needs to be added in web application, along with the db add the data in elasticsearch as well
+  - Add existing data into elastic search using script.
+- 
 
