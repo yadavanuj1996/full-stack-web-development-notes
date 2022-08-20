@@ -55,3 +55,15 @@ Other Usages:
   - Search runs on indexes
 
 
+
+Queries to try from kibana
+- GET /_cluster/health
+  - Get cluster health
+- GET _cat/indices?expand_wildcards=all
+  - Get indices  
+
+Curl Request to access elastic search cluster on elastic cloud
+- curl -u user_name elastic_search_endpoint
+  - curl -u elastic https://elastic-test-course-deployment.es.asia-south1.gcp.elastic-cloud.com 
+  - Pass password for the user
+- 
