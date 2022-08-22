@@ -210,3 +210,26 @@ POST /products/_update/100
   }
 }
 ```
+
+- Delete a document
+```
+DELETE /products/_doc/100
+```
+
+Reponse:
+```
+{
+  "_index": "products",
+  "_id": "100",
+  "_version": 8,
+  "result": "deleted",
+  "_shards": {
+    "total": 3,
+    "successful": 2,
+    "failed": 0
+  },
+  "_seq_no": 7,
+  "_primary_term": 1
+}
+```
+"result": "deleted" signifies that document is deleted.
