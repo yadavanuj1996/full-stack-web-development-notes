@@ -381,3 +381,89 @@ curl -H "Content-Type:application/x-ndjson" -XPOST -u username:password https://
     - Receives the output of tokenizer and add, remove or modify tokens, one examole is lowercase filter
     - Input: "I", "REALLY", "like", "beer"
     - Output: "i", "really", "like", "beer"
+
+- API to see analyze result
+```
+POST /_analyze
+{
+  "text": "2 guys walk into   a bar, both the third... DUCKS! :-)",
+  "analyzer": "standard"
+}
+```
+Response
+```
+{
+  "tokens": [
+    {
+      "token": "2",
+      "start_offset": 0,
+      "end_offset": 1,
+      "type": "<NUM>",
+      "position": 0
+    },
+    {
+      "token": "guys",
+      "start_offset": 2,
+      "end_offset": 6,
+      "type": "<ALPHANUM>",
+      "position": 1
+    },
+    {
+      "token": "walk",
+      "start_offset": 7,
+      "end_offset": 11,
+      "type": "<ALPHANUM>",
+      "position": 2
+    },
+    {
+      "token": "into",
+      "start_offset": 12,
+      "end_offset": 16,
+      "type": "<ALPHANUM>",
+      "position": 3
+    },
+    {
+      "token": "a",
+      "start_offset": 19,
+      "end_offset": 20,
+      "type": "<ALPHANUM>",
+      "position": 4
+    },
+    {
+      "token": "bar",
+      "start_offset": 21,
+      "end_offset": 24,
+      "type": "<ALPHANUM>",
+      "position": 5
+    },
+    {
+      "token": "both",
+      "start_offset": 26,
+      "end_offset": 30,
+      "type": "<ALPHANUM>",
+      "position": 6
+    },
+    {
+      "token": "the",
+      "start_offset": 31,
+      "end_offset": 34,
+      "type": "<ALPHANUM>",
+      "position": 7
+    },
+    {
+      "token": "third",
+      "start_offset": 35,
+      "end_offset": 40,
+      "type": "<ALPHANUM>",
+      "position": 8
+    },
+    {
+      "token": "ducks",
+      "start_offset": 44,
+      "end_offset": 49,
+      "type": "<ALPHANUM>",
+      "position": 9
+    }
+  ]
+}
+```
