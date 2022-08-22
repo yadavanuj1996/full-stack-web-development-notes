@@ -200,3 +200,13 @@ POST /products/_update/100
   }
 }
 ```
+
+- Update value of one of the key of a document
+```
+POST /products/_update/100
+{
+  "script": {
+    "source": "ctx._source.in_stock--"
+  }
+}
+```
