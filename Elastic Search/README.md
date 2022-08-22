@@ -97,6 +97,8 @@ of a node thus the index is divided into shards and each shard is placed divided
 - Replication is provided by elastic search, the replica is made at shard level & the replicated shard is stored on node (generally the one that doest not have primary shard)
 - Snapshot feature provides a snapshot of elastic search data up till a certain point of time.
 
+## Managing Documents
+
 ### Elastic Search Query
 
 - Get cluster health 
@@ -363,3 +365,19 @@ curl -H "Content-Type:application/x-ndjson" -XPOST http://localhost:9200/product
 ```
 curl -H "Content-Type:application/x-ndjson" -XPOST -u username:password https://elastic-cloud-endpoint.com:9243/products/_bulk --data-binary "@products-bulk.json"
 ```
+
+## Analysis and mapping
+- Text is anaylyzed and processed before getting stored in a searchable data structure inside elastic search
+- A analyzer contains
+  - Character filters
+    - Add, removes or changes character. Removes html code to text 
+    - Input: "I REALLY like beer!"
+    - Output: "I REALLY like beer!"
+  - Tokenizer
+    - Tokenizes a string, i.e., splits it into tokens. 
+    - Input: "I REALLY like beer!"
+    - Output: ["I", "REALLY", "like", "beer"]
+  - Token filters
+    - Receives the output of tokenizer and add, remove or modify tokens, one examole is lowercase filter
+    - Input: "I", "REALLY", "like", "beer"
+    - Output: "i", "really", "like", "beer"
