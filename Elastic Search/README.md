@@ -56,11 +56,6 @@ Other Usages:
 
 
 
-Queries to try from kibana
-- GET /_cluster/health
-  - Get cluster health
-- GET _cat/indices?expand_wildcards=all
-  - Get indices  
 
 Curl Request to access elastic search cluster on elastic cloud
 - curl -u user_name elastic_search_endpoint
@@ -103,6 +98,18 @@ of a node thus the index is divided into shards and each shard is placed divided
 - Snapshot feature provides a snapshot of elastic search data up till a certain point of time.
 
 ### Elastic Search Query
+
+- Get cluster health 
+```
+GET /_cluster/health
+```
+  
+- Get indices  
+```
+GET _cat/indices?expand_wildcards=all
+```
+
+
 - Create a index
 ```
 PUT /products
