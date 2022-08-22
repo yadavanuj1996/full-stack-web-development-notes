@@ -233,3 +233,10 @@ Reponse:
 }
 ```
 "result": "deleted" signifies that document is deleted.
+
+
+### Routing
+- Routing helps Elastic Search know where to store documents.
+- Routing helps Elastic Search know where to find documents once they are stored.
+- Routing is process of resolving a shard for a document
+  - shrad_num =  hash(routing) % num_of_primary_shards
