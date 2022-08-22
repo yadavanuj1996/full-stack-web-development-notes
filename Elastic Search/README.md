@@ -236,6 +236,85 @@ Reponse:
 "result": "deleted" signifies that document is deleted.
 
 
+- Indexing documents (Batch processing)
+
+```
+POST /_bulk
+{ "index": { "_index": "products", "_id": 200 } }
+{ "name": "Espresso Machine", "price": 199, "in_stock": 5 }
+{ "create": { "_index": "products", "_id": 201 } }
+{ "name": "Milk Frother", "price": 149, "in_stock": 14 }
+```
+
+- Updating and deleting documents
+
+```
+POST /_bulk
+{ "update": { "_index": "products", "_id": 201 } }
+{ "doc": { "price": 129 } }
+{ "delete": { "_index": "products", "_id": 200 } }
+```
+
+- Specifying the index name in the request path
+
+```
+POST /products/_bulk
+{ "update": { "_id": 201 } }
+{ "doc": { "price": 129 } }
+{ "delete": { "_id": 200 } }
+```
+
+- Retrieving all documents
+
+```
+GET /products/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+- Replace the `match_all` query with any query that you would like. (Updating documents matching a query)
+
+```
+POST /products/_update_by_query
+{
+  "script": {
+    "source": "ctx._source.in_stock--"
+  },
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+
+- Deleting documents that match a given query (Delete by query)
+
+```
+POST /products/_delete_by_query
+{
+  "query": {
+    "match_all": { }
+  }
+}
+```
+
+- Ignoring (counting) version conflicts
+
+The `conflicts` key may be added as a query parameter instead, i.e. `?conflicts=proceed`.
+
+```
+POST /products/_delete_by_query
+{
+  "conflicts": "proceed",
+  "query": {
+    "match_all": { }
+  }
+}
+```
+
 ### Routing
 - Routing helps Elastic Search know where to store documents.
 - Routing helps Elastic Search know where to find documents once they are stored.
@@ -262,47 +341,3 @@ Routing returns a replication group (Primary Shard+ all replicated shards) and t
     - _primary_term represents no of times primary shards are changed within a replication group
     - _seq_no represents the sequencing order in which the documents are updated.
   - Document is updated on old values, inventory data being updated by two different request that do not know about each other.
-
-
-
- 
- # Batch processing
-
-## Indexing documents
-
-```
-POST /_bulk
-{ "index": { "_index": "products", "_id": 200 } }
-{ "name": "Espresso Machine", "price": 199, "in_stock": 5 }
-{ "create": { "_index": "products", "_id": 201 } }
-{ "name": "Milk Frother", "price": 149, "in_stock": 14 }
-```
-
-## Updating and deleting documents
-
-```
-POST /_bulk
-{ "update": { "_index": "products", "_id": 201 } }
-{ "doc": { "price": 129 } }
-{ "delete": { "_index": "products", "_id": 200 } }
-```
-
-## Specifying the index name in the request path
-
-```
-POST /products/_bulk
-{ "update": { "_id": 201 } }
-{ "doc": { "price": 129 } }
-{ "delete": { "_id": 200 } }
-```
-
-## Retrieving all documents
-
-```
-GET /products/_search
-{
-  "query": {
-    "match_all": {}
-  }
-}
-```
