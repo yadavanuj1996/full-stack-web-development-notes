@@ -84,3 +84,18 @@ of a node thus the index is divided into shards and each shard is placed divided
 
 ![IMG_9245](https://user-images.githubusercontent.com/22169012/185746391-30181f1f-aed7-4d62-b00f-4cacc607090e.jpg)
 
+
+- A shard is an independent index
+- Each shard is an Apache Lucene index
+- A shard has no predefined size: it growsa as documents are added to it (2 billion documents can be stored in a shard)
+
+##### Purpose of sharding
+- Maintly to be able to store more documents 
+- To easier fit large indices onto nodes
+- Improved performance
+  - Parllelization of queries increase the throughput of an index
+  - Seach on multiple shards run simultaneously.
+  - An index contains a single shard by default
+  
+
+ 
