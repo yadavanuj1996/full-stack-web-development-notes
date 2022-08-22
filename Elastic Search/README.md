@@ -254,4 +254,15 @@ Routing returns a replication group (Primary Shard+ all replicated shards) and t
   - Once the data is validated the document is stored in the primary shard.
   - The document is replicated to other shards in the replication group i.e., other replicated shards of primary shards.
 
+
+##### Optimistic Concurrency Control
+- Issues that can come up
+  - let's say during replication process the primary shard disk fails thus some shards in replication group will have a new document while the other won't to solve such problem there is a concept of _primary_term and _seq_no
+    - _primary_term represents no of times primary shards are changed within a replication group
+    - _seq_no represents the sequencing order in which the documents are updated.
+  - Document is updated on old values, inventory data being updated by two different request that do not know about each other.
+
+
+
+ 
  
