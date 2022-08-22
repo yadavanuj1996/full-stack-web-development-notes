@@ -491,4 +491,26 @@ Inverted index holds the mapping of word with documents
 ![IMG_9259](https://user-images.githubusercontent.com/22169012/185943401-b88b865b-9bac-4030-8083-1aee607564e4.jpg)
 
 
+### Mapping
+- Defines the structure of documents 
+  -  fields and their databases (equivalent to relational db table)
+- Mappings can be **explicit or dynamic**
+- A field mapping automaticaly gets created if not provided, if explicit not provided it will treat it as text type mapping
 
+Data Types (not exhaustive):
+- object
+- integer
+- long
+- text
+- boolean
+- double
+- short
+- float
+- date
+- etc,etc
+
+
+- object data type
+  - Used for any JSON objects
+  - can contain other nested objects
+- 
