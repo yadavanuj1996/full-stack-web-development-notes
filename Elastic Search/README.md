@@ -98,4 +98,11 @@ of a node thus the index is divided into shards and each shard is placed divided
   - An index contains a single shard by default
   
 
- 
+#### Replication
+- Replication is provided by elastic search, the replica is made at shard level & the replicated shard is stored on node (generally the one that doest not have primary shard)
+- Snapshot feature provides a snapshot of elastic search data up till a certain point of time.
+
+
+
+
+
