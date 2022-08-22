@@ -102,7 +102,20 @@ of a node thus the index is divided into shards and each shard is placed divided
 - Replication is provided by elastic search, the replica is made at shard level & the replicated shard is stored on node (generally the one that doest not have primary shard)
 - Snapshot feature provides a snapshot of elastic search data up till a certain point of time.
 
+- Create a index
+```
+PUT /products
+{
+  "settings":{
+    "number_of_shards": 2,
+    "number_of_replicas": 2
+  }
+}
 
+```
 
-
+- Delete a index
+```
+DELETE /pages 
+```
 
