@@ -314,6 +314,9 @@ POST /products/_delete_by_query
   }
 }
 ```
+##### When to use bulk API 
+- When you need to perform lots of write operations at same time
+  - ex: while importing data or modifying lots of data
 
 ### Routing
 - Routing helps Elastic Search know where to store documents.
@@ -341,3 +344,5 @@ Routing returns a replication group (Primary Shard+ all replicated shards) and t
     - _primary_term represents no of times primary shards are changed within a replication group
     - _seq_no represents the sequencing order in which the documents are updated.
   - Document is updated on old values, inventory data being updated by two different request that do not know about each other.
+
+
