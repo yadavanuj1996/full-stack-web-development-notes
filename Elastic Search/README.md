@@ -467,3 +467,25 @@ Response
   ]
 }
 ```
+
+### Inverted indices
+
+- A field's value are stored in one of several data structures
+  - The data structure depends on the field's data type.
+- Ensure efficient data access - ex: searches
+
+
+- Inverted indices
+  - Mapping between terms (tokens created by analyzer) and which documents contain them
+
+![IMG_9258](https://user-images.githubusercontent.com/22169012/185942124-72d5e30c-80a4-4d9c-af00-9a670e87c7ff.jpg)
+
+Inverted index holds the mapping of word with documents
+- The inverted index contains the terms and all the documents that contains the terms
+- In case of search it's easier to look for the term and search all the documents that contain the term
+  - Inverted indeces contain more than terms and document id for relevance scoring.
+- Inverted index are made on field level i.e., each field will have a inverted index
+
+
+
+![IMG_9259](https://user-images.githubusercontent.com/22169012/185943401-b88b865b-9bac-4030-8083-1aee607564e4.jpg)
