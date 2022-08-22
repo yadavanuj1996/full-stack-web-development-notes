@@ -346,3 +346,13 @@ Routing returns a replication group (Primary Shard+ all replicated shards) and t
   - Document is updated on old values, inventory data being updated by two different request that do not know about each other.
 
 
+##### Importing data into local cluster using curl
+
+```
+curl -H "Content-Type:application/x-ndjson" -XPOST http://localhost:9200/products/_bulk --data-binary "@products-bulk.json"
+```
+
+ Importing data into Elastic Cloud 
+```
+curl -H "Content-Type:application/x-ndjson" -XPOST -u username:password https://elastic-cloud-endpoint.com:9243/products/_bulk --data-binary "@products-bulk.json"
+```
