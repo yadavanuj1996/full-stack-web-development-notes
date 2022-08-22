@@ -161,3 +161,4 @@ Reponse:
   }
 }
 ```
+Note: If a id is not available found key will be false and _source key will not be returned.
