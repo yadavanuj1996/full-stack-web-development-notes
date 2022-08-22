@@ -162,3 +162,41 @@ Reponse:
 }
 ```
 Note: If a id is not available found key will be false and _source key will not be returned.
+
+- Update a doc
+```
+POST /products/_update/100
+{
+  "doc":{
+    "in_stock": 3
+  }
+}
+```
+
+Response:
+```
+{
+  "_index": "products",
+  "_id": "100",
+  "_version": 2,
+  "result": "updated",
+  "_shards": {
+    "total": 3,
+    "successful": 2,
+    "failed": 0
+  },
+  "_seq_no": 1,
+  "_primary_term": 1
+}
+```
+result: "updated" states that the changes were made successfully
+
+- Add a new key value pair in an existing document
+```
+POST /products/_update/100
+{
+  "doc":{
+    "tags": ["electronics"]
+  }
+}
+```
