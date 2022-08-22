@@ -246,3 +246,12 @@ Reponse:
 ![IMG_9257](https://user-images.githubusercontent.com/22169012/185916266-98ca26dd-fdf8-49d4-aba2-ffa18ae410e6.jpg)
 
 Routing returns a replication group (Primary Shard+ all replicated shards) and the best shard from them from reading perspective is selected and the data is returned.
+
+- Storing a document in elastic search
+  - A request is made by client
+  - A coordinator node find a primary Shard (Only primary shards can write the data in elastic search)
+  - Primary Shards validates the data first
+  - Once the data is validated the document is stored in the primary shard.
+  - The document is replicated to other shards in the replication group i.e., other replicated shards of primary shards.
+
+ 
