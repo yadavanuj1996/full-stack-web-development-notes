@@ -485,7 +485,10 @@ Inverted index holds the mapping of word with documents
 - In case of search it's easier to look for the term and search all the documents that contain the term
   - Inverted indeces contain more than terms and document id for relevance scoring.
 - Inverted index are made on field level i.e., each field will have a inverted index
-
-
+  -  As for different types (numeric, string, date etc) of fields different data structures are used for storage to optimize the search.
+-  Terms are sorted alphabetically in inverted index (Inverted index are created and maintained by apache lucene)
 
 ![IMG_9259](https://user-images.githubusercontent.com/22169012/185943401-b88b865b-9bac-4030-8083-1aee607564e4.jpg)
+
+
+
