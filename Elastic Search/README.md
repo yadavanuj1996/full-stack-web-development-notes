@@ -119,3 +119,45 @@ PUT /products
 DELETE /pages 
 ```
 
+- Add a document in a index
+```
+POST /products/_doc
+{
+  "name": "Coffee Maker",
+  "price": 64,
+  "in_stock": 10
+}
+```
+
+- Add a document with explicitly providing id in a index (In dev mode the default settings creates a new index on PUT command if index is not present, should not be used in prod)
+```
+PUT /products/_doc/100
+{
+  "name": "Toaster",
+  "price": 49,
+  "in_stock": 4
+  
+}
+```
+
+- fetch a document using an id
+```
+GET /products/_doc/100
+```
+
+Reponse: 
+```
+{
+  "_index": "products",
+  "_id": "100",
+  "_version": 1,
+  "_seq_no": 0,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "name": "Toaster",
+    "price": 49,
+    "in_stock": 4
+  }
+}
+```
