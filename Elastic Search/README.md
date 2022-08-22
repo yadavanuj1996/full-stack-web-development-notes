@@ -240,3 +240,9 @@ Reponse:
 - Routing helps Elastic Search know where to find documents once they are stored.
 - Routing is process of resolving a shard for a document
   - shrad_num =  hash(routing) % num_of_primary_shards
+- No of shards cannot be changed after the index is created (although you can split a read only shard using Split API)
+
+- Process of fetching a data from Elastic Search on Client (App with elastic search sdk, kibana console, dev machine etc) request.
+![IMG_9257](https://user-images.githubusercontent.com/22169012/185916266-98ca26dd-fdf8-49d4-aba2-ffa18ae410e6.jpg)
+
+Routing returns a replication group (Primary Shard+ all replicated shards) and the best shard from them from reading perspective is selected and the data is returned.
