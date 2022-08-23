@@ -834,6 +834,59 @@ GET /products/_search
 }
 ```
 
+- Matching based on prefix
+```
+GET /products/_search
+{
+  "query": {
+    "prefix": {
+      "tags.keyword": "Vege"
+    }
+  }
+}
+```
+
+- Searching with wildcards
+  - This queries are slow
+```
+GET /products/_search
+{
+  "query": {
+    "wildcard": {
+      "tags.keyword": "Veg*ble"
+    }
+  }
+}
+
+
+GET /products/_search
+{
+  "query": {
+    "wildcard": {
+      "tags.keyword": "Veget?ble"
+    }
+  }
+}
+
+
+```
+
+- Searching with regular expressions
+ 
+```
+GET /products/_search
+{
+  "query": {
+    "regexp": {
+      "tags.keyword": "Veget[a-zA-Z]+ble"
+    }
+  }
+}
+
+```
+
 
 Note: Elastic Search in dynamic mapping saves a string in both text field as well as keyword field. (such fields are called multifields)
 
+
+## Introduction to full text queries
