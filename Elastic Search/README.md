@@ -513,4 +513,34 @@ Data Types (not exhaustive):
 - object data type
   - Used for any JSON objects
   - can contain other nested objects
-- 
+
+- nested data type
+  - Similar to object data type but maintains object relationships
+  - Useful when indexing arrays of objects
+  - Enables us to query objects independently 
+  - If there are 10 items in one of object array, it will be stored as individual document in Lucene 
+  - In inverted index the term will be complete text not individual words.
+  
+- keyword data type
+  - Used for fields with exact value, use when exact word search is requrired ex: filtering, aggregations and sorting
+- For full-text searches, use the text data type
+  - ex: seaching the body text of an article.
+  
+  
+  
+ #### Type Coercion
+- During mapping coercion occurs, if a field values are stored as float the data type will be float, in case we pass a float passed in double quotes it will coerce it to float "7.4" -> 7.4
+- In case a different data type value will be passed it will raise parsing exception and not store the value "7.4m" in float will raise error.
+- Coercion is not used for dynamic mapping
+- Always try to use the coreect data type especially the first time you index a field
+
+
+Arrays:
+- An array should contain elements of same data type
+- Nested Arrays are stored in flat out manner [1, [2,3]] becomes [1,2,3]
+
+Note: To index an array of object type save in it nested data type if you need to query the objects independently.
+ 
+ 
+  
+  
