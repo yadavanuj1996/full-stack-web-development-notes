@@ -755,6 +755,7 @@ GET /products/_search
 ##### Match Query
 - Match Queries are analyzed.
   - In case of match query the query itself is first analyzed
+  - So even the query text is also lowercased thus the Full Text query will return the data.
  
 
 ![IMG_9266](https://user-images.githubusercontent.com/22169012/186151981-015ccb2c-b726-4142-908e-b7f59323e2a0.jpg)
