@@ -764,4 +764,4 @@ GET /products/_search
   - **Match Query is used for full text search**. 
 
 
-
+### Term Level Queries
