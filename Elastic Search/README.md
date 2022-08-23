@@ -657,3 +657,14 @@ Note: size parameter can be used for pagination
   }
 }
 ```
+- Query to match all things in index
+```
+
+GET /products/_search
+{
+  "query":{
+    "match_all": {}
+  }
+}
+
+```
