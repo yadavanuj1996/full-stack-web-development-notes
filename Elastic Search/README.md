@@ -714,9 +714,9 @@ GET /products/_search?explain
 Note: Query Context affects relevance; filter context doesn't
 
 ### Full Text queries vs term level queries
-##### Term level queries
-- The term level queries look for exact matches (they are case sensitive)
-- Term Queries are not analyzed.
+
+![IMG_9266](https://user-images.githubusercontent.com/22169012/186151981-015ccb2c-b726-4142-908e-b7f59323e2a0.jpg)
+
 ```
 Term Query 1 - This will return all 5 response
 GET /products/_search
@@ -750,13 +750,18 @@ GET /products/_search
   }
 }
 ```
+
+##### Term level queries
+- The term level queries look for exact matches (they are case sensitive)
+- Term Queries are not analyzed.
+- **Term Queries are not used for full text search.**
 - The inverted index stores the terms in lowercase letter thus even if the field data contains Lobster, the Term Query 1 will return 5 response but the Term Query response returns nothing that's although the document field contains Lobster and the term query contains Lobster but the inverted index contains **lobster** and thus the Term Query -2 could not find any match.
 
 ##### Match Query
 - Match Queries are analyzed.
   - In case of match query the query itself is first analyzed
   - So even the query text is also lowercased thus the Full Text query will return the data.
- 
+  - **Match Query is used for full text search**. 
 
-![IMG_9266](https://user-images.githubusercontent.com/22169012/186151981-015ccb2c-b726-4142-908e-b7f59323e2a0.jpg)
+
 
