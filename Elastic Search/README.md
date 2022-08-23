@@ -890,3 +890,6 @@ Note: Elastic Search in dynamic mapping saves a string in both text field as wel
 
 
 ## Introduction to full text queries
+- For long text fields use full text queries
+  - Used for articles, blogs etc.
+- For input coming from a input text field full text queries is better suited.
