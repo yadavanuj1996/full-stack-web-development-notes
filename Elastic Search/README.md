@@ -672,6 +672,19 @@ GET /products/_search
 
 ```
 
+- Query to search with added explanination (term query is used here)
+```
+GET /products/_search?explain
+{
+  "query":{
+    "term":{
+      "name": "lobster" 
+    }
+  }
+}
+
+```
+
 ### How searching works
 
 ![IMG_9263](https://user-images.githubusercontent.com/22169012/186116179-8dd26de9-3d9d-4e9d-832e-a0e45ed4c25f.jpg)
@@ -681,4 +694,68 @@ GET /products/_search
 - The result are merged and sent back to client.
 - For fetching a single doc directly this steps does not occue (refer above in doc to view the fetching of single doc)
 
+- _score property - a no that represents how well the document matched the search query. (includes the relevancy)
+- max_score represents highest score of any of the match documents
+- matches are returned on the basis of relevancy.
+
+
+### Understanding Relevancy Score
+- Term Frequency
+  - How many times does the term appear in the field for a given document
+- Inverse Document Frequency
+  - How often does the term appear within the index (i.e., across all documents)
+    - The more the term appears the less the relvancy is. ex: as if, the kind of words appear in all documents so relevancy would be less
+  - field-lenth norm
+    - How long is the field?
+    - A word found in field with data of length 50 is more relevant as comapre to word found in field that has length 500.
+  - Handle stop words (less important) 
+    - stop words are the words that appear across most documents in index and has very less relevancy in terms of search.
+
+Note: Query Context affects relevance; filter context doesn't
+
+### Full Text queries vs term level queries
+##### Term level queries
+- The term level queries look for exact matches (they are case sensitive)
+- Term Queries are not analyzed.
+```
+Term Query 1 - This will return all 5 response
+GET /products/_search
+{
+  "query":{
+    "term":{
+      "name": "lobster" 
+    }
+  }
+}
+
+
+Term Query 2 - This will not return any response
+GET /products/_search
+{
+  "query":{
+    "term":{
+      "name": "Lobster" 
+    }
+  }
+}
+
+
+Full Text Query - This will return all 5 response
+GET /products/_search
+{
+  "query":{
+    "match":{
+      "name": "Lobster" 
+    }
+  }
+}
+```
+- The inverted index stores the terms in lowercase letter thus even if the field data contains Lobster, the Term Query 1 will return 5 response but the Term Query response returns nothing that's although the document field contains Lobster and the term query contains Lobster but the inverted index contains **lobster** and thus the Term Query -2 could not find any match.
+
+##### Match Query
+- Match Queries are analyzed.
+  - In case of match query the query itself is first analyzed
+ 
+
+![IMG_9266](https://user-images.githubusercontent.com/22169012/186151981-015ccb2c-b726-4142-908e-b7f59323e2a0.jpg)
 
