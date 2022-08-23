@@ -765,3 +765,75 @@ GET /products/_search
 
 
 ### Term Level Queries
+- Used for exact matches
+  -  Use for date, boolean, etc fields that require exact matches
+```
+GET /products/_search
+{
+  "query": {
+    "term": {
+      "is_active": {
+        "value": true
+      }
+    }
+  }
+}
+```
+
+- Term query to search in a field any one of the array value (similar to IN clause of sql) 
+```
+GET /products/_search
+{
+  "query": {
+    "terms": {
+      "tags.keyword": [
+        "Soup", "Cake"
+      ]
+    }
+  }
+}
+```
+
+- Term Query search for particular ids
+```
+GET /products/_search
+{
+  "query": {
+    "ids": {
+      "values": [1,2,3]
+    }
+  }
+}
+```
+
+- Matching documents with range values
+```
+GET /products/_search
+{
+  "query": {
+    "range": {
+      "in_stock": {
+        "gte": 1,
+        "lte": 5
+      }
+    }
+  }
+}
+
+```
+
+- Matching documents with non-null values
+```
+GET /products/_search
+{
+  "query": {
+    "exists": {
+      "field": "tags"
+    }
+  }
+}
+```
+
+
+Note: Elastic Search in dynamic mapping saves a string in both text field as well as keyword field. (such fields are called multifields)
+
