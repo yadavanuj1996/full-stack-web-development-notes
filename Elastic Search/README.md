@@ -570,7 +570,7 @@ Note: To index an array of object type save in it nested data type if you need t
 - Create a new index and move documents to new index while skipping the non required fields.
 
 
-### Introduction to searching
+## Introduction to searching
 - Search methods
   - DSL Query language (Pass the query in request body) (Recommended approach)
      ```
@@ -591,7 +591,7 @@ Note: size parameter can be used for pagination
 
 
 
-##### Queries
+### Queries
 - Search anything
   - GET /products/_search?q=*
 - GET /products/_search?q=name:Lobster
@@ -600,7 +600,8 @@ Note: size parameter can be used for pagination
   - Will return all the documents that contains Meat in the tags
 - GET /products/_search?q=tags:Meat AND name:Tuna
   - will return documents that contain Meat in tags and Tuna in name
-  ```
+
+```
   {
   "took": 10,
   "timed_out": false,
@@ -656,10 +657,12 @@ Note: size parameter can be used for pagination
     ]
   }
 }
-```
-- Query to match all things in index
+
 ```
 
+- Query to match all things in index
+
+```
 GET /products/_search
 {
   "query":{
@@ -668,3 +671,14 @@ GET /products/_search
 }
 
 ```
+
+### How searching works
+
+![IMG_9263](https://user-images.githubusercontent.com/22169012/186116179-8dd26de9-3d9d-4e9d-832e-a0e45ed4c25f.jpg)
+
+- A request is made by client (could be elastic search skd integrated app) and then request is sent to a coordinating node (by default each can act as coordinating node)
+- The coordinating node broadcast request to all the available shards in the index (both replicata and primary shard) the shards responds the result
+- The result are merged and sent back to client.
+- For fetching a single doc directly this steps does not occue (refer above in doc to view the fetching of single doc)
+
+
