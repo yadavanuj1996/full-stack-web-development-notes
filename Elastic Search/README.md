@@ -42,17 +42,19 @@ Other Usages:
 - Nodes referes to runnign instance of elastic search running on a virtual machine or docker
 - Data is stored as documents, that are JSON objects.
 - Documents are grouped together with indices.
+- Every document in elastic search is stored within an index  
+  - An index groups document and provides configuration option that are related to availability and scalability.
+- **Index** is collection of documents with similar charactersticks and are logically related.
+  - Ex:- People index (contains people details), Departments index (Contain departments - marketing)
+  - Search runs on indexes
+  - An index is like a ‘database' in a relational database. It has a mapping which defines multiple types.
+
 
 #### Other Points:
 - In prod env each node should run on different node/ virtual machine.
 - A Elastic Search Deployment contains clusters (at least one) and each cluster can contain multiple nodes.
 - Each unit of data stored in cluster is a document (json objects)
   - On indexing a document the original json object is stored with a metadata that is used internally.
-- Every document in elastic search is stored within an index  
-  - An index groups document and provides configuration option that are related to availability and scalability.
-- **Index** is collection of documents with similar charactersticks and are logically related.
-  - Ex:- People index (contains people details), Departments index (Contain departments - marketing)
-  - Search runs on indexes
 
 
 
