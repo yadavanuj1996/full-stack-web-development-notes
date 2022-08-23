@@ -536,13 +536,37 @@ Data Types (not exhaustive):
 - Coercion is not used for dynamic mapping
 - Always try to use the coreect data type especially the first time you index a field
 
+#### Other points:
 
-Arrays:
+##### Arrays:
 - An array should contain elements of same data type
 - Nested Arrays are stored in flat out manner [1, [2,3]] becomes [1,2,3]
 
 Note: To index an array of object type save in it nested data type if you need to query the objects independently.
  
  
-  
-  
+##### Missing fields (fields in Elastic Search)
+- All fields in Elastic Search are optional
+- We can leave out a field when indexing documents
+
+
+##### doc_values data structure
+- Opposite of inverted index
+- inverted index are used for searching purposes and are not good for sorting, aggregations and scripting
+
+- norms parameter
+  - Normalization factors used for relevance scoring
+  - Often we don't just want to filter results, but also rank them in such case norm are useful.
+  - if a field is only used for aggregation and filtering we can disable norms and save disk space.
+
+
+##### Reindex API
+  - Used to move documents from one index or another.
+  - reindexing is common due to business requirements or for scaling.
+
+
+##### Removing Fields
+- Field Mapping cannot be deleted 
+- Create a new index and move documents to new index while skipping the non required fields.
+
+
