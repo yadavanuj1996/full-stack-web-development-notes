@@ -570,3 +570,90 @@ Note: To index an array of object type save in it nested data type if you need t
 - Create a new index and move documents to new index while skipping the non required fields.
 
 
+### Introduction to searching
+- Search methods
+  - DSL Query language (Pass the query in request body) (Recommended approach)
+     ```
+     GET /product/default/_search
+     {
+       "query": {
+         "match": {
+           "description": "red wine"
+         }
+       }
+     }
+     ```
+  - Request URI
+    - GET /product/default/_search?q=name:pasta
+    - Used for running quick search, development
+
+Note: size parameter can be used for pagination
+
+
+
+##### Queries
+- Search anything
+  - GET /products/_search?q=*
+- GET /products/_search?q=name:Lobster
+  - Search inside products where name contains Lobster
+- GET /products/_search?q=tags:Meat
+  - Will return all the documents that contains Meat in the tags
+- GET /products/_search?q=tags:Meat AND name:Tuna
+  - will return documents that contain Meat in tags and Tuna in name
+  ```
+  {
+  "took": 10,
+  "timed_out": false,
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 2,
+      "relation": "eq"
+    },
+    "max_score": 7.3362103,
+    "hits": [
+      {
+        "_index": "products",
+        "_id": "65",
+        "_score": 7.3362103,
+        "_source": {
+          "name": "Tuna - Bluefin",
+          "price": 27,
+          "in_stock": 26,
+          "sold": 378,
+          "tags": [
+            "Meat",
+            "Seafood"
+          ],
+          "description": "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.",
+          "is_active": false,
+          "created": "2015/03/23"
+        }
+      },
+      {
+        "_index": "products",
+        "_id": "11",
+        "_score": 6.473881,
+        "_source": {
+          "name": "Tuna - Salad Premix",
+          "price": 147,
+          "in_stock": 4,
+          "sold": 314,
+          "tags": [
+            "Meat",
+            "Seafood"
+          ],
+          "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy.",
+          "is_active": true,
+          "created": "2015/03/09"
+        }
+      }
+    ]
+  }
+}
+  ```
