@@ -954,3 +954,13 @@ GET /recipes/_search
 ```
 Note: If we look for "pasta spaghetti" it will look for both the terms in both fields but the documents that contains both the terms in same field will have higher relevancy score as comapre to other searched documents.
 
+
+
+## Introduction to compound queries
+
+![IMG_9274](https://user-images.githubusercontent.com/22169012/186356909-3761bacc-f921-4c58-8809-c05e7e16dca7.jpg)
+
+- Boolean queries is similar to WHERE clause in sql
+- Boolean queries take in account the relevance score
+
+
