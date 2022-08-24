@@ -1040,3 +1040,16 @@ GET /recipes/_search
 }
 ```
 
+## Imporoving Search Results
+
+- Proximity Searches
+- Fuzzy match queries
+  - This is a match query with fuzzy parameter
+  - Preferred
+- Fuzzy queries
+  - This is a term query
+- Synonym query
+  - Does not work with term query 
+  - The input synonym is replaced 
+  - Uses synonym token filter
+
