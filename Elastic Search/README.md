@@ -893,3 +893,64 @@ Note: Elastic Search in dynamic mapping saves a string in both text field as wel
 - For long text fields use full text queries
   - Used for articles, blogs etc.
 - For input coming from a input text field full text queries is better suited.
+
+Query to match string "Recipes with pasta or spaghetti" in recipes index's document's title field ( This will work as OR any of the words will be searched for) (filler words will not affect relevance)
+```
+GET /recipes/_search
+{
+  "query": {
+    "match": {
+      "title": "Recipes with pasta or spaghetti"
+    }
+  }
+}
+```
+
+- Running matching query with and operator
+```
+GET /recipes/_search
+{
+  "query": {
+    "match": {
+      "title": {
+        "query": "pasta or spaghetti",
+        "operator": "and"
+      }
+    }
+  }
+}
+```
+This query has boolean opearato set a AND, here all three terms (pasta, or & spaghetti) needs to be present in title will be selected. (This query is first anaylyzed and the terms are extracted from the query string)
+
+- By deafult boolean operator used is OR
+- Order is not considered in match query by default
+
+
+##### Matching Phrases
+- In case order is important like a phrase
+```
+GET /recipes/_search
+{
+  "query": {
+    "match_phrase": {
+      "title": "spaghetti puttanesca"
+    }
+  }
+}
+```
+This query will look for "spaghetti puttanesca" in title field in document in exact same order with no word between them
+
+##### Searching Multiple fields
+```
+GET /recipes/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "pasta",
+      "fields": ["title", "description"]
+    }
+  }
+}
+```
+Note: If we look for "pasta spaghetti" it will look for both the terms in both fields but the documents that contains both the terms in same field will have higher relevancy score as comapre to other searched documents.
+
