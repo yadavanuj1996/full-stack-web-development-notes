@@ -963,4 +963,80 @@ Note: If we look for "pasta spaghetti" it will look for both the terms in both f
 - Boolean queries is similar to WHERE clause in sql
 - Boolean queries take in account the relevance score
 
+##### How the match query works
+- Constructs a complex query (Bool Query)
+
+
+```
+GET /recipes/_search
+{
+  "query": {
+    "match": {
+      "title": "pasta carbonara"
+    }
+  }
+}
+```
+Above query will give same result as following query 
+```
+GET /recipes/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "term": {
+            "title": "pasta"
+          }
+        },
+        {
+          "term": {
+            "title": "carbonara"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+
+- Using AND logic in match query (both the queries mentioned below gives same result using bool AND logic.
+ - The first query mentioned below is case insensitive as it's a match query and analyzer runs and extracts terms
+ - The second query mentioned below is case insensitive 
+
+```
+GET /recipes/_search
+{
+  "query": {
+    "match": {
+      "title": {
+        "query": "pasta carbonara",
+        "operator": "and"
+      }
+    }
+  }
+}
+
+
+GET /recipes/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "title": "pasta"
+          }
+        },
+        {
+          "term": {
+            "title": "carbonara"
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
