@@ -325,6 +325,23 @@ POST /products/_delete_by_query
   }
 }
 ```
+
+- Create API key 
+```
+POST /_security/api_key
+{
+  "name": "your-api-key-name",
+  "metadata": {
+    "application": "your-application-name",
+    "environment": {
+       "level": 1,
+       "trusted": true,
+       "tags": ["dev", "staging"]
+    }
+  }
+}
+```
+
 ##### When to use bulk API 
 - When you need to perform lots of write operations at same time
   - ex: while importing data or modifying lots of data
