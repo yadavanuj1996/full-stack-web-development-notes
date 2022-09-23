@@ -126,3 +126,13 @@ Redis provides support for client-side caching, called tracking. There are two d
 
 #### Stop redis server on loca
 brew services stop redis
+
+
+
+## Useful Commands
+- LRANGE key 0 -1
+- keys * 
+- ping
+- info keyspace
+
+https://redis.io/commands/info/
