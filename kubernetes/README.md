@@ -250,8 +250,9 @@ spec:
 ```
 
 **Metadata Name and App Labels**
+- **metadata**: Data that helps uniquely identify the object, including a name string, UID, and optional namespace
 - **name** in **metadata** is the name of service, when you fire **kubectl get services** you will get the service name (i.e., diy-test-cloud-lb)
-- The **app** label passed in **labels** in **metadata** is used in deployment to use a given service for linking it to pods, so that pods will get network access.
+- The **app** label passed in **labels** in **metadata** is used to add label.
 - **type** in **spec** represents type of service. Options:
 	- ClusterIP
 	- NodePort
@@ -259,6 +260,19 @@ spec:
 - ports
 	- **port**: Port exposes the Kubernetes service on the specified port within the cluster. Other pods within the cluster can communicate with this server on the specified port.
 	- **targetPort**: TargetPort is the port on which the service will send requests to, that your pod will be listening on. Your application in the container will need to be listening on this port also (in pod using containerPod).
+
+- The project key defined inside selector is used for a given service to link it to pods, so that pods will get network access.
+
+In deployment file we will match labels (in selector) to link a service to pod
+
+```
+(deployment.yaml file)
+selector:
+    matchLabels:
+      project: qsk-course
+``` 
+
+Instead of project we can define any other parameter also for example app in selector in service.yaml file similarly we will make the changes in deployment.yaml file and inside matchLabels use app (or any other key) instead of project.
  
  **Other points**
 - Kubernetes uses a dedicated Service object to provide network connectivity to applications running in Pods
