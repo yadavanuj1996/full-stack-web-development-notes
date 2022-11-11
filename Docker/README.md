@@ -299,7 +299,10 @@ common for containers to be based on minimalist images that only include softwar
    
 
 ### Run a docker container
-   docker container run -d --name webserver -p 8000:8080 educative1/ddd-web
+```
+docker container run -d --name webserver -p 8000:8080 educative1/ddd-web
+```
+
    
    Daemon mode#
 Notice that your shell prompt hasn’t changed. This is because this container was started in the background with the -d flag. Starting a container like this doesn’t attach it to your terminal.
