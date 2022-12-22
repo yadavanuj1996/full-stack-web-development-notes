@@ -1070,3 +1070,6 @@ GET /recipes/_search
   - The input synonym is replaced 
   - Uses synonym token filter
 
+## Other links
+- To reindex (reindexing)
+  - https://linuxhint.com/change-field-type-elasticsearch/
