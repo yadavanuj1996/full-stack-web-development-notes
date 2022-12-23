@@ -101,7 +101,7 @@ of a node thus the index is divided into shards and each shard is placed divided
 
 ## Managing Documents
 
-### Elastic Search Query
+### Elastic Search Query (Commands)
 
 - Get cluster health 
 ```
@@ -113,6 +113,20 @@ GET /_cluster/health
 GET _cat/indices?expand_wildcards=all
 ```
 
+- Get all items/data from index
+```
+GET /your_index_name/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+- Get mapping / structure of an index
+```
+GET /your_index_name/_mapping
+```
 
 - Create a index
 ```
