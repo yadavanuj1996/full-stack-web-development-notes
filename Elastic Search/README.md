@@ -356,6 +356,29 @@ POST /_security/api_key
 }
 ```
 
+- Create an alias for index 
+```
+PUT /change-me-reindex/_alias/change-me
+```
+
+- Delete an alias
+```
+DELETE <target_resource>/_alias/<target_alias>
+```
+
+- reindex query
+```
+POST /_reindex
+{
+"source": {
+"index": "change-me"
+  },
+"dest": {
+"index": "change-me-reindex"
+  }
+}
+```
+
 ##### When to use bulk API 
 - When you need to perform lots of write operations at same time
   - ex: while importing data or modifying lots of data
@@ -594,8 +617,8 @@ Note: To index an array of object type save in it nested data type if you need t
 ##### Reindex API
   - Used to move documents from one index or another.
   - reindexing is common due to business requirements or for scaling.
-
-
+  - url (guide): https://linuxhint.com/change-field-type-elasticsearch/
+  
 ##### Removing Fields
 - Field Mapping cannot be deleted 
 - Create a new index and move documents to new index while skipping the non required fields.
