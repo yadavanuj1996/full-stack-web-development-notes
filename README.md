@@ -7,4 +7,7 @@ Important Links:
   - https://zerotosoftwarearchitect.com/
 - Educative ( For learning paths)
   - https://www.educative.io/
+- AWS Certification Course Prep
+  - https://acloudguru.com/course/aws-certified-solutions-architect-associate-saa-c02
+  
   
