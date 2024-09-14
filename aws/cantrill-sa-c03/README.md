@@ -57,3 +57,28 @@
 - AMI is used to create EC2 instances (also an AMI can be created from an EC2 instance)
 
 <img width="1026" alt="Screenshot 2024-09-15 at 3 30 34 AM" src="https://github.com/user-attachments/assets/b8dd92a2-0475-427f-acbf-9961b8990040">
+
+### S3 (Simple Storage Service)
+- Global storage service provided by AWS (present across the world)
+- S3 is **region resiliant** (Failure of AZ does not affect S3 service)
+- S3 is public service of aws (part of aws public network)
+  - Should be first go to service for storing data (text, large data sets, video etc)
+
+<img width="1026" alt="Screenshot 2024-09-15 at 4 49 10 AM" src="https://github.com/user-attachments/assets/411c886b-e3d3-42e5-ab9a-7bcdfa35764e">
+
+- S3 contains bucket and object
+  - Object contains (only two item mentioned here rest are omitted for now)
+    - key
+    - value
+    - **size of object can vary from 0 bytes to 5 TB.**
+  - S3 Bucket
+    - **S3 bucket name should be Globally Unique**
+      - needs to be unique across all aws accounts (two aws user cannot have same s3 bucket name)
+    - can contain unlimited ojects
+    - flat structure ( all objects are stored as same level)
+      - UI does present it as folder structure but it's only for display, let's say if we store /old/koala1.jpg, then s3 treat **/old/** part as prefix and the folder structure is only for display the objects are stored in flat manner
+
+ <img width="1026" alt="Screenshot 2024-09-15 at 4 41 44 AM" src="https://github.com/user-attachments/assets/548fa270-ff62-4682-a6f3-7f26c8551e48">
+
+
+
