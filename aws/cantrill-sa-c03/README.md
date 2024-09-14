@@ -38,7 +38,22 @@
 <img width="887" alt="Screenshot 2024-09-15 at 2 06 36 AM" src="https://github.com/user-attachments/assets/71ee4a28-0850-4a0f-9b02-9a048908cfc1">
 
 
-
-
-### AMI
+### EC2 (Elastic Compute Cloud) Basics
+- EC2 is IAAS, it proides virtual machines (you can install OS on it depending on requirement)
+- EC2 is private aws service (private aws netword zone) & EC2 instance is configure to launch in a single VPC subnet.
+  - VPC needs to support public support if we need to make EC2 instance public access.
+- EC2 is AZ resistant, as a EC2 instance is launched in one VPC subnet.
+- EC2 instance has
+  - CPU
+  - memory
+  - storage
+    - Local on-host storage (instance of EC2 host runs on itself)
+    - EBS (Elastic Block Storage) , network storage made available to intance.
+  - Addition software
+- Few common states (only three are mentioned here)
+  -  Running
+  -  Stopped
+  -  Terminated
 - AMI is used to create EC2 instances (also an AMI can be created from an EC2 instance)
+
+<img width="1026" alt="Screenshot 2024-09-15 at 3 30 34 AM" src="https://github.com/user-attachments/assets/b8dd92a2-0475-427f-acbf-9961b8990040">
