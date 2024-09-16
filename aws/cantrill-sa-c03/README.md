@@ -92,5 +92,21 @@
 
   <img width="904" alt="Screenshot 2024-09-16 at 11 55 40 PM" src="https://github.com/user-attachments/assets/b1db9beb-59b8-4027-8524-32294dc30b9c">
 
-
+### CloudWatch
+- Mainly does 3 things
+  - Metrics Tracking (AWS product, apps, on premise)
+    - Disk usage on on premise, no of visits on app, metric of aws service  
+  - CloudWatch logs
+    - Auto generate aws service logs, app and other logs can be ingested on it
+  - Cloud Watch Events
+    - AWS services
+      - EC2 Machine started, stopped, terminated will generate event that can create new action (like sending mail - like budget cross mail)
+    - Schedule
+      - Create and run an action at a fixed time in aws
+  - Namespaces are containers that are used to keep a certain type of metrics uncluttered from other metrics
+  - Metrics are series of values in an time ordered manner.
+  - Within a namespace an Dimension is used to keep differentiation between two same type of entity sending metrics
+    - Ex: using dimension we can check value of two different EC2 machine CPU usage, while in the namespace we will be getting overall CPU usage. 
+  
+<img width="924" alt="Screenshot 2024-09-17 at 2 01 49 AM" src="https://github.com/user-attachments/assets/eff3f476-bd3b-4995-b73d-953931573e1b">
 
