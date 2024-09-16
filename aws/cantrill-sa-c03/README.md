@@ -80,5 +80,17 @@
 
  <img width="1026" alt="Screenshot 2024-09-15 at 4 41 44 AM" src="https://github.com/user-attachments/assets/548fa270-ff62-4682-a6f3-7f26c8551e48">
 
+### Cloud Formation (CFN)
+- Cloud Formation is used to create, update or delete infrastructure (instead of doing it manually)
+- CFN use template to update infrastructure (format: YAML or JSON), CFN is Infrastructure as Code.
+- Allow Automated consistent provisioning, apply same template will always give same result
+- Helps us manage infrastructure easily
+- Mainly works around 2 items
+  - template (logical resources, contain details and conditions)
+  - stack (physical resources)
+  - CFN make sure logical and physical logic is **in sync**.
+
+  <img width="904" alt="Screenshot 2024-09-16 at 11 55 40 PM" src="https://github.com/user-attachments/assets/b1db9beb-59b8-4027-8524-32294dc30b9c">
+
 
 
