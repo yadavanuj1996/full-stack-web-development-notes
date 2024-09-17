@@ -117,7 +117,8 @@
   - Calculated in 9s (99.9, 99.999 %)
   -Examples
     - Having a spare tyre in car is like having HA, it does not guarantee it won't go down but if it does you can change the tire with very less downtime instead of waiting for help.
-    - Having a standby server for an application in case of main server failure, the service will be down but instead of fixing the server first we simply switch to standby server, spin it up and it will take care of app.(Note: The down time will still be there but if we waited for fix on the main server it would have taken lot longet)
+    - Having a standby server for an application in case of main server failure, the service will be down but instead of fixing the server first we simply switch to standby server, spin it up and it will take care of app.(Note: The down time will still be there but if we waited for fix on the main server it would have taken lot longer)
+
 - **Fault Tolerance**
   - Fault tolerance deals with 2 things
     - Minimizing the downtime (same as HA)
@@ -128,7 +129,18 @@
     - In the above case our health monitor will connect to two server both in active-active state, even if one fail the other one will provide data to the monitor.
     - A plane is example of system that need to be fault tolerant and not just Highly Available, think about a plane that fails for 15 mins in air, it would be fatal.
   - Harder to design, more costly and more complex implementation as compare to HA
+
 - **Disaster Recovery**
   - a set of tools, policies and procedures to enable the recovery or continuity of vital technology and systems following a natural or human induced system disaster.
   - DR is about what to plan for and do in case of system failures (like fire in building or earthquake)
+
     
+### Route 53
+- Deals in 2 things
+  - **Register Domains**
+  - **Host zones and managed nameservers**
+-  Global resiliant service (can tolerata failure of 1 or 2 regions, all regions needs to go down at global level for Route 53 to fail)
+- Process of creating zone files & creating a number of nameservers, putting those zone files on those nameservers then liasing with registries for top level domains and getting nameserver records added on top level domain zone which point back at this servers. 
+
+<img width="965" alt="Screenshot 2024-09-18 at 12 47 50 AM" src="https://github.com/user-attachments/assets/2053567e-650c-4b01-8c11-445f517e877f">
+
