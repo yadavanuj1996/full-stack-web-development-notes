@@ -144,3 +144,11 @@
 
 <img width="965" alt="Screenshot 2024-09-18 at 12 47 50 AM" src="https://github.com/user-attachments/assets/2053567e-650c-4b01-8c11-445f517e877f">
 
+
+### DNS Record Types
+- Nameserver
+- A (www -> ipv4 address)
+- AAAA (www -> ipv6 address)
+- CNAME (link to other record type like A)
+- MX (mail with priority no)
+- TXT (text can be added)
