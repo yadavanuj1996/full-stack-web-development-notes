@@ -110,3 +110,25 @@
   
 <img width="924" alt="Screenshot 2024-09-17 at 2 01 49 AM" src="https://github.com/user-attachments/assets/eff3f476-bd3b-4995-b73d-953931573e1b">
 
+### HA vs Fault Tolerance vs DR
+- **High Availabilty**
+  - **High availability main objective is with maximizing the uptime** (making sure to maintain high operational time), minimizing the down time.
+  - Can be accomplished with **spare capacity (physical or virtual resources)** and **automating things** (like to automatic spin up stand by server in case of main server failure).
+  - Calculated in 9s (99.9, 99.999 %)
+  -Examples
+    - Having a spare tyre in car is like having HA, it does not guarantee it won't go down but if it does you can change the tire with very less downtime instead of waiting for help.
+    - Having a standby server for an application in case of main server failure, the service will be down but instead of fixing the server first we simply switch to standby server, spin it up and it will take care of app.(Note: The down time will still be there but if we waited for fix on the main server it would have taken lot longet)
+- **Fault Tolerance**
+  - Fault tolerance deals with 2 things
+    - Minimizing the downtime (same as HA)
+    - **Tolerate failure** (levels of redundancy & system components that route session around failed components)
+  - Fault tolerance means that despite having a fault the system should still work.
+  - Example
+    - Let's say if we have a critical hospital app that provides real time user heart condition to doctor during surgery in this case we won'use a standby server as even a small time disturbance or downtime can be critical & fatal
+    - In the above case our health monitor will connect to two server both in active-active state, even if one fail the other one will provide data to the monitor.
+    - A plane is example of system that need to be fault tolerant and not just Highly Available, think about a plane that fails for 15 mins in air, it would be fatal.
+  - Harder to design, more costly and more complex implementation as compare to HA
+- **Disaster Recovery**
+  - a set of tools, policies and procedures to enable the recovery or continuity of vital technology and systems following a natural or human induced system disaster.
+  - DR is about what to plan for and do in case of system failures (like fire in building or earthquake)
+    
