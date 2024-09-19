@@ -152,3 +152,38 @@
 - CNAME (link to other record type like A)
 - MX (mail with priority no)
 - TXT (text can be added)
+
+
+## IAM, Accoints & AWS Organizations
+
+### IAM Identity Policies
+<img width="998" alt="Screenshot 2024-09-19 at 11 34 05 PM" src="https://github.com/user-attachments/assets/d5e900f9-e4c6-4f3a-a215-4b9b2b89fd72">
+
+- When a user access a resource all 3 below permission are checked & all of the policies rules are combined and then decision is taken on basis of Explicit Deny, Explicit Allow and Implicit Deny (in this order only)
+  - IAM User Policy
+  - IAM Group Policy (If user is part of any group)
+  - Resource Policy (This are written on Resources like S3/ EC2 and can only be assigned to IAM User or IAM Role & not to IAM Group)
+- Inline policy is when we create JSON and apply it to 3 users separately. (JSON has to be applied on all 3 accounts)
+  - Exception case use when explicit permission  allow/deny for user.
+- Managed Policies
+  - To provide common access right to lot of people
+  - Reusable & low management overhead
+  - 2 types
+    - AWS managed policy
+    - custom managed policy
+
+### IAM Users and ARN
+<img width="998" alt="Screenshot 2024-09-20 at 2 19 05 AM" src="https://github.com/user-attachments/assets/9def248c-08b2-4ab8-9b4c-49c0f3fe5bf9">
+<img width="998" alt="Screenshot 2024-09-20 at 2 19 45 AM" src="https://github.com/user-attachments/assets/566a8184-f2fa-4001-a207-1abe6aecf2fb">
+
+- Principal is a person/ computers/ services/ application that needs to interact with AWS resources.
+
+### IAM Roles
+<img width="977" alt="Screenshot 2024-09-19 at 11 25 51 PM" src="https://github.com/user-attachments/assets/bc7260bb-3a40-4283-a3b2-caba586c746f">
+- STS (Secured Token Service AWS) creates temporary credentials for IAM roles.
+- IAM roles are used when no. of principals are not known
+  - n no of exteranl users/ application/ services will assume IAM role. Also casw where EC2 machines will require access to S3, but the EC2 machine numbers might change.
+  - **IAM roles are assumed**, you become that role for temporary period of time.'
+- Trust poicy decide whether you are allowed to assume that role or not.
+
+
