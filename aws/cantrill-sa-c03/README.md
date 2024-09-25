@@ -188,11 +188,20 @@
 
 
 ### IAM Roles
-<img width="977" alt="Screenshot 2024-09-19 at 11 25 51 PM" src="https://github.com/user-attachments/assets/bc7260bb-3a40-4283-a3b2-caba586c746f">
-- STS (Secured Token Service AWS) creates temporary credentials for IAM roles.
-- IAM roles are used when no. of principals are not known
-  - n no of exteranl users/ application/ services will assume IAM role. Also casw where EC2 machines will require access to S3, but the EC2 machine numbers might change.
-  - **IAM roles are assumed**, you become that role for temporary period of time.'
-- Trust poicy decide whether you are allowed to assume that role or not.
+<img width="854" alt="Screenshot 2024-09-26 at 4 11 49 AM" src="https://github.com/user-attachments/assets/cb603935-72a6-40e6-ab4c-f8849a12c360">
 
+- STS (Secured Token Service AWS) creates temporary credentials for IAM roles.  
+- IAM roles are used when no. of principals are not known  
+  - n no of exteranl users/ application/ services will assume IAM role. Also casw where EC2 machines will require access to S3, but the EC2 machine numbers might change.  
+  - **IAM roles are assumed**, you become that role for temporary period of time.  
+- Trust poicy decide whether you are allowed to assume that role or not.  
+
+### When to use IAM roles
+- Instead of hardcoding credentials in lambda function (function as a service) we can use IAM role to make lambda assume role using sts:Assumerole (secured token service)
+  - Avoid hardcoded access key and other credentials
+  - No of lambdas that need to access particular s3 bucket could be 2,5 or 20 we don't know the exact number as we can run n no of lambda functions we are using IAM role. 
+
+<img width="1021" alt="Screenshot 2024-09-26 at 4 16 13 AM" src="https://github.com/user-attachments/assets/0ff49d82-d7d4-4590-9c6b-b3b2db01e390">
+
+<img width="1022" alt="Screenshot 2024-09-26 at 4 18 57 AM" src="https://github.com/user-attachments/assets/8957e313-a8a3-4cd7-ac32-64df618792d9">
 
