@@ -162,7 +162,7 @@
 - When a user access a resource all 3 below permission are checked & all of the policies rules are combined and then decision is taken on basis of Explicit Deny, Explicit Allow and Implicit Deny (in this order only)
   - IAM User Policy
   - IAM Group Policy (If user is part of any group)
-  - Resource Policy (This are written on Resources like S3/ EC2 and can only be assigned to IAM User or IAM Role & not to IAM Group)
+  - Resource Policy (This are written on Resources like S3/ EC2 and can only be assigned to IAM User or IAM Role using arn & not to IAM Group)
 - Inline policy is when we create JSON and apply it to 3 users separately. (JSON has to be applied on all 3 accounts)
   - Exception case use when explicit permission  allow/deny for user.
 - Managed Policies
@@ -177,6 +177,15 @@
 <img width="998" alt="Screenshot 2024-09-20 at 2 19 45 AM" src="https://github.com/user-attachments/assets/566a8184-f2fa-4001-a207-1abe6aecf2fb">
 
 - Principal is a person/ computers/ services/ application that needs to interact with AWS resources.
+
+### IAM Groups
+- Container of users (a user can be added into an IAM group)
+- **Does not have** their own **credentials**, cannot login into IAM groups
+- Used for easier management of IAM Users.
+- Groups are not true identity they can't be referenced as a principal in policy, a resource policy cannot reference IAM group thus IAM group does not works for Resource policies.
+
+<img width="998" alt="Screenshot 2024-09-26 at 3 16 56 AM" src="https://github.com/user-attachments/assets/06991092-387c-41dc-aec4-e890d79429b8">
+
 
 ### IAM Roles
 <img width="977" alt="Screenshot 2024-09-19 at 11 25 51 PM" src="https://github.com/user-attachments/assets/bc7260bb-3a40-4283-a3b2-caba586c746f">
