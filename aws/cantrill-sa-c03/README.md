@@ -205,6 +205,11 @@
 
 <img width="1022" alt="Screenshot 2024-09-26 at 4 18 57 AM" src="https://github.com/user-attachments/assets/8957e313-a8a3-4cd7-ac32-64df618792d9">
 
+### Service-linked Roles & PassRole
+<img width="1013" alt="Screenshot 2024-09-27 at 4 18 35 AM" src="https://github.com/user-attachments/assets/1b5c3044-c444-4ec3-9976-44b16f58069b">
+
+
+
 ### Service Control Policies
 <img width="1022" alt="Screenshot 2024-09-26 at 4 45 25 PM" src="https://github.com/user-attachments/assets/8e671320-aedb-4e56-83d0-ed0c0c0fe93f">
 
