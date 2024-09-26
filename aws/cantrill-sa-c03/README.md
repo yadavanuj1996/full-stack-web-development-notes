@@ -205,3 +205,20 @@
 
 <img width="1022" alt="Screenshot 2024-09-26 at 4 18 57 AM" src="https://github.com/user-attachments/assets/8957e313-a8a3-4cd7-ac32-64df618792d9">
 
+### Service Control Policies
+<img width="1022" alt="Screenshot 2024-09-26 at 4 45 25 PM" src="https://github.com/user-attachments/assets/8e671320-aedb-4e56-83d0-ed0c0c0fe93f">
+
+- Service Control Policies are **account permission boundaries**
+- SCP can be attached to whole organization (root container), individual AWS service account or Organization Unit.
+- **SCP permissions trickle downs**, if we attach SCP to an Organization unit then all the accounts within that OU and all the aws member accounts will also impacted.
+- **Management account** (payer account of AWS organization) is special even if we attach the SCP (service control policies) on root container the **SCP will not impact the management account**.
+- SCP don't grant permissions, they just limit the permission that can be assigned to a aws account (in the organization).
+- By **default** SCP provide **FullAWSAcess** policy (that means no restriction)
+- Rule for assesment
+  - Explicit Deny
+  - Explicit Allow
+  - Implicit Deny
+
+<img width="1022" alt="Screenshot 2024-09-26 at 4 48 25 PM" src="https://github.com/user-attachments/assets/e1c304c6-cf8f-48b2-9363-9f5742582bfb">
+
+  
